@@ -5,7 +5,7 @@ A class to process text and auto–correct natural grammar following the Chicago
 Auto–correction includes, but not limited to:
 
        Anglicized words
-       "But-ting" replacement
+       Anti-Butting
        Character repeat
        Capitals
        Dashes
