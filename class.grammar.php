@@ -238,7 +238,10 @@ class grammar {
 	*/				
 	
 	public $grammar = [
-
+			/*
+				Grammar Fragments. 
+				Copyright 2019 Alexandra van den Heetkamp. 
+			*/
 			[['if I was'],['if I were']],
 			[['literally'],['practically','essentially', 'metaphorically']],
 			[['mainly'],['primarily', 'principally', 'essentially', 'first and foremost']],
