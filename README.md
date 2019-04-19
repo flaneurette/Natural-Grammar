@@ -9,6 +9,7 @@ Auto–correction includes, but not limited to:
        Capitals
        Dashes
        Exaggerations
+       Grammar fragments
        Hyperbole
        Indivisible words
        Invalid conjunctions
