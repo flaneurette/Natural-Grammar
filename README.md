@@ -2,24 +2,23 @@
 
 A class to process text and auto–correct natural grammar following the Chicago style guide. It auto–corrects:
 
-       Punctuation
        Anglicized words
-       Past tense
-       Indivis–ible words
+       Character repeat
+       Capitals
+       Dashes
+       Exaggerations
+       Hyperbole
+       Indivisible words
        Invalid conjunctions
        Invalid comparisons
        Spelling mistakes
-       Overuse of contractions
-       Oxford comma
-       Exaggerations
-       Hyperbole
-       Capitals
        Slang
-       Dashes
+       Overuse of contractions
+       Oxford comma (replacing it)
+       Punctuation
+       Past tense
 
 A thesaurus is also used to beautify certain words without overdoing it. The class also compares hundreds of natural grammar fragments which I extracted and constructed from reading and editing many (news) articles and books. Any replacements made are randomized through a thesaurus, in such a way, that the text flows natural instead of being over corrected. It does some minor auto–corrections on justifiable spelling; it only replaces that which it can safely replace, leaving room for copy editors to gloss over the text without the strain of obvious mistakes.
-
-
 
 # License
 Copyright 2019 Alexandra van den Heetkamp.
