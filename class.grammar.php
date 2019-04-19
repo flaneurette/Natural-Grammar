@@ -629,6 +629,13 @@ class grammar {
 			[['Previous day'],['The day before']],
 			[['Yesterday'],['The day before']],
 			[['yesterday'],['the day before']],
+			// Weather, wether
+			[['weather that'],['wether that']],
+			[['weather this'],['wether this']],
+			[['Weather that'],['wether that']],
+			[['Weather this'],['wether this']],		
+			[['the wether'],['the weather']],
+			[['The wether'],['The weather']],		
 			// More recommendations from the Chicago style guide. 
 			// Capitals
 			[['A.D.'] , ['A. D.']],
@@ -902,8 +909,7 @@ class grammar {
 			[['usable'],['usible']],
 			[['vacuum'],['vaccuum','vaccum','vacume']],
 			[['vehicle'],['vehical']],
-			[['vicious'],['visious']],
-			[['weather'],['wether']]
+			[['vicious'],['visious']]
 	];
 	
 	public $thesaurus = [
