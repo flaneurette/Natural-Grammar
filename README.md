@@ -24,20 +24,20 @@ A thesaurus is also used to beautify certain words without overdoing it. The cla
 
 # Example code:
        $run     = new grammar();
-       $text    = 'We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnaged my mind. "Help!!!" I said. Jane heard me. she said: "What's wrong"? Oooooooouch!!!';
+       $text    = 'We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnaged my mind. "Help!!!" I said. Jane heard me. She said: "What's wrong"? Oooooooouch!!!';
        $grammar = $run->grammary($text);
        
        echo $grammar;
        
 # Example text
-We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnaged my mind. "Help!!!" I said. Jane heard me. she said: "What's wrong"? Oooooooouch!!!
+We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnaged my mind. "Help!!!" I said. Jane heard me. She said: "What's wrong"? Oooooooouch!!!
 
 # Break down:
 We `were starting` to ski downhill in my 1000`$` `camoflage` suit, like I did `a million times` before. 
 Then, I `chnage`d my mind. 
 "Help`!!!`" I said. 
 Jane heard me. 
-she said`:` "What's wrong"`?` 
+She said`:` "What's wrong"`?` 
 O`oooooo`ouch`!!`!
        
 # Corrected text: 
@@ -45,7 +45,7 @@ We started to ski downhill in my $1000 camouflage suit, like I did many times be
 Then, I changed my mind. 
 "Help!" I said. 
 Jane heard me. 
-she said, "What's wrong?" 
+She said, "What's wrong?" 
 Oouch!
 
 # License
