@@ -2,8 +2,8 @@
 
 class grammar {
 
-	public $consonants	=	['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','x','y','z'];
-	public $vowels		= 	['a', 'e', 'i', 'o', 'u'];
+	public $consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','x','y','z'];
+	public $vowels	   = ['a', 'e', 'i', 'o', 'u'];
 	
 	public function __construct($params = array()) 
 	{ 
@@ -20,35 +20,35 @@ class grammar {
 	* @param array $params
 	* @throws Exception
 	*/	
-	
-    public function init($params)
-    {
+	 public function init($params)
+	 {
 		try {
 			isset($params['var'])  ? $this->var  = $params['var'] : false; 
 			} catch(Exception $e) {
 			$this->message('Problem initializing:'.$e->getMessage());
 		}
-    }
+	 }
 	
 	/**
 	* shows a message to the user.
-	* @param message
+	* @param string
 	* @return string
 	*/
 	public function message($string) 
 	{
-			return $string;
+		return $string;
 	}	
 
 	/**
-	* name
-	* @param
-	* @return
+	* name grammary function
+	* @param string
+	* @return string
 	*/
+	
 	public function grammary($text) {
 
 		$grammar 	= $this->grammar;
-		$misspelled = $this->misspelled;
+		$misspelled 	= $this->misspelled;
 		$thesaurus	= $this->thesaurus;
 
 		for($i = 0; $i < count($grammar); $i++) { 
@@ -79,13 +79,13 @@ class grammar {
 		}		
 		
 	   $text = $this->punctuation($text);
-       return $text;
+       	return $text;
 	}	
 
 	/**
-	* name
-	* @param
-	* @return
+	* name past-tense function
+	* @param string
+	* @return string
 	*/
 	public function pastTense($verb){
 	
@@ -98,14 +98,12 @@ class grammar {
 					$len = strlen($verb);
 					
 					if($len > 1) { 
-				   
 							if(substr($verb,-1)=='e'){
-		 
 							$output = $verb . "d";	
 							} else if(in_array(substr($verb,-2,1),$this->consonants) 
 								&& substr($verb,-1) != 'y' 
 								&& substr($verb,-1) != 't'){
-							$output = $verb . "ied";
+								$output = $verb . "ied";
 							} else if(($len > 2) && !in_array(substr($verb,-3,1),$vowels)
 								&& in_array(substr($verb,-2,1),$this->vowels)
 								&& in_array(substr($verb,-1),$this->consonants)
@@ -124,9 +122,9 @@ class grammar {
 	}	
 
 	/**
-	* name
-	* @param
-	* @return
+	* name helper function
+	* @param string
+	* @return string
 	*/
 	public function pastTenseHelper($text){
 		
@@ -138,7 +136,6 @@ class grammar {
 			preg_match("/(she|he|we|they|I)\s+(were|was)\s+(\w+)/i",$text,$matches);
 			if(substr($matches[3],-3) == 'ing') {
 				// run past tense check.
-				
 				$rewrite = $this->pastTense($matches[3]);
 				$new = $matches[2] . $rewrite;
 				array_push($textnew,str_replace($matches[0],$new,$text));
@@ -153,9 +150,9 @@ class grammar {
 		
 
 	/**
-	* name
-	* @param
-	* @return
+	* name punctuation
+	* @param string
+	* @return string
 	*/
 	public function punctuation($text) {
 	
@@ -163,8 +160,8 @@ class grammar {
 		$find 	 = ['’' ,'’' ,'’' ,'‛' ,'´' ,'′','.!','”!','"!','"?','-'];
 		$replace = ['\'','\'','\'','\'','\'','\'','!','!”','!"','?"','–'];
 
-		// Only about 12 words in English have this pattern, so in most cases it is a mistake.
-		$find_typo 	 = ['uhgt',' akn','meing','chnag','chanche'];
+		// Only about 12 words in the English language have this pattern, so in most cases it is a mistake.
+		$find_typo   = ['uhgt',' akn','meing','chnag','chanche'];
 		$repl_typo   = ['ught',' ack','ming','chang','chance'];
 
 		$text = str_replace($find_typo,$repl_typo,$text);
@@ -194,9 +191,9 @@ class grammar {
 	}
 	
 	/**
-	* name
-	* @param
-	* @return
+	* name tabs, idents paragraphs
+	* @param string
+	* @return string
 	*/
 	public function tabs($text) {
 		$newtext = '';
@@ -409,7 +406,6 @@ class grammar {
 			[['mainly'],['primarily', 'principally', 'essentially', 'first and foremost']],
 			[['chiefly'],['primarily', 'principally', 'essentially', 'first and foremost']],
 			[['I found out'],['I discovered', 'I determined', 'I observed']],
-			
 			// Contractions.
 			[['it got'],['it has']],
 			[['it isn\'t'],['it is not']],
@@ -417,13 +413,11 @@ class grammar {
 			[['That\'s'],['That is']],	
 			[['that\'s'],['that is']],
 			[['Don\'t'],['do not']],
-			[['don\'t'],['do not']],	
-			
+			[['don\'t'],['do not']],		
 			// useful contracttions(?) 
 			// too much 'ing' past tense:
 			[['We were starting to'],['We started to']],
 			[['we were starting to'],['we started to']],
-			
 			// we only should use she said when a comma follows: "she said,"
 			[[', she said.'],[', said she.']],
 			[['" she said.'],['" said she.']],
@@ -445,7 +439,6 @@ class grammar {
 			[['" he cried.'],['" cried the boy.']],			
 			[['" he replied.'],['" he replied at last.','" he replied finally.','" he replied without hesitation.','" he replied conclusively.','" he replied affirmingly.']],
 			[['" she replied.'],['" she replied at last.','" she replied finally.','" she replied without hesitation.','" she replied conclusively.','" she replied affirmingly.']],
-			
 			// Exclemation points indicate the raising of voice.
 			[['!" he said.'],['!" he exclaimed.','!" he uttered.','!" he asserted.','!" he voiced.']],
 			[['!" she said.'],['!" she exclaimed.','!" she uttered.','!" she asserted.','!" she voiced.']],	
@@ -523,11 +516,11 @@ class grammar {
 			[['simple'],['easy']],
 			[['full proof'],['foolproof']],
 			[['fullproof'],['foolproof']],
-            // better
-            [['I\'ve'],['I have']],
-            [['I\'ll'],['I will']],
+            		// better
+           		[['I\'ve'],['I have']],
+           		[['I\'ll'],['I will']],
 			[['I\'ve never'],['I have never']], 
-            [['They\'ve'],['They have']],
+            		[['They\'ve'],['They have']],
 			[['Yes, I'],['Indeed, I','I']], 
 			[['truly'],['absolutely','actually','definitely','genuinely','rightly']],
 			[['Lots of people'],['A lot of people','Many']],
@@ -544,40 +537,40 @@ class grammar {
 			[['The most important thing'],['An important thing']],	
 			[['the most important thing'],['an important thing']],
  			[['I still like to'],['I like to']],	
-            [['a lot of'],['numerous', 'abounding', 'bounteous', 'quite a few', 'many', 'myriad', 'diverse', 'a great number']],
-            [['currently'],['presently', 'at present', 'forthwith', 'right now']],
-            [['a couple of'],['numerous', 'a few', 'some']],
-            [['they have build'],['they have built']],
-            [['they build'],['they built']],
-            [['he has build'],['he has have built']],
-            [['I have build'],['I have built']],
-            [['I build'],['I built']],
-            [['will built '],['will build']],
-            [['build up'],['built up']],
-            [['Alright, so I'],['I']],
-            [['Well, I '],['I']],
+			[['a lot of'],['numerous', 'abounding', 'bounteous', 'quite a few', 'many', 'myriad', 'diverse', 'a great number']],
+			[['currently'],['presently', 'at present', 'forthwith', 'right now']],
+			[['a couple of'],['numerous', 'a few', 'some']],
+			[['they have build'],['they have built']],
+			[['they build'],['they built']],
+			[['he has build'],['he has have built']],
+			[['I have build'],['I have built']],
+			[['I build'],['I built']],
+			[['will built '],['will build']],
+			[['build up'],['built up']],
+			[['Alright, so I'],['I']],
+			[['Well, I '],['I']],
 			[['\'Cause'],['Because']],
 			[['\'cause'],['because']],	
-            [['it lacks'],['it falls short', 'is is insufficient', 'is wants']],
-            [['isn\'t up to me'],['is not up to me', 'is not my responsibility']],
-            [['unarguable'],['inarguable', 'compelling', 'ascertained',  'conclusive', 'demonstrable', 'establishable']],
-            [['inarguable'],['compelling', 'ascertained', 'authoritative', 'conclusive', 'demonstrable', 'establishable']],
-            [['am glad'],['am contented', 'am pleased', 'am gratified']],
-            [['do you have an opinion'],['what is your opinion', 'what is your view']],
-            [['most often'],['routinely', 'regularly']],
-            [['nevermind'],['never mind']],
-            [['are due to'],['are caused by', 'are precipitated by']],
-            [['allmost all'],['nearly all', 'the greater part']],
-            [['sometimes'],['frequently', 'occasionally', 'at times', 'every so often']],
-            [['somehow along the road'],['somehow']],
-            [['I hear you,'],['I acknowledge your arguments,']],
-            [['so what is'],['then what is', 'what is']],
-            [['I am not sure'],['I am uncertain']],
-            [['when you don\'t'],['when one doesn\'t']],
-            [['then how can you'],['then how can one']],
-            [['as you can'],['as one can']],
-            [['noticed'],['observed', 'witnessed', 'discovered', 'perceived']],
-            [['stuff'],['thing']],
+			[['it lacks'],['it falls short', 'is is insufficient', 'it wants']],
+			[['isn\'t up to me'],['is not up to me', 'is not my responsibility']],
+			[['unarguable'],['inarguable', 'compelling', 'ascertained',  'conclusive', 'demonstrable', 'establishable']],
+			[['inarguable'],['compelling', 'ascertained', 'authoritative', 'conclusive', 'demonstrable', 'establishable']],
+			[['am glad'],['am contented', 'am pleased', 'am gratified']],
+			[['do you have an opinion'],['what is your opinion', 'what is your view']],
+			[['most often'],['routinely', 'regularly']],
+			[['nevermind'],['never mind']],
+			[['are due to'],['are caused by', 'are precipitated by']],
+			[['allmost all'],['nearly all', 'the greater part']],
+			[['sometimes'],['frequently', 'occasionally', 'at times', 'every so often']],
+			[['somehow along the road'],['somehow']],
+			[['I hear you,'],['I acknowledge your arguments,']],
+			[['so what is'],['then what is', 'what is']],
+			[['I am not sure'],['I am uncertain']],
+			[['when you don\'t'],['when one doesn\'t']],
+			[['then how can you'],['then how can one']],
+			[['as you can'],['as one can']],
+			[['noticed'],['observed', 'witnessed', 'discovered', 'perceived']],
+			[['stuff'],['thing']],
 			[['because that'],['as that']],
 			[['The first thing we could try'],['One thing we could do']],
 			[['is to try to'],['is to']],
@@ -587,11 +580,11 @@ class grammar {
 			[['ontrary what many people believe'],['ontrary to popular belief']],	
 			[['than we are used to'],['than we are acustomed to','than we are conditioned to']],
 			[['jealous'],['invidious', 'jaundiced', 'apprehensive', 'envious', 'intolerant', 'possessive', 'protective', 'begrudging', 'covetous', 'doubting']],
-            [['amazing'],['incredible', 'fabulous', 'wonderful', 'fantastic', 'astonishing', 'astounding']],
-            [['her anger'],['her rage', 'her fury', 'her arousal', 'her nettled', 'her exasperation', 'her maddening']],
-            [['his anger'],['his rage', 'his fury', 'his arousal', 'his nettled', 'his exasperation', 'his maddening']],
-            [['my anger'],['my rage', 'my fury', 'my arousal', 'my nettled', 'my exasperation', 'my maddening']],
-			// catches both: i-t, tha-t and many other words ending on a t.
+            		[['amazing'],['incredible', 'fabulous', 'wonderful', 'fantastic', 'astonishing', 'astounding']],
+            		[['her anger'],['her rage', 'her fury', 'her arousal', 'her nettled', 'her exasperation', 'her maddening']],
+            		[['his anger'],['his rage', 'his fury', 'his arousal', 'his nettled', 'his exasperation', 'his maddening']],
+            		[['my anger'],['my rage', 'my fury', 'my arousal', 'my nettled', 'my exasperation', 'my maddening']],
+			// Catches both: i-t, tha-t and many other words ending on a t.
 			[['t sounds crazy'],['t sounds preposterous','t sounds irrational', 't sounds unreasonable']],
 			[['famous'],['well-known', 'renowned', 'celebrated', 'famed', 'eminent', 'illustrious', 'distinguished']],
 			[['delicious'],['savory', 'delectable', 'appetizing', 'luscious', 'scrumptious', 'palatable', 'delightful', 'enjoyable', 'toothsome', 'exquisite']],
@@ -753,12 +746,10 @@ class grammar {
 			[['Who\'d'],['who would']],				
 			[['wrap up'],['finish']], 
 			[['Wrap up'],['Finish']],
-			
-			// historic/historical
+			// Historic/historical
 			[['will be a historical'],['will be a historic']], 
 			[['was a historic'],['was a historiccal']], 
-			
-			// comparison
+			// Comparison
 			[['greater then'],['greater than']],
 			[['bigger then'],['bigger than']],
 			[['larger then'],['larger than']],
@@ -773,31 +764,27 @@ class grammar {
 			[['huge then'],['huge than']],
 			[['immense then'],['immense than']],
 			[['massive then'],['massive than']],
-			[['bulky then'],['bulky than']],
-			
-			// lose, loose. 
+			[['bulky then'],['bulky than']],	
+			// Lose, loose. 
 			[['what do you have too loose'],['what do you have to lose']],
 			[['lose some weight'],['loose some weight']],			
 			[['lose weight'],['loose weight']],
 			[['are too lose'],['are too loose']],
 			[['are to lose'],['are too loose']],
 			[['is too lose'],['is too loose']],
-			[['is to lose'],['is too loose']],
-			
+			[['is to lose'],['is too loose']],	
 			// Compliment/complemented
 			[['for the complement'],['for the compliment']],
 			[['to compliment this'],['to complement this']],
 			[['compliment it'],['complement it']],
 			[['and compliment that'],['and complement that']],
-			
 			[['previous night'],['the night before']],
 			[['Previous night'],['The night before']],
 			[['previous day'],['the day before']],
 			[['Previous day'],['The day before']],
 			[['Yesterday'],['The day before']],
 			[['yesterday'],['the day before']],
-			
-			// recommendations from the Chicago style guide. 
+			// More recommendations from the Chicago style guide. 
 			// Capitals
 			[['A.D.'] , ['A. D.']],
 			[['B.C.'] , ['B. C.']],
@@ -835,7 +822,7 @@ class grammar {
 			[['-tion'], ['tion']],
 			[['-tious'], ['tious']],
 			[['self suffi'], ['self-suffi']],
-			//angelicized
+			// Angelicized
 			[[' attache '], [' attaché ']],
 			[[' bric-a-bric '], [' bric-à-bric ']],
 			[[' cafe '], [' café']],
@@ -865,7 +852,7 @@ class grammar {
 			[[' soiree '], [' soirée ']],
 			[[' tete-a-tete '], [' tête-à-tête ']],
 			[[' vis-a-vis '], [' vis-à-vis ']],
-			// years
+			// Years
 			[['the next year.'], ['the following year.']],
 			[['The next year'], ['The following year']],
 			[['the coming year.'], ['the following year.']],
@@ -884,7 +871,7 @@ class grammar {
 			[['these are tremendous'],['these are']],	
 			[['pitfalls'],['problems']],
 			
-			// finish cleaning any mistakes.
+			// Finish cleaning any mistakes.
 			[[',,'],[',']],
 			[[', ,'],[',']]			
 			
@@ -895,39 +882,39 @@ class grammar {
 
 			// thesaurus 
 			[['mitigating'],['alleviating','lessen','reduce']],
-			[['mitigate'],['alleviate','lessen','reduce']],
-            [['beautiful'],['pretty', 'lovely', 'handsome', 'attractive', 'gorgeous', 'dazzling', 'splendid', 'magnificent', 'comely', 'fair', 'ravishing', 'graceful', 'elegant', 'fine', 'exquisite', 'aesthetic', 'pleasing', 'shapely', 'delicate', 'stunning', 'glorious', 'heavenly', 'resplendent', 'radiant', 'glowing', 'blooming', 'sparkling']],
-            [['awful'],['dreadful', 'terrible', 'abominable', 'unpleasant']],
-            [['brave'],['courageous', 'fearless', 'dauntless', 'intrepid', 'plucky', 'daring', 'heroic', 'valorous', 'audacious', 'bold', 'gallant', 'valiant', 'doughty', 'mettlesome']],
-		    [['it breaks'],['it fractures', 'it shatters','it breaks']],
-            [['calm'],['quiet', 'peaceful', 'still', 'tranquil', 'mild', 'serene', 'smooth', 'composed', 'collected', 'unruffled', 'level-headed', 'unexcited', 'detached', 'aloof']],
-		    [['would cry'],['would shout', 'would yell', 'would yowl', 'would scream', 'would roar', 'would bellow', 'would weep', 'would wail', 'would sob', 'bawl']],
-            [['would shout'],['would yell', 'would yowl', 'would scream', 'would roar', 'would bellow', 'would weep', 'would wail', 'would sob', 'bawl']],
+	    		[['mitigate'],['alleviate','lessen','reduce']],
+            		[['beautiful'],['pretty', 'lovely', 'handsome', 'attractive', 'gorgeous', 'dazzling', 'splendid', 'magnificent', 'comely', 'fair', 'ravishing', 'graceful', 'elegant', 'fine', 'exquisite', 'aesthetic', 'pleasing', 'shapely', 'delicate', 'stunning', 'glorious', 'heavenly', 'resplendent', 'radiant', 'glowing', 'blooming', 'sparkling']],
+            		[['awful'],['dreadful', 'terrible', 'abominable', 'unpleasant']],
+            		[['brave'],['courageous', 'fearless', 'dauntless', 'intrepid', 'plucky', 'daring', 'heroic', 'valorous', 'audacious', 'bold', 'gallant', 'valiant', 'doughty', 'mettlesome']],
+		    	[['it breaks'],['it fractures', 'it shatters','it breaks']],
+            		[['calm'],['quiet', 'peaceful', 'still', 'tranquil', 'mild', 'serene', 'smooth', 'composed', 'collected', 'unruffled', 'level-headed', 'unexcited', 'detached', 'aloof']],
+		    	[['would cry'],['would shout', 'would yell', 'would yowl', 'would scream', 'would roar', 'would bellow', 'would weep', 'would wail', 'would sob', 'bawl']],
+            		[['would shout'],['would yell', 'would yowl', 'would scream', 'would roar', 'would bellow', 'would weep', 'would wail', 'would sob', 'bawl']],
 			[['delicious'],['savory', 'delectable', 'appetizing', 'luscious', 'scrumptious', 'palatable', 'delightful', 'enjoyable', 'toothsome', 'exquisite']],
-            [['enjoy it'],['appreciate it', 'delight in it', 'bepleased by it','indulge in it','relish it', 'savor it', 'like it']],
-            [['explained'],['elaborated', 'clarified', 'defined']],
-		    [['explain'],['elaborate', 'clarify', 'define','explain']],
-            [['differences'],['dissimilarities','differences']],
-		    [['difference'],['dissimilarity','difference']],
-		    [['delicious'],['savory', 'delectable', 'appetizing', 'luscious', 'scrumptious', 'palatable', 'delightful', 'enjoyable', 'toothsome', 'exquisite']],
-		    [['famous'],['well-known', 'renowned', 'celebrated', 'famed', 'eminent', 'illustrious', 'distinguished', 'noted', 'notorious']],
-            [['a fat'],['a stout', 'a corpulent', 'a fleshy', 'a beefy', 'a paunchy', 'a plump', 'a full', 'a rotund','a bulky']],
-            [['funny'],['humorous', 'amusing', 'comical', 'laughable']],
-            [['fast'],['quick', 'rapid', 'speedy', 'fleet', 'hasty', 'snappy']],
-            [['fear'],['fright', 'dread', 'dismay', 'anxiety','apprehension']],
-            [['gross'],['improper', 'coarse', 'indecent', 'crude', 'vulgar', 'outrageous', 'extreme', 'grievous', 'shameful', 'uncouth', 'obscene', 'low']],
-            [['moody'],['temperamental', 'changeable', 'short-tempered', 'glum', 'morose', 'sullen', 'mopish', 'irritable', 'testy', 'peevish', 'fretful', 'spiteful', 'sulky', 'touchy']],
-            [['interesting'],['fascinating','intriguing', 'provocative', 'though-provoking', 'inspiring', 'involving', 'moving', 'titillating', 'tantalizing', 'exciting', 'entertaining', 'piquant', 'lively', 'racy', 'spicy', 'gripping', 'enthralling', 'spellbinding', 'curious', 'captivating', 'enchanting', 'bewitching', 'appealing']],
-            [['good'],['good','excellent', 'fine', 'superior', 'wonderful', 'marvelous', 'qualified', 'suited', 'suitable', 'apt', 'proper', 'superb', 'respectable', 'edifying']],
-            [[' big '],[' enormous ', ' immense ', ' sizable ', ' grand ', ' great ']],
+            		[['enjoy it'],['appreciate it', 'delight in it', 'bepleased by it','indulge in it','relish it', 'savor it', 'like it']],
+            		[['explained'],['elaborated', 'clarified', 'defined']],
+		    	[['explain'],['elaborate', 'clarify', 'define','explain']],
+            		[['differences'],['dissimilarities','differences']],
+		    	[['difference'],['dissimilarity','difference']],
+		    	[['delicious'],['savory', 'delectable', 'appetizing', 'luscious', 'scrumptious', 'palatable', 'delightful', 'enjoyable', 'toothsome', 'exquisite']],
+		    	[['famous'],['well-known', 'renowned', 'celebrated', 'famed', 'eminent', 'illustrious', 'distinguished', 'noted', 'notorious']],
+            		[['a fat'],['a stout', 'a corpulent', 'a fleshy', 'a beefy', 'a paunchy', 'a plump', 'a full', 'a rotund','a bulky']],
+			[['funny'],['humorous', 'amusing', 'comical', 'laughable']],
+            		[['fast'],['quick', 'rapid', 'speedy', 'fleet', 'hasty', 'snappy']],
+           		[['fear'],['fright', 'dread', 'dismay', 'anxiety','apprehension']],
+            		[['gross'],['improper', 'coarse', 'indecent', 'crude', 'vulgar', 'outrageous', 'extreme', 'grievous', 'shameful', 'uncouth', 'obscene', 'low']],
+            		[['moody'],['temperamental', 'changeable', 'short-tempered', 'glum', 'morose', 'sullen', 'mopish', 'irritable', 'testy', 'peevish', 'fretful', 'spiteful', 'sulky', 'touchy']],
+            		[['interesting'],['fascinating','intriguing', 'provocative', 'though-provoking', 'inspiring', 'involving', 'moving', 'titillating', 'tantalizing', 'exciting', 'entertaining', 'piquant', 'lively', 'racy', 'spicy', 'gripping', 'enthralling', 'spellbinding', 'curious', 'captivating', 'enchanting', 'bewitching', 'appealing']],
+            		[['good'],['good','excellent', 'fine', 'superior', 'wonderful', 'marvelous', 'qualified', 'suited', 'suitable', 'apt', 'proper', 'superb', 'respectable', 'edifying']],
+           		[[' big '],[' enormous ', ' immense ', ' sizable ', ' grand ', ' great ']],
 			[['to do '],['to accomplish ', 'to achieve ', 'to attain ']],
 			[['a great '],['a noteworthy ', 'a worthy ', 'a distinguished ', 'a remarkable ', 'a grand ', 'a considerable ', 'a powerful ', 'a much ', 'a mighty ']],
-            [['important'],['necessary', 'vital', 'critical', 'indispensable', 'valuable', 'essential', 'significant', 'primary', 'principal']],
-            [['strange '],['odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious', 'irregular']],
+            		[['important'],['necessary', 'vital', 'critical', 'indispensable', 'valuable', 'essential', 'significant', 'primary', 'principal']],
+            		[['strange '],['odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious', 'irregular']],
 			[['show '],['display ', 'exhibit ', 'present ', 'reveal ', 'demonstrate ']],
-            [['wrong '],['incorrect ', 'inaccurate ', 'mistaken ', 'erroneous ', 'improper ', 'unsuitable ']],
-            [['little '],['tiny ', 'small ', 'diminutive ']],
-            [['am right'],['am correct', 'am accurate', 'am factual']],
+		   	[['wrong '],['incorrect ', 'inaccurate ', 'mistaken ', 'erroneous ', 'improper ', 'unsuitable ']],
+            		[['little '],['tiny ', 'small ', 'diminutive ']],
+           		[['am right'],['am correct', 'am accurate', 'am factual']],
 			[['is right'],['is correct', 'is accurate', 'is factual']],
 			[['crazy '],['strange ', 'odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious ']]
 			
