@@ -14,6 +14,8 @@ Auto–correction includes, but not limited to:
        Indivisible words
        Invalid conjunctions
        Invalid comparisons
+       Inaudible H
+       It's vs Its
        Spelling mistakes
        Slang
        Overuse of contractions
