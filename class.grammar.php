@@ -218,6 +218,7 @@ class grammar {
 	* @param string
 	* @return string
 	*/
+	
 	public function tabs($text) {
 		$newtext = '';
 		$number = explode(PHP_EOL,$text);
@@ -228,10 +229,9 @@ class grammar {
 			$newtext .= $number[$i];
 			}
 		}
-		return $newtext;
+	return $newtext;
 	}
-	
-	
+
 	/**
 	* Arrays
 	* @var array
@@ -252,11 +252,11 @@ class grammar {
 			[['that\'s'],['that is']],
 			[['Don\'t'],['do not']],
 			[['don\'t'],['do not']],		
-			// useful contracttions(?) 
+			// Useful contracttions 
 			// too much 'ing' past tense:
 			[['We were starting to'],['We started to']],
 			[['we were starting to'],['we started to']],
-			// we only should use she said when a comma follows: "she said,"
+			// We only should use she said when a comma follows: "she said,"
 			[[', she said.'],[', said she.']],
 			[['" she said.'],['" said she.']],
 			[[', she cried.'],[', cried the girl.']],
@@ -264,7 +264,8 @@ class grammar {
 			[[', he said.'],[', said he.']],
 			[['" he said.'],['" said he.']],
 			[[', he cried.'],[', cried the boy.']],
-			[['" he cried.'],['" cried the boy.']],			
+			[['" he cried.'],['" cried the boy.']],
+			// Found a period, so it's conclusive (?)
 			[['" he said.'],['" he said at last.','" he said finally.','" he said without hesitation.','" he said conclusively.','" he said affirmingly.']],
 			[['" she said.'],['" she said at last.','" she said finally.','" she said without hesitation.','" she said conclusively.','" she said affirmingly.']],
 			[[', she replied.'],[', replied she.']],
@@ -277,7 +278,7 @@ class grammar {
 			[['" he cried.'],['" cried the boy.']],			
 			[['" he replied.'],['" he replied at last.','" he replied finally.','" he replied without hesitation.','" he replied conclusively.','" he replied affirmingly.']],
 			[['" she replied.'],['" she replied at last.','" she replied finally.','" she replied without hesitation.','" she replied conclusively.','" she replied affirmingly.']],
-			// Exclemation points indicate the raising of voice.
+			// Exclamation points indicate the raising of voice.
 			[['!" he said.'],['!" he exclaimed.','!" he uttered.','!" he asserted.','!" he voiced.']],
 			[['!" she said.'],['!" she exclaimed.','!" she uttered.','!" she asserted.','!" she voiced.']],	
 			[['Alas.'],['Alas!']],
@@ -310,13 +311,13 @@ class grammar {
 			[['and I to'],['and me to']],
 			[['and I.'],['and me.']],
 			[['bored by'],['bored with', 'bored of']],
-			// as, since, because?
+			// As, since, because?
 			[['persons'],['people']],
 			[['he complemented her'],['he complimented her']],
 			[['he complemented him'],['he complimented him']],
 			[['he complemented them'],['he complimented them']],
 			[['asking for trouble'],['problematic', 'ambiguous', 'dubious', 'precarious', 'questionable']],
-			// too much butting...
+			// Too much butting...(where did it start?)
 			[['but this'],['although this', 'however, this', 'nevertheless this', 'on the other hand, this', 'though this', 'yet this']],
 			[['but that'],['although, that', 'however, that', 'nevertheless, that', 'on the other hand, that', 'though, that', 'yet, that']],
 			[['but what'],['although what', 'however what', 'though what']],
@@ -338,7 +339,7 @@ class grammar {
 			[['that uses'],['that utilizes', 'that makes use of', 'that services']],
 			[['and myself'],['and me']],
 			[['myself included'],['and me']], 
-			// also regex: I did (.*) myself, should be: I did (.*)
+			// Regex suggestion: I did (.*) myself, should be: I did (.*)
 			// Inaudible H.
 			[['an hour'],['a hour']],
 			[['an honour'],['a honour']],
@@ -354,7 +355,7 @@ class grammar {
 			[['simple'],['easy']],
 			[['full proof'],['foolproof']],
 			[['fullproof'],['foolproof']],
-            		// better
+            		// Further contractions
            		[['I\'ve'],['I have']],
            		[['I\'ll'],['I will']],
 			[['I\'ve never'],['I have never']], 
@@ -441,17 +442,16 @@ class grammar {
 			[['tough she'],['though she']],
 			[['tough they'],['though they']],
 			[['little drawbacks'],['few drawbacks']],
-			// To whom? we do not know so we just admit.
+			// To whom? we do not know so we admit.
 			[['granted,'],['admitted,']],
-			// Superfluous and too tense.
+			// Too tense and Hyperbole. 
 			[['Thank you very much, everybody.'],['I want to thank everyone']],
-			[['I would like to say that'],['']], // you already said it.
+			[['I would like to say that'],['']], // you're already talking (?)
 			[['we are very much'],['we are']], 
 			[['Now consider'],['Consider']], 
 			[['So next time'],['Next time']],
 			[['now consider'],['consider']], 
 			[['so next time'],['next time']],
-			// Hyperbole, exageration, too tense.
 			[['it is extremely'],['it is']],
  			[['just assumed'],['assumed']],
  			[['is just as'],['is as']],			
@@ -518,7 +518,7 @@ class grammar {
 			[['plus a'],['in addition a']],			
 			// Were already here
 			[['Here is another'],['Another']],
-			[['Here the'],['The']],
+			[['Here the '],['The ']],
 			[['Here is an example'],['An example']],
 			// senses or inner experience?
 			[['I often see'],['I often notice','I often observe']],
