@@ -49,4 +49,5 @@ Oouch!
 Copyright 2019 Alexandra van den Heetkamp.
 This class is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published      by the Free Software Foundation, either version 3 of the License, or any later version. Be sure to include the attached license when you distribute the software.         
 
+# Friendly note
 Please do not use this class as an excuse for careless writing. It is a useful tool to find something you missed and ease the work of copy editors and proofreaders (which is extremely hard work.) The best solution is to start writing slowly and thoughtfully, so that correction has a minimal role.
