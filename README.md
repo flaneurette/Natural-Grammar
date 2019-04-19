@@ -40,12 +40,12 @@ A thesaurus is also used to beautify certain words without overdoing it. The cla
 
 # Results in corrected text: 
 
-       We started to ski downhill in my $1000 camouflage suit, like I did many times before. 
+       We `started` to ski downhill in my `$`1000 `camouflage` suit, like I did `many times before`. 
        Then, I changed my mind. 
-       "Help!" I said. 
+       "Help`!`" I said. 
        Jane heard me. 
-       she said, "What's wrong?" 
-       Oouch!
+       she said`,` "What's wrong?" 
+       `Oouch!`
 
 # License
 Copyright 2019 Alexandra van den Heetkamp.
