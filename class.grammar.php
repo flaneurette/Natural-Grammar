@@ -4,11 +4,6 @@
 ##                                                                       ##
 ##  Copyright 2019 Alexandra van den Heetkamp.                           ##
 ##                                                                       ##
-##  Secure upload class. This class scans images for vulnerabilities,    ##
-##  viral vectors and exploits before processing and storing them.       ##
-##                                                                       ##
-##  @todo log, process and report found viral vectors and attacks.       ##
-##                                                                       ##
 ##  This class is free software: you can redistribute it and/or modify it##
 ##  under the terms of the GNU General Public License as published       ##
 ##  by the Free Software Foundation, either version 3 of the             ##
