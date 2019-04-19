@@ -1,6 +1,6 @@
 # Natural-Grammar
 
-A class to process text and auto-correct in natural grammar following the Chicago style guide. It auto-corrects: Punctuation, angelicized words, past tense, indivis-ible words, invalid comparisions, spelling mistakes, overuse of contractions and exagerations. A thesaurus is also used to beautify certain words, without overdoing it. The class also compares hundreds of natural grammar fragments which I extracted and constructed from reading and editing many (news) articles and books. Any replacements made, are randomized through a thesaurus, in such a way, that the text flows natural instead of being overcorrected.
+A class to process text and auto-correct in natural grammar following the Chicago style guide. It auto-corrects: Punctuation, angelicized words, past tense, indivis-ible words, invalid comparisions, spelling mistakes, overuse of contractions and exagerations. A thesaurus is also used to beautify certain words, without overdoing it. The class also compares hundreds of natural grammar fragments which I extracted and constructed from reading and editing many (news) articles and books. Any replacements made, are randomized through a thesaurus, in such a way, that the text flows natural instead of being overcorrected. It is not a complete spellchecker, but it does some minor auto-corrections on correct spelling; only that which it can safely replace.
 
 # License
 Copyright 2019 Alexandra van den Heetkamp.
@@ -9,7 +9,7 @@ This class is free software: you can redistribute it and/or modify it under the 
 # Example text
 
 We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. 
-Then, I chnage my mind. 
+Then, I chnaged my mind. 
 "Help!!!" I said. 
 Jane heard me. 
 she said: "What's wrong"? 
@@ -17,7 +17,7 @@ Oooooooouch!!!
 
 # Example code:
        $run     = new grammar();
-       $text    = 'We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnage my mind. "Help!!!" I said. Jane heard me. she said: "What's wrong"? Oooooooouch!!!';
+       $text    = 'We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnaged my mind. "Help!!!" I said. Jane heard me. she said: "What's wrong"? Oooooooouch!!!';
        $grammar = $run->grammary($text);
        
        echo $grammar;
@@ -26,7 +26,7 @@ Oooooooouch!!!
 # Results in corrected text: 
 
 We started to ski downhill in my $1000 camouflage suit, like I did many times before. 
-Then, I change my mind. 
+Then, I changed my mind. 
 "Help!" I said. 
 Jane heard me. 
 she said, "What's wrong?" 
