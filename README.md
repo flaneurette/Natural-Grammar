@@ -8,7 +8,11 @@ This class is free software: you can redistribute it and/or modify it under the 
 
 # Example text
 
-We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnage my mind. "Help!!!" I said. Jane heard me. she said: "What's wrong"? 
+We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. 
+Then, I chnage my mind. 
+"Help!!!" I said. 
+Jane heard me. 
+she said: "What's wrong"? 
 
 # Example code:
        $run     = new grammar();
@@ -20,4 +24,8 @@ We were starting to ski downhill in my 1000$ camoflage suit, like I did a millio
 
 # Results in corrected text: 
 
-We started to ski downhill in my $1000 camouflage suit, like I did many times before. Then, I change my mind. "Help!" I said. Jane heard me. she said, "What's wrong?"
+We started to ski downhill in my $1000 camouflage suit, like I did many times before. 
+Then, I change my mind. 
+"Help!" I said. 
+Jane heard me. 
+she said, "What's wrong?"
