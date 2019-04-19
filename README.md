@@ -5,7 +5,7 @@ ible words, invalid comparisions, contractions, exagerations and follows the Chi
 
 # License
 Copyright 2019 Alexandra van den Heetkamp.
-This class is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published      by the Free Software Foundation, either version 3 of the License, or any later version.           
+This class is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published      by the Free Software Foundation, either version 3 of the License, or any later version. Be sure to include the attached license when you distribute the software.         
 
 # Example text
 
