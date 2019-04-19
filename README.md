@@ -1,6 +1,6 @@
 # Natural-Grammar
 
-A class to process text and auto-correct in natural grammar. It follows the Chicago style code as well as hundreds of fragments that I extracted from from reading and editing news articles and books. It also has a small thesaurus of most used words.
+A class to process text and auto-correct in natural grammar, which follows the Chicago style code. The class also contains hundreds of fragments that I extracted from reading and editing news articles and books. It also has a small thesaurus of most used words.
 
 # Example text
 
