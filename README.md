@@ -30,23 +30,23 @@ A thesaurus is also used to beautify certain words without overdoing it. The cla
        echo $grammar;
        
 # Example text
-We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnaged my mind. "Help!!!" I said. Jane heard me. She said: "What's wrong"? Oooooooouch!!!
+*We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnaged my mind. "Help!!!" I said. Jane heard me. She said: "What's wrong"? Oooooooouch!!!*
 
 # Breakdown:
-We `were starting` to ski downhill in my 1000`$` `camoflage` suit, like I did `a million times` before. 
+*We `were starting` to ski downhill in my 1000`$` `camoflage` suit, like I did `a million times` before. 
 Then, I `chnage`d my mind. 
 "Help`!!!`" I said. 
 Jane heard me. 
 She said`:` "What's wrong"`?` 
-O`oooooo`ouch`!!`!
+O`oooooo`ouch`!!`!*
        
 # Corrected text: 
-We started to ski downhill in my $1000 camouflage suit, like I did many times before. 
+*We started to ski downhill in my $1000 camouflage suit, like I did many times before. 
 Then, I changed my mind. 
 "Help!" I said. 
 Jane heard me. 
 She said, "What's wrong?" 
-Oouch!
+Oouch!*
 
 # License
 Copyright 2019 Alexandra van den Heetkamp.
