@@ -1,5 +1,27 @@
 <?php
 
+###########################################################################
+##                                                                       ##
+##  Copyright 2019 Alexandra van den Heetkamp.                           ##
+##                                                                       ##
+##  Secure upload class. This class scans images for vulnerabilities,    ##
+##  viral vectors and exploits before processing and storing them.       ##
+##                                                                       ##
+##  @todo log, process and report found viral vectors and attacks.       ##
+##                                                                       ##
+##  This class is free software: you can redistribute it and/or modify it##
+##  under the terms of the GNU General Public License as published       ##
+##  by the Free Software Foundation, either version 3 of the             ##
+##  License, or any later version.                                       ##
+##                                                                       ##
+##  This class is distributed in the hope that it will be useful, but    ##
+##  WITHOUT ANY WARRANTY; without even the implied warranty of           ##
+##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the        ##
+##  GNU General Public License for more details.                         ##
+##  <http://www.gnu.org/licenses/>.                                      ##
+##                                                                       ##
+###########################################################################
+
 class grammar {
 
 	public $consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','x','y','z'];
@@ -212,8 +234,7 @@ class grammar {
 	/**
 	* Arrays
 	* @var array
-	*/
-					
+	*/				
 	public $misspelled = [
 			[['absence'],['abcense','absance']],
 			[['acceptable'],['acceptible']],
