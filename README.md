@@ -38,7 +38,7 @@ Then, I `chnage`d my mind.
 "Help`!!!`" I said. 
 Jane heard me. 
 she said`:` "What's wrong"`?` 
-O`ooooo`oouch`!!`!
+O`oooooo`ouch`!!`!
        
 # Corrected text: 
 We started to ski downhill in my $1000 camouflage suit, like I did many times before. 
