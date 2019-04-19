@@ -29,14 +29,17 @@ class grammar {
 	
 	public function __destruct()
 	{
-		//$this->myarray = array();
+		$this->grammar	  = [];
+		$this->misspelled = [];
+		$this->thesaurus  = [];
 	}
 	
 	/**
 	* Initializes object.
 	* @param array $params
 	* @throws Exception
-	*/	
+	*/
+	
 	 public function init($params)
 	 {
 		try {
@@ -51,6 +54,7 @@ class grammar {
 	* @param string
 	* @return string
 	*/
+	
 	public function message($string) 
 	{
 		return $string;
@@ -97,52 +101,14 @@ class grammar {
 		
 	   $text = $this->punctuation($text);
        	return $text;
-	}	
-
-	/**
-	* name past-tense function
-	* @param string
-	* @return string
-	*/
-	public function pastTense($verb){
+	}
 	
-		$output = $verb;
-		$oldverb = $verb;
-				   
-			if(substr($verb,-3) == 'ing') {
-				   
-					$verb = str_replace('ing','',$verb);
-					$len = strlen($verb);
-					
-					if($len > 1) { 
-							if(substr($verb,-1)=='e'){
-							$output = $verb . "d";	
-							} else if(in_array(substr($verb,-2,1),$this->consonants) 
-								&& substr($verb,-1) != 'y' 
-								&& substr($verb,-1) != 't'){
-								$output = $verb . "ied";
-							} else if(($len > 2) && !in_array(substr($verb,-3,1),$vowels)
-								&& in_array(substr($verb,-2,1),$this->vowels)
-								&& in_array(substr($verb,-1),$this->consonants)
-								&& substr($verb,-1) != 'w' 
-								&& substr($verb,-1) != 'y') {
-								$output = $verb . "ed";
-							} else {
-							$output = $verb . "ed";
-							}
-					} else {
-						$output = $oldverb;
-					}
-					
-			}
-		return $output;
-	}	
-
 	/**
 	* name helper function
 	* @param string
 	* @return string
 	*/
+	
 	public function pastTenseHelper($text){
 		
 		$textsplit 	= explode(PHP_EOL,$text);
@@ -164,8 +130,43 @@ class grammar {
 			return $text;
 		}
 	}
+	
+	/**
+	* name past-tense function
+	* @param string
+	* @return string
+	*/
+	public function pastTense($verb){
+	
+		$output = $verb;
+		$oldverb = $verb;
 		
-
+			if(substr($verb,-3) == 'ing') {
+					$verb = str_replace('ing','',$verb);
+					$len = strlen($verb);
+					if($len > 1) { 
+						if(substr($verb,-1)=='e'){
+						$output = $verb . "d";	
+						} else if(in_array(substr($verb,-2,1),$this->consonants) 
+							&& substr($verb,-1) != 'y' 
+							&& substr($verb,-1) != 't'){
+							$output = $verb . "ied";
+						} else if(($len > 2) && !in_array(substr($verb,-3,1),$vowels)
+							&& in_array(substr($verb,-2,1),$this->vowels)
+							&& in_array(substr($verb,-1),$this->consonants)
+							&& substr($verb,-1) != 'w' 
+							&& substr($verb,-1) != 'y') {
+							$output = $verb . "ed";
+							} else {
+							$output = $verb . "ed";
+						}
+					} else {
+						$output = $oldverb;
+					}
+			}
+		return $output;
+	}	
+	
 	/**
 	* name punctuation
 	* @param string
@@ -235,190 +236,6 @@ class grammar {
 	* Arrays
 	* @var array
 	*/				
-	public $misspelled = [
-			[['absence'],['abcense','absance']],
-			[['acceptable'],['acceptible']],
-			[['accidentally'],['accidentaly']],
-			[['accidently'],['accidentaly']],
-			[['accommodate'],['accomodate','acommodate']],
-			[['achieve'],['acheive']],
-			[['acknowledge'],['acknowlege','aknowledge']],
-			[['acquaintance'],['acquaintence','aquaintance']],
-			[['acquire'],['aquire','adquire']],
-			[['acquit'],['aquit']],
-			[['acreage'],['acrage','acerage']],
-			[['address'],['adress']],
-			[['adultery'],['adultary']],
-			[['advisable'],['adviseable','advizable']],
-			[['affect'],['effect']],
-			[['aggression'],['agression']],
-			[['aggressive'],['agressive']],
-			[['allegiance'],['allegaince','allegience','alegiance']],
-			[['almost'],['allmost']],
-			[['amateur'],['amatuer','amature']],
-			[['annually'],['anually','annualy']],
-			[['apparent'],['apparant','aparent']],
-			[['arctic'],['artic']],
-			[['argument'],['arguement']],
-			[['atheist'],['athiest']],
-			[['awful'],['awfull','aweful']],
-			[['because'],['becuase']],
-			[['becoming'],['becomeing']],
-			[['beginning'],['begining']],
-			[['believe'],['beleive']],
-			[['bellwether'],['bellweather']],
-			[['buoy'],['bouy']],
-			[['buoyant'],['bouyant']],
-			[['business'],['buisness']],
-			[['calendar'],['calender']],
-			[['camouflage'],['camoflage','camoflague']],
-			[['capitol'],['capital']],
-			[['Caribbean'],['Carribean']],
-			[['category'],['catagory']],
-			[['caught'],['cauhgt','caugt']],
-			[['cemetery'],['cemetary','cematery']],
-			[['changeable'],['changable']],
-			[['chief'],['cheif']],
-			[['colleague'],['collaegue','collegue']],
-			[['column'],['colum']],
-			[['coming'],['comming']],
-			[['committed'],['commited','comitted']],
-			[['concede'],['conceed']],
-			[['congratulate'],['congradulate']],
-			[['conscientious'],['consciencious']],
-			[['conscious'],['concious','consious']],
-			[['consciousness'],['conciousness','consiousness']],
-			[['consensus'],['concensus']],
-			[['controversy'],['contraversy']],
-			[['coolly'],['cooly']],
-			[['daiquiri'],['dacquiri','daquiri']],
-			[['deceive'],['decieve']],
-			[['definite'],['definate','definit']],
-			[['definitely'],['definitly','definately','defiantly']],
-			[['desperate'],['desparate']],
-			[['difference'],['diffrence']],
-			[['dilemma'],['dilema']],
-			[['disappoint'],['disapoint']],
-			[['disastrous'],['disasterous']],
-			[['drunkenness'],['drunkeness']],
-			[['dumbbell'],['dumbell']],
-			[['embarrass'],['embarass']],
-			[['equipment'],['equiptment']],
-			[['exceed'],['excede']],
-			[['exhilarate'],['exilerate']],
-			[['existence'],['existance']],
-			[['experience'],['experiance']],
-			[['extreme'],['extreem']],
-			[['fascinating'],['facinating']],
-			[['fiery'],['firey']],
-			[['fluorescent'],['flourescent']],
-			[['foreign'],['foriegn']],
-			[['friend'],['freind']],
-			[['fulfil'],['fullfil']],
-			[['gauge'],['guage']],
-			[['grateful'],['gratefull','greatful']],
-			[['guarantee'],['garantee','garentee','garanty','gurantee','garuantee']],
-			[['guidance'],['guidence']],
-			[['goodbye'],['good-bye']],			
-			[['harass'],['harrass']],
-			[['height'],['heighth','heigth']],
-			[['hierarchy'],['heirarchy']],
-			[['hors d\'oeuvres'],['hors derves','ordeurves']],
-			[['humorous'],['humerous']],
-			[['hygiene'],['hygene','hygine','hiygeine','higeine','hygeine']],
-			[['hypocrite'],['hipocrit']],
-			[['ignorance'],['ignorence']],
-			[['imitate'],['immitate']],
-			[['immediately'],['imediately']],
-			[['indict'],['indite']],
-			[['independent'],['independant']],
-			[['indispensable'],['indispensible']],
-			[['inoculate'],['innoculate']],
-			[['intelligence'],['inteligence','intelligance']],
-			[['judgment'],['judgement']],
-			[['kernel'],['kernal,']],
-			[['leisure'],['liesure']],
-			[['liaison'],['liason']],
-			[['library'],['libary','liberry']],
-			[['license'],['lisence']],
-			[['lightning'],['lightening']],
-			[['maintenance'],['maintainance','maintnance']],
-			[['medieval'],['medeval','medevil','mideval']],
-			[['memento'],['momento']],
-			[['millennium'],['millenium','milennium']],
-			[['miniature'],['miniture']],
-			[['minuscule'],['miniscule']],
-			[['mischievous'],['mischievious','mischevous','mischevious']],
-			[['misspell'],['mispell','misspel']],
-			[['necessary'],['neccessary','necessery']],
-			[['neighbor'],['nieghbor']],
-			[['noticeable'],['noticable']],
-			[['occasion'],['occassion']],
-			[['occasionally'],['occasionaly','occassionally']],
-			[['occurrence'],['occurrance','occurence']],
-			[['occurred'],['occured']],
-			[['omission'],['ommision','omision']],
-			[['original'],['orignal']],
-			[['outrageous'],['outragous']],
-			[['parliament'],['parliment']],
-			[['pastime'],['passtime','pasttime']],
-			[['perceive'],['percieve']],
-			[['perseverance'],['perseverence']],
-			[['personnel'],['personell','personel']],
-			[['plagiarize'],['plagerize']],
-			[['playwright'],['playright','playwrite']],
-			[['possession'],['posession','possesion']],
-			[['potatoes'],['potatos']],
-			[['precede'],['preceed']],
-			[['presence'],['presance']],
-			[['principle'],['principal']],
-			[['privilege'],['privelege','priviledge']],
-			[['professor'],['professer']],
-			[['promise'],['promiss']],
-			[['pronunciation'],['pronounciation']],
-			[['prophecy'],['propecy','phropecy']],
-			[['percent'],['per cent']],
-			[['publicly'],['publically']],
-			[['publicly'],['publically']],
-			[['quarantine'],['quarentine']],
-			[['questionnaire'],['questionaire','questionnair']],
-			[['readable'],['readible']],
-			[['really'],['realy']],
-			[['receive'],['recieve']],
-			[['receipt'],['reciept']],
-			[['recommend'],['recomend','reccommend']],
-			[['referred'],['refered']],
-			[['reference'],['referance','refrence']],
-			[['relevant'],['relevent','revelant']],
-			[['religious'],['religous','religius']],
-			[['repetition'],['repitition']],
-			[['restaurant'],['restarant','restaraunt']],
-			[['rhyme'],['rime']],
-			[['rhythm'],['rythm','rythem']],
-			[['secretary'],['secratary','secretery']],
-			[['seize'],['sieze']],
-			[['separate'],['seperate']],
-			[['sergeant'],['sargent']],
-			[['similar'],['similer']],
-			[['skilful'],['skilfull']],
-			[['speech'],['speach','speeche']],
-			[['successful'],['succesful','successfull','sucessful']],
-			[['supersede'],['supercede']],
-			[['surprise'],['suprise','surprize']],
-			[['tomatoes'],['tomatos']],
-			[['tomorrow'],['tommorow','tommorrow']],
-			[['twelfth'],['twelth']],
-			[['tyranny'],['tyrany']],
-			[['underrate'],['underate']],
-			[['until'],['untill']],
-			[['upholstery'],['upholstry']],
-			[['usable'],['usible']],
-			[['vacuum'],['vaccuum','vaccum','vacume']],
-			[['vehicle'],['vehical']],
-			[['vicious'],['visious']],
-			[['weather'],['wether']]
-	];
-
 	
 	public $grammar = [
 
@@ -896,9 +713,192 @@ class grammar {
 			[[',,'],[',']],
 			[[', ,'],[',']]			
 			
-			];
+	];
         
-		
+	public $misspelled = [
+			[['absence'],['abcense','absance']],
+			[['acceptable'],['acceptible']],
+			[['accidentally'],['accidentaly']],
+			[['accidently'],['accidentaly']],
+			[['accommodate'],['accomodate','acommodate']],
+			[['achieve'],['acheive']],
+			[['acknowledge'],['acknowlege','aknowledge']],
+			[['acquaintance'],['acquaintence','aquaintance']],
+			[['acquire'],['aquire','adquire']],
+			[['acquit'],['aquit']],
+			[['acreage'],['acrage','acerage']],
+			[['address'],['adress']],
+			[['adultery'],['adultary']],
+			[['advisable'],['adviseable','advizable']],
+			[['affect'],['effect']],
+			[['aggression'],['agression']],
+			[['aggressive'],['agressive']],
+			[['allegiance'],['allegaince','allegience','alegiance']],
+			[['almost'],['allmost']],
+			[['amateur'],['amatuer','amature']],
+			[['annually'],['anually','annualy']],
+			[['apparent'],['apparant','aparent']],
+			[['arctic'],['artic']],
+			[['argument'],['arguement']],
+			[['atheist'],['athiest']],
+			[['awful'],['awfull','aweful']],
+			[['because'],['becuase']],
+			[['becoming'],['becomeing']],
+			[['beginning'],['begining']],
+			[['believe'],['beleive']],
+			[['bellwether'],['bellweather']],
+			[['buoy'],['bouy']],
+			[['buoyant'],['bouyant']],
+			[['business'],['buisness']],
+			[['calendar'],['calender']],
+			[['camouflage'],['camoflage','camoflague']],
+			[['capitol'],['capital']],
+			[['Caribbean'],['Carribean']],
+			[['category'],['catagory']],
+			[['caught'],['cauhgt','caugt']],
+			[['cemetery'],['cemetary','cematery']],
+			[['changeable'],['changable']],
+			[['chief'],['cheif']],
+			[['colleague'],['collaegue','collegue']],
+			[['column'],['colum']],
+			[['coming'],['comming']],
+			[['committed'],['commited','comitted']],
+			[['concede'],['conceed']],
+			[['congratulate'],['congradulate']],
+			[['conscientious'],['consciencious']],
+			[['conscious'],['concious','consious']],
+			[['consciousness'],['conciousness','consiousness']],
+			[['consensus'],['concensus']],
+			[['controversy'],['contraversy']],
+			[['coolly'],['cooly']],
+			[['daiquiri'],['dacquiri','daquiri']],
+			[['deceive'],['decieve']],
+			[['definite'],['definate','definit']],
+			[['definitely'],['definitly','definately','defiantly']],
+			[['desperate'],['desparate']],
+			[['difference'],['diffrence']],
+			[['dilemma'],['dilema']],
+			[['disappoint'],['disapoint']],
+			[['disastrous'],['disasterous']],
+			[['drunkenness'],['drunkeness']],
+			[['dumbbell'],['dumbell']],
+			[['embarrass'],['embarass']],
+			[['equipment'],['equiptment']],
+			[['exceed'],['excede']],
+			[['exhilarate'],['exilerate']],
+			[['existence'],['existance']],
+			[['experience'],['experiance']],
+			[['extreme'],['extreem']],
+			[['fascinating'],['facinating']],
+			[['fiery'],['firey']],
+			[['fluorescent'],['flourescent']],
+			[['foreign'],['foriegn']],
+			[['friend'],['freind']],
+			[['fulfil'],['fullfil']],
+			[['gauge'],['guage']],
+			[['grateful'],['gratefull','greatful']],
+			[['guarantee'],['garantee','garentee','garanty','gurantee','garuantee']],
+			[['guidance'],['guidence']],
+			[['goodbye'],['good-bye']],			
+			[['harass'],['harrass']],
+			[['height'],['heighth','heigth']],
+			[['hierarchy'],['heirarchy']],
+			[['hors d\'oeuvres'],['hors derves','ordeurves']],
+			[['humorous'],['humerous']],
+			[['hygiene'],['hygene','hygine','hiygeine','higeine','hygeine']],
+			[['hypocrite'],['hipocrit']],
+			[['ignorance'],['ignorence']],
+			[['imitate'],['immitate']],
+			[['immediately'],['imediately']],
+			[['indict'],['indite']],
+			[['independent'],['independant']],
+			[['indispensable'],['indispensible']],
+			[['inoculate'],['innoculate']],
+			[['intelligence'],['inteligence','intelligance']],
+			[['judgment'],['judgement']],
+			[['kernel'],['kernal,']],
+			[['leisure'],['liesure']],
+			[['liaison'],['liason']],
+			[['library'],['libary','liberry']],
+			[['license'],['lisence']],
+			[['lightning'],['lightening']],
+			[['maintenance'],['maintainance','maintnance']],
+			[['medieval'],['medeval','medevil','mideval']],
+			[['memento'],['momento']],
+			[['millennium'],['millenium','milennium']],
+			[['miniature'],['miniture']],
+			[['minuscule'],['miniscule']],
+			[['mischievous'],['mischievious','mischevous','mischevious']],
+			[['misspell'],['mispell','misspel']],
+			[['necessary'],['neccessary','necessery']],
+			[['neighbor'],['nieghbor']],
+			[['noticeable'],['noticable']],
+			[['occasion'],['occassion']],
+			[['occasionally'],['occasionaly','occassionally']],
+			[['occurrence'],['occurrance','occurence']],
+			[['occurred'],['occured']],
+			[['omission'],['ommision','omision']],
+			[['original'],['orignal']],
+			[['outrageous'],['outragous']],
+			[['parliament'],['parliment']],
+			[['pastime'],['passtime','pasttime']],
+			[['perceive'],['percieve']],
+			[['perseverance'],['perseverence']],
+			[['personnel'],['personell','personel']],
+			[['plagiarize'],['plagerize']],
+			[['playwright'],['playright','playwrite']],
+			[['possession'],['posession','possesion']],
+			[['potatoes'],['potatos']],
+			[['precede'],['preceed']],
+			[['presence'],['presance']],
+			[['principle'],['principal']],
+			[['privilege'],['privelege','priviledge']],
+			[['professor'],['professer']],
+			[['promise'],['promiss']],
+			[['pronunciation'],['pronounciation']],
+			[['prophecy'],['propecy','phropecy']],
+			[['percent'],['per cent']],
+			[['publicly'],['publically']],
+			[['publicly'],['publically']],
+			[['quarantine'],['quarentine']],
+			[['questionnaire'],['questionaire','questionnair']],
+			[['readable'],['readible']],
+			[['really'],['realy']],
+			[['receive'],['recieve']],
+			[['receipt'],['reciept']],
+			[['recommend'],['recomend','reccommend']],
+			[['referred'],['refered']],
+			[['reference'],['referance','refrence']],
+			[['relevant'],['relevent','revelant']],
+			[['religious'],['religous','religius']],
+			[['repetition'],['repitition']],
+			[['restaurant'],['restarant','restaraunt']],
+			[['rhyme'],['rime']],
+			[['rhythm'],['rythm','rythem']],
+			[['secretary'],['secratary','secretery']],
+			[['seize'],['sieze']],
+			[['separate'],['seperate']],
+			[['sergeant'],['sargent']],
+			[['similar'],['similer']],
+			[['skilful'],['skilfull']],
+			[['speech'],['speach','speeche']],
+			[['successful'],['succesful','successfull','sucessful']],
+			[['supersede'],['supercede']],
+			[['surprise'],['suprise','surprize']],
+			[['tomatoes'],['tomatos']],
+			[['tomorrow'],['tommorow','tommorrow']],
+			[['twelfth'],['twelth']],
+			[['tyranny'],['tyrany']],
+			[['underrate'],['underate']],
+			[['until'],['untill']],
+			[['upholstery'],['upholstry']],
+			[['usable'],['usible']],
+			[['vacuum'],['vaccuum','vaccum','vacume']],
+			[['vehicle'],['vehical']],
+			[['vicious'],['visious']],
+			[['weather'],['wether']]
+	];
+	
 	public $thesaurus = [
 
 			// thesaurus 
