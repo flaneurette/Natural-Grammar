@@ -2,9 +2,12 @@
 
 A class to process text and auto-correct in natural grammar.
 
-# Example:
+# Example text
 
-       $run 	   = new grammar();
+We were starting to ski downhill. Then, I chnage my mind. "Help!!!" I said.
+
+# Example code:
+       $run     = new grammar();
        $text    = 'we were starting to ski downhill. Then, I chnage my mind. "Help!!!" I said.';
        $grammar = $run->grammary($text);
        
