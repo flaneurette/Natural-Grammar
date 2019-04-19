@@ -1,6 +1,10 @@
 # Natural-Grammar
 
-A class to process text and auto-correct in natural grammar, which follows the Chicago style code. The class also contains hundreds of fragments that I extracted from reading and editing news articles and books. It also has a small thesaurus of most used words.
+A class to process text and auto-correct in natural grammar, which auto-corrects: Punctuation, angelicized words, past-tense, indivisible words, invalid comparisions, contractions, exageration, and follows the Chicago style guide. It also uses a small thesaurus. The contains hundreds of fragments which I extracted from reading and editing news articles and books. 
+
+# License
+Copyright 2019 Alexandra van den Heetkamp.
+This class is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published      by the Free Software Foundation, either version 3 of the License, or any later version.           
 
 # Example text
 
