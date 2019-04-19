@@ -1,7 +1,6 @@
 # Natural-Grammar
 
-A class to process text and auto-correct in natural grammar. It auto-corrects: Punctuation, angelicized words, past tense, indivis-
-ible words, invalid comparisions, contractions, exagerations and follows the Chicago style guide. A brief thesaurus is also used to beautify certain words, where applicable. The class contains hundreds of fragments which I extracted from reading and editing news articles and books. 
+A class to process text and auto-correct in natural grammar. It auto-corrects: Punctuation, angelicized words, past tense, indivis-ible words, invalid comparisions, spelling mistakes, overuse of contractions and exagerations. A brief thesaurus is also used to beautify certain words, where applicable. It follows the Chicago style guide, however, the class also contains hundreds of natural grammar fragments, which I extracted from reading and editing thousands of (news) articles and books. 
 
 # License
 Copyright 2019 Alexandra van den Heetkamp.
