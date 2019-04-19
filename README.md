@@ -8,7 +8,7 @@ We were starting to ski downhill in my camoflage suit, like I did a million time
 
 # Example code:
        $run     = new grammar();
-       $text    = 'we were starting to ski downhill. Then, I chnage my mind. "Help!!!" I said.';
+       $text    = 'We were starting to ski downhill in my camoflage suit, like I did a million times before. Then, I chnage my mind. "Help!!!" I said. Jane heard me. she said: "What's wrong"?';
        $grammar = $run->grammary($text);
        
        echo $grammar;
