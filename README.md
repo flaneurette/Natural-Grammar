@@ -22,30 +22,31 @@ Auto–correction includes, but not limited to:
 
 A thesaurus is also used to beautify certain words without overdoing it. The class also compares hundreds of natural grammar fragments which I extracted and constructed from reading and editing many (news) articles and books. Any replacements made are randomized through a thesaurus, in such a way, that the text flows natural instead of being over corrected. It does some minor auto–corrections on justifiable spelling; it only replaces that which it can safely replace, leaving room for copy editors to gloss over the text without the strain of obvious mistakes.
 
-# Example text
-
-       We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. 
-       Then, I chnaged my mind. 
-       "Help!!!" I said. 
-       Jane heard me. 
-       she said: "What's wrong"? 
-       Oooooooouch!!!
-
 # Example code:
        $run     = new grammar();
        $text    = 'We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnaged my mind. "Help!!!" I said. Jane heard me. she said: "What's wrong"? Oooooooouch!!!';
        $grammar = $run->grammary($text);
        
        echo $grammar;
+       
+# Example text
+We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnaged my mind. "Help!!!" I said. Jane heard me. she said: "What's wrong"? Oooooooouch!!!
 
-# Results in corrected text: 
-
-We `started` to ski downhill in my `$`1000 `camouflage` suit, like I did `many times before`. 
-Then, I changed my mind. 
-"Help`!`" I said. 
+# Break down:
+We `were starting` to ski downhill in my 1000`$` `camoflage` suit, like I did `a million times` before. 
+Then, I `chnage`d my mind. 
+"Help`!!!`" I said. 
 Jane heard me. 
-she said`,` "What's wrong?" 
-`Oouch!`
+she said`:` "What's wrong"`?` 
+O`ooooo`oouch`!!`!
+       
+# Corrected text: 
+We started to ski downhill in my $1000 camouflage suit, like I did many times before. 
+Then, I changed my mind. 
+"Help!" I said. 
+Jane heard me. 
+she said, "What's wrong?" 
+Oouch!
 
 # License
 Copyright 2019 Alexandra van den Heetkamp.
