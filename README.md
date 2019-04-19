@@ -13,10 +13,11 @@ Then, I chnage my mind.
 "Help!!!" I said. 
 Jane heard me. 
 she said: "What's wrong"? 
+Oooooooouch!!!
 
 # Example code:
        $run     = new grammar();
-       $text    = 'We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnage my mind. "Help!!!" I said. Jane heard me. she said: "What's wrong"?';
+       $text    = 'We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnage my mind. "Help!!!" I said. Jane heard me. she said: "What's wrong"? Oooooooouch!!!';
        $grammar = $run->grammary($text);
        
        echo $grammar;
@@ -28,4 +29,5 @@ We started to ski downhill in my $1000 camouflage suit, like I did many times be
 Then, I change my mind. 
 "Help!" I said. 
 Jane heard me. 
-she said, "What's wrong?"
+she said, "What's wrong?" 
+Oouch!
