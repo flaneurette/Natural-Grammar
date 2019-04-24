@@ -676,12 +676,8 @@ class grammar {
 			[['"oh,'] , ['"Oh,']],
 			[['Whereas '] , ['Whereas, ']],
 			[['Resolved '], ['Resolved, ']],
-			//Italics
-			[['however, not '], ['however, <em>not</em>']],
-			[['however not '], ['however, <em>not</em>']],
-			[['However, not '], ['However, <em>not</em>']],
 			// Dashes
-			[['I recommened:\n'], ['I recommened—\n']],
+			[['I recommend:\n'], ['I recommend—\n']],
 			// Indivisible
 			[['wo-men'], ['women']],
 			[['oft-en'], ['often']],
