@@ -5,7 +5,7 @@ A class to process text and auto–correct natural grammar following the Chicago
 Auto–correction includes, but not limited to:
 
        Anglicized words
-       Anti-Butting
+       Anti-Butting (really, when did that trend start?)
        Character repeat
        Capitals
        Dashes
