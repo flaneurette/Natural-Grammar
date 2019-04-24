@@ -37,12 +37,12 @@ A thesaurus is also used to beautify certain words without overdoing it. The cla
 *We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnaged my mind. "Help!!!" I said. Jane heard me. She said: "What's wrong"? Oooooooouch!!!*
 
 # Breakdown:
-*We `were starting` to ski downhill in my 1000`$` `camoflage` suit, like I did `a million times` before. 
-Then, I `chnage`d my mind. 
-"Help`!!!`" I said. 
+*We ~were starting~ to ski downhill in my 1000~$~ ~camoflage~ suit, like I did ~a million times~ before. 
+Then, I ~chnage~d my mind. 
+"Help ~!!!~ " I said. 
 Jane heard me. 
-She said`:` "What's wrong"`?` 
-O`oooooo`ouch`!!`!*
+She said ~:~ "What's wrong" ~?~ 
+O ~oooooo~ ouch ~!!~ !*
        
 # Corrected text: 
 *We started to ski downhill in my $1000 camouflage suit, like I did many times before. 
