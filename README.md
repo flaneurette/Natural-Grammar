@@ -1,6 +1,6 @@
 # Natural-Grammar
 
-A class to process text and auto–correct natural grammar following the Chicago style guide. 
+A class to process text and auto–correct natural grammar following the Chicago style guide. Close to artifical intelligence, it use natural language processing to correct grammar, like a human copy editor would correct a text. 
 
 Auto–correction includes, but not limited to:
 
