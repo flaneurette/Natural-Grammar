@@ -367,7 +367,7 @@ class grammar {
 			[['correct '],['appropriate ', 'certain ', 'consistent ', 'genuine ', 'justifiable ', 'logical ', 'natural ', 'reasonable ', 'reliable ','well-founded ']],
 			[['blogging'],['writing', 'discussing']],
 			[['whatever'],['whatsoever']],
-			[['I thought'],['I contemplated', 'I deduced', 'I anticipated', 'I hoped', 'I speculated', 'I reflected', 'I concluded']],
+			[['I thought'],['I contemplated','I thought','I deduced', 'I anticipated', 'I speculated', 'I reflected', 'I concluded','I thought']],
 			[['I posted'],['I wrote', 'I published']],
 			[['I talked about'],['I discussed', 'I wrote about']],
 			[['that uses'],['that utilizes', 'that makes use of', 'that services']],
