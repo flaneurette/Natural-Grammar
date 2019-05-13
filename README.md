@@ -5,7 +5,7 @@ A class to process text and auto–correct natural grammar following the guideli
 Auto–correction includes, but not limited to:
 
        Anglicized words
-       Anti-Butting
+       "Anti-Butting", too much use of "But,"
        Character repeat
        Capitals
        Dashes
