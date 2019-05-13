@@ -24,7 +24,7 @@ Auto–correction includes:
        Punctuation
        Past tense correction
        
-As spellchecking is senstive to false positives, the class does not have a full spellchecker. Additional spellchecking must still be done. 
+As spellchecking is senstive to false positives, the class does not have a complete spellchecker. Additional spellchecking must still be done.
 
 # Example code:
        $run     = new grammar();
