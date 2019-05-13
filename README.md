@@ -23,6 +23,7 @@ Auto–correction includes:
        Oxford comma (replacing it)
        Punctuation
        Past tense correction
+       Paragraph identation
        
 # Example code:
        $run     = new grammar();
