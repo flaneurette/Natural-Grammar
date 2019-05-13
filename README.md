@@ -23,6 +23,8 @@ Auto–correction includes:
        Oxford comma (replacing it)
        Punctuation
        Past tense correction
+       
+As spellchecking is senstive to false positives, the class does not have a full spellchecker. Additional spellchecking must still be done. 
 
 # Example code:
        $run     = new grammar();
