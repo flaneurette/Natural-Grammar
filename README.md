@@ -5,7 +5,6 @@ A class to process text and auto–correct natural grammar following the guideli
 Auto–correction includes:
 
        Anglicized words
-       Conjunctions / crutch words: "But,"
        Character repeat
        Capitals
        Dashes
@@ -14,6 +13,7 @@ Auto–correction includes:
        Hyperbole
        Indivisible words
        Invalid conjunctions
+       Overuse of conjunctions "But"
        Invalid comparisons
        Inaudible H
        It's vs Its
