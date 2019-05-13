@@ -1,11 +1,11 @@
 # Natural-Grammar
 
-A class to process text and auto–correct grammar following the guidelines as described in the Chicago Manual of Style. Close to artificial intelligence, it use natural language processing to correct grammar, like a human copy editor would correct a text. A thesaurus is used to beautify certain words without overdoing it. The class also compares hundreds of natural grammar fragments which I extracted and constructed from reading and editing many (news) articles and books. Any replacements made are randomized through a thesaurus, in such a way, that the text flows natural instead of being over-corrected. It does some minor auto–corrections on justifiable spelling; it only replaces that which it can safely replace, leaving room for copy editors to gloss over the text without the strain of obvious mistakes.
+A class to process text and auto–correct grammar following the guidelines as described in the Chicago Manual of Style. Close to artificial intelligence, it use natural language processing to correct grammar, like a human copy editor would correct a text. A thesaurus is used to beautify certain words without overdoing it. The class also compares hundreds of natural grammar fragments which I extracted and constructed from reading and editing many (news) articles and books. Any replacements made are randomized through a thesaurus, in such a way, that the text flows natural instead of being overcorrected. It does some minor auto–corrections on justifiable spelling; it only replaces that which it can safely replace, leaving room for copy editors to gloss over the text without the strain of obvious mistakes.
 
 Auto–correction includes:
 
        Anglicized words
-       Character repeat
+       Character repeats
        Capitals
        Dashes
        Exaggerations
@@ -17,7 +17,7 @@ Auto–correction includes:
        Inaudible H
        It's vs Its
        Spelling mistakes
-       Slang
+       Slang fragments
        Overuse of contractions
        Overuse of conjunctions "But"
        Oxford comma (replacing it)
