@@ -5,7 +5,7 @@ A class to process text and auto–correct natural grammar following the guideli
 Auto–correction includes:
 
        Anglicized words
-       Crutch words: "But,"
+       Conjunctions / crutch words: "But,"
        Character repeat
        Capitals
        Dashes
