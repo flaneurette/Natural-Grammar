@@ -13,13 +13,13 @@ Auto–correction includes:
        Hyperbole
        Indivisible words
        Invalid conjunctions
-       Overuse of conjunctions "But"
        Invalid comparisons
        Inaudible H
        It's vs Its
        Spelling mistakes
        Slang
        Overuse of contractions
+       Overuse of conjunctions "But"
        Oxford comma (replacing it)
        Punctuation
        Past tense correction
