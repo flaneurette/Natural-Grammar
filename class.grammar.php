@@ -243,7 +243,7 @@ class grammar {
 			Grammar Fragments. 
 			Copyright 2019 Alexandra van den Heetkamp.
 			
-			The fragements are case-sensitive.
+			The fragments are case-sensitive.
 			
 			*/
 			[['if I was'],['if I were']],
@@ -261,6 +261,7 @@ class grammar {
 			[['don\'t'],['do not']],		
 			// Useful contracttions 
 			// too much 'ing' past tense:
+			// (XXX Not needed, as our new past tense checker now fixes it globally.)
 			[['We were starting to'],['We started to']],
 			[['we were starting to'],['we started to']],
 			// We only should use she said when a comma follows: "she said,"
@@ -620,7 +621,7 @@ class grammar {
 			[['Wrap up'],['Finish']],
 			// Historic/historical
 			[['will be a historical'],['will be a historic']], 
-			[['was a historic'],['was a historiccal']], 
+			[['was a historic'],['was a historical']], 
 			// Comparison
 			[['greater then'],['greater than']],
 			[['bigger then'],['bigger than']],
