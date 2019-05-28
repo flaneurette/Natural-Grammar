@@ -19,8 +19,9 @@
 
 class grammar {
 
-	public $consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','x','y','z'];
-	public $vowels	   = ['a', 'e', 'i', 'o', 'u'];
+	public $consonants 	= ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','x','y','z'];
+	public $vowels	   	= ['a', 'e', 'i', 'o', 'u'];
+	public $ablaut_vowels 	= ['i', 'a', 'o'];
 	
 	public function __construct($params = array()) 
 	{ 
@@ -102,6 +103,72 @@ class grammar {
 	   $text = $this->punctuation($text);
        	return $text;
 	}
+
+	/**
+	* Ablaut Reduplication function
+	* If there are three words, the vowels have to appear in the I-A-O order. 
+	* Example: "Big Bad Wolf".
+	* If there are two words, the first has to be I, and the second either A or O.
+	* Example: "Tic-Tac".
+	* @param string
+	* @return string
+	*/
+	
+	public function ablautReduplication($text){
+	
+		$vowelset 	= $this->ablaut_vowels; 
+		$textsplit 	= explode(PHP_EOL,$text);
+		$textnew 	= [];
+		$offset_x 	= 3;
+		$offset_y 	= 2;
+		
+		for($t = 0; $t < count($textsplit); $t++) {
+			
+			$linesplit = preg_split('/[\s]+/', $textsplit[$t]);
+			
+			for($l = 0; $l < (count($linesplit)-$offset_x); $l++) {
+				
+				$ablaut_first 	= strtolower($linesplit[$l][1]);
+				$ablaut_second 	= strtolower($linesplit[$l+1][1]);
+				$ablaut_third 	= strtolower($linesplit[$l+2][1]);
+				
+				if($ablaut_first == 'i') {
+					// The tracked word contains an I vowel in the second char.
+					if($ablaut_second == 'a') {
+						// We expected this correct vowel sequence.
+						if($ablaut_third == 'o') {
+						// A 3 word ablaut reduplication found, exit loop.
+						} else {
+						// See whether we have a two word reduplication instead.
+							if($ablaut_second == 'o') {
+							// Nothing to rewrite.
+							} else {
+							
+							}
+						}
+						
+					}  else {
+					// the correct sequence not found, proceed rewriting.
+					}
+				}
+			}
+		}
+	}	
+	
+	/**
+	* Adjective ordering function
+	* Adjective must always be in this order:
+	* opinion -> size -> age -> shape -> colour -> origin -> material -> purpose -> noun.
+	* Example: "Little Red Riding Hood".
+	* @param string
+	* @return string
+	*/
+	
+	public function adjectiveOrder($text){
+		
+	}
+		
+	
 	
 	/**
 	* name helper function
