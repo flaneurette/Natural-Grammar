@@ -4,6 +4,8 @@ A class to process text and auto–correct grammar following the guidelines as d
 
 Auto–correction includes:
 
+       Ablaut Reduplication (proposed)
+       Adjective ordering  (proposed)
        Anglicized words
        Character repeats
        Capitals
@@ -24,6 +26,7 @@ Auto–correction includes:
        Punctuation
        Past tense correction
        Paragraph identation
+
        
 # Example code:
        $run     = new grammar();
@@ -50,6 +53,20 @@ Then, I changed my mind.
 Jane heard me. 
 She said, "What's wrong?" 
 Oouch!*
+
+# Proposed new functions:
+
+- Ablaut Reduplication.
+       If there are three words, the vowels have to appear in the I-A-O order. 
+       Example: "Big Bad Wolf".
+       If there are two words, the first has to be I, and the second either A or O.
+       Example: "Tic-Tac".
+
+- Adjective ordering.
+       Adjective must always be in this order:
+       opinion -> size -> age -> shape -> colour -> origin -> material -> purpose -> noun.
+       Example: "Little Red Riding Hood".
+
 
 # License
 Copyright 2019 Alexandra van den Heetkamp.
