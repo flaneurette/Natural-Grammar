@@ -19,9 +19,28 @@
 
 class grammar {
 
-	public $consonants 	= ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','x','y','z'];
-	public $vowels	   	= ['a', 'e', 'i', 'o', 'u'];
-	public $ablaut_vowels 	= ['i', 'a', 'o'];
+	public $consonants 		= ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','x','y','z'];
+	public $vowels	   		= ['a', 'e', 'i', 'o', 'u'];
+	public $ablaut_vowels 		= ['i', 'a', 'o'];
+
+	public $ablaut_regex1 		= "/(the|this|that|these|those)\s+(\w+)\s+(\w+)\s+(\w+)/i";
+	public $ablaut_regex2 		= "/(to|do|was|like|make|have|see|get)\s+(a)\s+(\w+)(?:\s+|-)(\w+)/i";
+	public $pasttense_regex 	= "/(she|he|we|they|I)\s+(were|was)\s+(\w+)/i";
+	public $exclamation 		= '/!{2,}/msi';
+	public $dollarSign 		= '/\s+([0-9]*)\s*\$/msi';
+	public $dialogueTag		= '/\.\"\s*(she|he|they|I)/msi';
+	public $introduceQuote 		= '/(she|he|they|I)\s+(said)(\s*|:|;)\s*\"/msi';
+	public $conjunctionComma 	= '/that,\s*\"(there|this|the)/msi';
+	public $conjunctionComma2  	= '/whether,\s*\"(there|this|the)/msi';
+	public $nons 		   	= '/(\s+non\s+)/msi';
+	public $letterRepeats 	   	= '/(.)\1{3,}/msi';
+	
+	public $punctuationFind    	= ['’' ,'’' ,'’' ,'‛' ,'´' ,'′','.!','”!','"!','"?','-'];
+	public $punctuationReplace 	= ['\'','\'','\'','\'','\'','\'','!','!”','!"','?"','–'];
+	public $punctuationRestoreFind	= ['\'','\'','\'','\'','\'','\'','–']; 
+	public $punctuationRestoreReplace = ['’' ,'’' ,'’' ,'‛' ,'´' ,'′','-']; 
+	public $findTypo   		= ['uhgt',' akn','meing'];	
+	public $replaceTypo   		= ['ught',' ack','ming'];
 	
 	public function __construct($params = array()) 
 	{ 
@@ -126,7 +145,7 @@ class grammar {
 		for($t = 0; $t < count($textsplit); $t++) {
 			
 			// 3 word boundary.
-			if(preg_match("/(the|this|that|these|those)\s+(\w+)\s+(\w+)\s+(\w+)/i",$textsplit[$t],$matches)) {
+			if(preg_match($this->ablaut_regex1,$textsplit[$t],$matches)) {
 
 				$string_boundary = strtolower($matches[0]);
 			    	$first_ablaut  = strtolower($matches[2]);
@@ -139,28 +158,24 @@ class grammar {
 				
 				// if the first char of both words are similar, we proceed.
 				if($first_ablaut[0] == $second_ablaut[0]) {
-				
 					if($cfirst == 'a'
 						&& $csecond == 'i'
 						&& $cthird == 'o') {
 						$replace_holder = join(' ',array($matches[1],$matches[3],$matches[2],$matches[4]));  
 						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
 					}
-					
 				} else {
-				    
 					if($cfirst == 'i'
 						&& $csecond == 'e'
 						&& $cthird == 'o') {
 						$replace_holder = join(' ',array($matches[1],$matches[3],$matches[2],$matches[4]));  
 						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
 					} 
-				    
 				}
 			}
 			
 			// Scan for demonstratives and a 2 word boundary on the ablaut.
-			if(preg_match("/(to|do|was|like|make|have|see|get)\s+(a)\s+(\w+)(?:\s+|-)(\w+)/i",$textsplit[$t],$matches)) {
+			if(preg_match($this->ablaut_regex2,$textsplit[$t],$matches)) {
 			
 				$replace_holder = '';
 				$string_boundary = strtolower($matches[0]);
@@ -175,14 +190,12 @@ class grammar {
 			
 				// if the first char of both words are similar, we proceed.
 				if($first_ablaut[0] == $second_ablaut[0]) {
-				
 					if($cfirst == 'a'
 						&& $csecond == 'i'
 						) {
 						$replace_holder = join(' ',array($matches[1],$matches[2],$matches[4],$matches[3]));  
 						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
 					}
-					
 					if($firstlc2 == 'a'
 						&& $secondlc2 == 'i'
 						) {
@@ -223,7 +236,7 @@ class grammar {
 		
 		for($t = 0; $t < count($textsplit); $t++) {
 
-			preg_match("/(she|he|we|they|I)\s+(were|was)\s+(\w+)/i",$text,$matches);
+			preg_match($this->pasttense_regex,$text,$matches);
 			if(substr($matches[3],-3) == 'ing') {
 				// run past tense check.
 				$rewrite = $this->pastTense($matches[3]);
@@ -273,6 +286,21 @@ class grammar {
 			}
 		return $output;
 	}	
+
+	/**
+	* restore punctuation
+	* @param string
+	* @return string
+	*/
+	public function restorePunctuation($text) {
+		
+		// Restores the correction of the punction function, which was needed to process text.
+		$find 	= $this->punctuationRestoreFind;
+		$replace = $this->punctuationRestoreReplace;
+		$text = str_replace($find,$replace,$text);
+
+		return $text;
+	}	
 	
 	/**
 	* name punctuation
@@ -281,38 +309,31 @@ class grammar {
 	*/
 	public function punctuation($text) {
 	
-		$find 	 = ['’' ,'’' ,'’' ,'‛' ,'´' ,'′','.!','”!','"!','"?','-'];
-		$replace = ['\'','\'','\'','\'','\'','\'','!','!”','!"','?"','–'];
+		$find 	 = $this->punctuationFind;
+		$replace = $this->punctuationReplace;
 
 		$text = str_replace($find,$replace,$text);
 		
 		// Limit exclamation points (!) and only on end of paragraph.
-		$text = preg_replace('/!{2,}/msi','!',$text);
+		$text = preg_replace($this->exclamation,'!',$text);
 		// Only use a colon ; if you want to set a list of items
-		
 		// Dollar sign placement
-		$text =  preg_replace('/\s+([0-9]*)\s*\$/msi', ' $\1', $text);
-		
+		$text =  preg_replace($this->dollarSign, ' $\1', $text);
 		// Use a comma when a dialogue tag follows a quote.
-		$text =  preg_replace('/\.\"\s*(she|he|they|I)/msi','," \1',$text);
-		
+		$text =  preg_replace($this->dialogueTag,'," \1',$text);
 		// Add a comma to introduce a quote, or text.
-		$text =  preg_replace('/(she|he|they|I)\s+(said)(\s*|:|;)\s*\"/msi','\1 \2, "',$text);
-		
+		$text =  preg_replace($this->introduceQuote,'\1 \2, "',$text);
 		// No comma is required with conjunctions
-		$text =  preg_replace('/that,\s*\"(there|this|the)/msi','that "\1',$text);
-		
-		$text =  preg_replace('/whether,\s*\"(there|this|the)/msi','whether "\1',$text);
+		$text =  preg_replace($this->conjunctionComma,'that "\1',$text);
+		$text =  preg_replace($this->conjunctionComma2,'whether "\1',$text);
 		// Interrogation point: (?)
 		// nons should always be seperated by a single hyphen
-		$text =  preg_replace('/(\s+non\s+)/msi',' non-',$text);
-		
+		$text =  preg_replace($this->nons,' non-',$text);
 		// Remove repeating letters.
-		$text =  preg_replace('/(.)\1{3,}/msi','$1',$text);
-
+		$text =  preg_replace($this->letterRepeats,'$1',$text);
 		// Only about 12 words in the English language have this fragment, in most cases it is a mistake.
-		$find_typo   = ['uhgt',' akn','meing','chnag','chanche'];
-		$repl_typo   = ['ught',' ack','ming','chang','chance'];
+		$find_typo   = $this->findTypo;
+		$repl_typo   = $this->replaceTypo;
 		$text = str_replace($find_typo,$repl_typo,$text);
 		
 		$text = $this->pastTenseHelper($text);
