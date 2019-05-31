@@ -24,7 +24,7 @@ class grammar {
 	public $ablaut_vowels 		= ['i', 'a', 'o'];
 
 	public $ablautRegex1 		= "/(the|this|that|these|those)\s+(\w+)\s+(\w+)\s+(\w+)/i";
-	public $ablautRegex2 		= "/(to|do|was|like|make|have|see|get)\s+(a)\s+(\w+)(?:\s+|-)(\w+)/i";
+	public $ablautRegex2 		= "/(to|do|was|like|make|have|see|get)\s+(a)\s+(\w+)(?:\s+|-)(\w+)/i"; // ablaut demonstratives
 	public $pastTenseRegex 		= "/(she|he|we|they|I)\s+(were|was)\s+(\w+)/i";
 	public $exclamationPoints 	= "/!{2,}/msi";
 	public $dollarSign 		= "/\s+([0-9]*)\s*\$/msi";
