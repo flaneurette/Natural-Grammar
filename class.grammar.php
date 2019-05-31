@@ -105,7 +105,7 @@ class grammar {
 	}
 
 	/**
-	* Ablaut Reduplication function (proposed function: does not run automatically!)
+	* Ablaut Reduplication function (proposed function: works, but does not run automatically.)
 	* If there are three words, the vowels have to appear in the I-A-O order. 
 	* Example: "The [Big Bad Wolf]".
 	* If there are two words, the first has to be I, and the second either A or O.
@@ -131,11 +131,11 @@ class grammar {
 				$string_boundary = strtolower($matches[0]);
 			    	$first_ablaut  = strtolower($matches[2]);
 				$second_ablaut = strtolower($matches[3]);
-				$thrid_ablaut  = strtolower($matches[4]);
+				$third_ablaut  = strtolower($matches[4]);
 				
 				$cfirst  = $first_ablaut[1];
 				$csecond = $second_ablaut[1];
-				$cthird  = $thrid_ablaut[1];
+				$cthird  = $third_ablaut[1];
 				
 				// if the first char of both words are similar, we proceed.
 				if($first_ablaut[0] == $second_ablaut[0]) {
@@ -192,12 +192,11 @@ class grammar {
 				} 
 			}
 		}
-		
-		return $text;
+	return $text;
 	}	
 	
 	/**
-	* Adjective ordering function
+	* Adjective ordering function (proposed function)
 	* Adjective must always be in this order:
 	* opinion -> size -> age -> shape -> colour -> origin -> material -> purpose -> noun.
 	* Example: "Little Red Riding Hood".
