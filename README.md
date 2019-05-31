@@ -77,3 +77,8 @@ This class is free software: you can redistribute it and/or modify it under the 
 Friendly request:
 
 Please do not use this class as an excuse for careless writing. It is a useful tool to find something you missed and ease the work of copy editors and proofreaders (which is extremely hard work.) The best solution is to start writing slowly and thoughtfully, so that correction has a minimal role.
+
+# Credits and reference
+
+enchantedlearning.com
+english.tutorvista.com
