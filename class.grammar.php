@@ -1,5 +1,4 @@
 <?php
-
 ###########################################################################
 ##                                                                       ##
 ##  Copyright 2019 Alexandra van den Heetkamp.                           ##
@@ -16,13 +15,12 @@
 ##  <http://www.gnu.org/licenses/>.                                      ##
 ##                                                                       ##
 ###########################################################################
-
 class grammar {
-
 	public $consonants 		= ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','x','y','z'];
 	public $vowels	   		= ['a', 'e', 'i', 'o', 'u'];
 	public $ablaut_vowels 		= ['i', 'a', 'o'];
-
+	
+	public $originRegex 		= "/\s+(.*)(ish|ic|ese|ian|nch)\s+/msi"; // detect native adjectives
 	public $ablautRegex1 		= "/(the|this|that|these|those)\s+(\w+)\s+(\w+)\s+(\w+)/i";
 	public $ablautRegex2 		= "/(to|do|was|like|make|have|see|get)\s+(a)\s+(\w+)(?:\s+|-)(\w+)/i"; // ablaut demonstratives
 	public $pastTenseRegex 		= "/(she|he|we|they|I)\s+(were|was)\s+(\w+)/i";
@@ -34,6 +32,7 @@ class grammar {
 	public $quoteComma  		= "/whether,\s*\"(there|this|the)/msi";
 	public $nonHyphen		= "/(\s+non\s+)/msi";
 	public $characterRepeats 	= "/(.)\1{3,}/msi";
+	
 	
 	public $punctuationFind    	= ['’' ,'’' ,'’' ,'‛' ,'´' ,'′','.!','”!','"!','"?','-'];
 	public $punctuationReplace 	= ['\'','\'','\'','\'','\'','\'','!','!”','!"','?"','–'];
@@ -75,7 +74,6 @@ class grammar {
 	{
 		return $string;
 	}	
-
 	/**
 	* name grammary function
 	* @param string
@@ -83,11 +81,9 @@ class grammar {
 	*/
 	
 	public function grammary($text) {
-
 		$grammar 	= $this->grammar;
 		$misspelled 	= $this->misspelled;
 		$thesaurus	= $this->thesaurus;
-
 		for($i = 0; $i < count($grammar); $i++) { 
 			$entry = $grammar[$i][1];
 			$number = substr_count($text,$grammar[$i][0][0]);
@@ -118,7 +114,7 @@ class grammar {
 	   $text = $this->punctuation($text);
        	return $text;
 	}
-
+	
 	/**
 	* Ablaut Reduplication function (proposed function: works, but does not run automatically.)
 	* If there are three words, the vowels have to appear in the I-A-O order. 
@@ -142,7 +138,6 @@ class grammar {
 			
 			// 3 word boundary.
 			if(preg_match($this->ablautRegex1,$textsplit[$t],$matches)) {
-
 				$string_boundary = strtolower($matches[0]);
 			    	$first_ablaut  = strtolower($matches[2]);
 				$second_ablaut = strtolower($matches[3]);
@@ -217,8 +212,7 @@ class grammar {
 		
 	}
 		
-	
-	
+
 	/**
 	* name helper function
 	* @param string
@@ -231,7 +225,6 @@ class grammar {
 		$textnew 	= [];
 		
 		for($t = 0; $t < count($textsplit); $t++) {
-
 			preg_match($this->pastTenseRegex,$text,$matches);
 			if(substr($matches[3],-3) == 'ing') {
 				// run past tense check.
@@ -289,7 +282,6 @@ class grammar {
 	* @return string
 	*/
 	public function punctuation($text) {
-
 		// Replace character style punctuation for processing text. (Cannot be undone)
 		$text = str_replace($this->punctuationFind,$this->punctuationReplace,$text);
 		
@@ -338,11 +330,67 @@ class grammar {
 		}
 	return $newtext;
 	}
-
+	
 	/**
 	* Arrays
 	* @var array
 	*/				
+	
+	// opinion -> size -> age -> shape -> colour -> origin -> material -> purpose -> noun.
+
+	public $sizeAdjectives = [
+		'gigantic','pocket-size','undersized','grand','portly','underweight','great','pudgy','unlimited','heavy','puny','vast',
+		'heavy', 'light', 'big', 'small', 'little', 'tiny', 'tall', 'short', 'fat', 'thin', 'slender', 'willowy', 'lean',
+		'lean','slender','bulky','life-size','slim','chunky','limitless','small','colossal','little','squat','compact','mammoth',
+		'mini','teensy','emaciated','miniature','teeny','endless','minuscule','teeny-tiny','enormous','minute','teeny-weeny',
+		'mountainous', 'jumbo','dense', 'weighty', 'slim', 'trim', 'hulking', 'hefty', 'giant', 'plump', 'tubby', 'obese', 'portly',
+		'short','big','immense','sizable','bony','infinitesimal','skeletal','boundless','lanky','skimpy','brawny','large','skinny','broad',
+		'stocky','corpulent','massive','stout','cosmic','meager','strapping','cubby','measly','sturdy','curvy','microscopic','tall',
+		'svelte', 'scrawny', 'skeletal', 'underweight', 'lanky', 'wide', 'enormous', 'huge', 'vast', 'great', 'gigantic', 'monstrous', 
+		'titanic','full-size','paltry','towering','gargantuan','petite','trifling','gaunt','pint-size','trim','giant','plump','tubby',
+		'epic','narrow','thick','expansive','obese','thickest','extensive','outsized','thin','fat','oversize','tiny','fleshy','overweight'
+	];
+	
+	public $opinionAdjectives = [	
+		'attentive', 'awful', 'irritating', 'interesting', 'brave', 'dutiful', 'patient', 'serious', 'unstable', 'unwilling', 'inactive', 'active', 
+		'brilliant', 'honest', 'judgmental', 'careless', 'logical', 'punctual', 'childish', 'experienced', 'efficient', 'egoistic', 'excited', 'haughty', 
+		'proud', 'coward', 'gentle', 'helpful', 'modest', 'sweet', 'volcanic', 'aggressive', 'arrogant', 'beautiful', 'wonderful', 'smart', 'talented', 
+		'versatile', 'sophisticated', 'sensitive', 'polite', 'kind', 'dramatic', 'nosy', 'quiet', 'tactful', 'tired', 'immature', 'diligent', 'blunt' 
+	];
+		
+	public $ageAdjectives = [
+		'old', 'young', 'years', 'days', 'aged', 'young', 'old', 'ancient', 'antique', 'old-fashioned', 'youthful','bygone', 'recent', 'modern', 'medieval',
+		'historic', 'pre historic'
+	];
+	
+	public $shapeAdjectives = [
+		'asymmetrical', 'spherical', 'concave', 'concentric', 'congruent', 'curved', 'deformed', 'convex', 'flat', 'round', 'rectangular', 'triangular',
+		'pointed', 'oval', 'straight', 'vertical', 'horizontal', 'two dimensional', 'three dimensional', 'circular', 'square', 'triangular', 'oval', 'sleek',
+		'blobby','flat','rotund','globular','spherical', 'wavy', 'straight', 'cylindrical', 'oblong', 'elliptical', 'zigzag', 'squiggly', 'crooked', 'winding',
+		'serpentine', 'warped', 'distorted'
+	];
+		
+	public $colorAdjectivesPrepend = [
+		'light', 'dark', 'bright', 'shadowy', 'drab', 'radiant','shining', 'pale', 'dull', 'glowing', 'shimmering', 'luminous', 'gleaming'
+	];
+	
+	public $colorAdjectives = [
+		'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'brown', 'gray', 'black', 'white', 'silver', 'gold', 'colorless', 'transparent', 'translucent',
+		
+	];
+	
+	public $originAdjectives = [
+		'ish','ic','ese','ian'
+	];	
+	
+	public $materialAdjectives = [
+		 'glass', 'wooden', 'wood', 'woody', 'cloth', 'concrete', 'fabric', 'cotton', 'plastic', 'leather', 'ceramic', 'metal', 
+		 'metallic', 'steel', 'silicon', 'synthetic', 'woolen', 'polyester', 'fibrous'
+	];
+	
+	public $purposeAdjectives = [
+		'folding', 'swinging', 'work', 'racing', 'cooking', 'sleeping', 'dance', 'rolling', 'walking'
+	];	
 	
 	public $grammar = [
 			/*
@@ -1049,7 +1097,6 @@ class grammar {
 	];
 	
 	public $thesaurus = [
-
 			// thesaurus 
 			[['mitigating'],['alleviating','lessen','reduce']],
 	    		[['mitigate'],['alleviate','lessen','reduce']],
@@ -1089,9 +1136,7 @@ class grammar {
 			[['crazy '],['strange ', 'odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious ']]
 			
 			];	
-
 		    /* OPTIONAL VALUES, BUT PRONE TO FALSE POSITIVES UNSUITABLE FOR AUTO CORRECTION (?)
-
 		    [['mad'],['preposterous', 'irrational', 'distracted', 'aberrant', 'frenetic', 'imprudent', 'unreasonable']],
 		    [['angry'],['furious', 'enraged', 'excited', 'wrathful', 'indignant', 'exasperated', 'aroused', 'inflamed']],
 		    [['answer'],['reply', 'respond', 'retort', 'acknowledge']],
@@ -1188,6 +1233,4 @@ class grammar {
 				*/	
 		
 }
-
-
 ?>
