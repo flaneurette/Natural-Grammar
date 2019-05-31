@@ -337,7 +337,14 @@ class grammar {
 	*/				
 	
 	// opinion -> size -> age -> shape -> colour -> origin -> material -> purpose -> noun.
-
+	
+	public $opinionAdjectives = [	
+		'attentive', 'awful', 'irritating', 'interesting', 'brave', 'dutiful', 'patient', 'serious', 'unstable', 'unwilling', 'inactive', 'active', 
+		'brilliant', 'honest', 'judgmental', 'careless', 'logical', 'punctual', 'childish', 'experienced', 'efficient', 'egoistic', 'excited', 'haughty', 
+		'proud', 'coward', 'gentle', 'helpful', 'modest', 'sweet', 'volcanic', 'aggressive', 'arrogant', 'beautiful', 'wonderful', 'smart', 'talented', 
+		'versatile', 'sophisticated', 'sensitive', 'polite', 'kind', 'dramatic', 'nosy', 'quiet', 'tactful', 'tired', 'immature', 'diligent', 'blunt' 
+	];
+	
 	public $sizeAdjectives = [
 		'gigantic','pocket-size','undersized','grand','portly','underweight','great','pudgy','unlimited','heavy','puny','vast',
 		'heavy', 'light', 'big', 'small', 'little', 'tiny', 'tall', 'short', 'fat', 'thin', 'slender', 'willowy', 'lean',
@@ -349,13 +356,6 @@ class grammar {
 		'svelte', 'scrawny', 'skeletal', 'underweight', 'lanky', 'wide', 'enormous', 'huge', 'vast', 'great', 'gigantic', 'monstrous', 
 		'titanic','full-size','paltry','towering','gargantuan','petite','trifling','gaunt','pint-size','trim','giant','plump','tubby',
 		'epic','narrow','thick','expansive','obese','thickest','extensive','outsized','thin','fat','oversize','tiny','fleshy','overweight'
-	];
-	
-	public $opinionAdjectives = [	
-		'attentive', 'awful', 'irritating', 'interesting', 'brave', 'dutiful', 'patient', 'serious', 'unstable', 'unwilling', 'inactive', 'active', 
-		'brilliant', 'honest', 'judgmental', 'careless', 'logical', 'punctual', 'childish', 'experienced', 'efficient', 'egoistic', 'excited', 'haughty', 
-		'proud', 'coward', 'gentle', 'helpful', 'modest', 'sweet', 'volcanic', 'aggressive', 'arrogant', 'beautiful', 'wonderful', 'smart', 'talented', 
-		'versatile', 'sophisticated', 'sensitive', 'polite', 'kind', 'dramatic', 'nosy', 'quiet', 'tactful', 'tired', 'immature', 'diligent', 'blunt' 
 	];
 		
 	public $ageAdjectives = [
@@ -375,8 +375,7 @@ class grammar {
 	];
 	
 	public $colorAdjectives = [
-		'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'brown', 'gray', 'black', 'white', 'silver', 'gold', 'colorless', 'transparent', 'translucent',
-		
+		'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'brown', 'gray', 'black', 'white', 'silver', 'gold', 'colorless', 'transparent', 'translucent'
 	];
 	
 	public $originAdjectives = [
