@@ -16,6 +16,7 @@
 ##                                                                       ##
 ###########################################################################
 class grammar {
+	
 	public $consonants 		= ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','x','y','z'];
 	public $vowels	   		= ['a', 'e', 'i', 'o', 'u'];
 	public $ablaut_vowels 		= ['i', 'a', 'o'];
@@ -32,7 +33,6 @@ class grammar {
 	public $quoteComma  		= "/whether,\s*\"(there|this|the)/msi";
 	public $nonHyphen		= "/(\s+non\s+)/msi";
 	public $characterRepeats 	= "/(.)\1{3,}/msi";
-	
 	
 	public $punctuationFind    	= ['’' ,'’' ,'’' ,'‛' ,'´' ,'′','.!','”!','"!','"?','-'];
 	public $punctuationReplace 	= ['\'','\'','\'','\'','\'','\'','!','!”','!"','?"','–'];
