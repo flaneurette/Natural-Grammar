@@ -105,11 +105,11 @@ class grammar {
 	}
 
 	/**
-	* Ablaut Reduplication function
+	* Ablaut Reduplication function (proposed function: does not run automatically!)
 	* If there are three words, the vowels have to appear in the I-A-O order. 
-	* Example: "Big Bad Wolf".
+	* Example: "The [Big Bad Wolf]".
 	* If there are two words, the first has to be I, and the second either A or O.
-	* Example: "Tic-Tac".
+	* Example: "Get a [Tic-Tac]".
 	* @param string
 	* @return string
 	*/
@@ -118,41 +118,82 @@ class grammar {
 	
 		$vowelset 	= $this->ablaut_vowels; 
 		$textsplit 	= explode(PHP_EOL,$text);
+		$replace_holder = '';
 		$textnew 	= [];
 		$offset_x 	= 3;
 		$offset_y 	= 2;
 		
 		for($t = 0; $t < count($textsplit); $t++) {
 			
-			$linesplit = preg_split('/[\s]+/', $textsplit[$t]);
-			
-			for($l = 0; $l < (count($linesplit)-$offset_x); $l++) {
+			// 3 word boundary.
+			if(preg_match("/(the|this|that|these|those)\s+(\w+)\s+(\w+)\s+(\w+)/i",$textsplit[$t],$matches)) {
+
+				$string_boundary = strtolower($matches[0]);
+			    	$first_ablaut  = strtolower($matches[2]);
+				$second_ablaut = strtolower($matches[3]);
+				$thrid_ablaut  = strtolower($matches[4]);
 				
-				$ablaut_first 	= strtolower($linesplit[$l][1]);
-				$ablaut_second 	= strtolower($linesplit[$l+1][1]);
-				$ablaut_third 	= strtolower($linesplit[$l+2][1]);
+				$cfirst  = $first_ablaut[1];
+				$csecond = $second_ablaut[1];
+				$cthird  = $thrid_ablaut[1];
 				
-				if($ablaut_first == 'i') {
-					// The tracked word contains an I vowel in the second char.
-					if($ablaut_second == 'a') {
-						// We expected this correct vowel sequence.
-						if($ablaut_third == 'o') {
-						// A 3 word ablaut reduplication found, exit loop.
-						} else {
-						// See whether we have a two word reduplication instead.
-							if($ablaut_second == 'o') {
-							// Nothing to rewrite.
-							} else {
-							
-							}
-						}
-						
-					}  else {
-					// the correct sequence not found, proceed rewriting.
+				// if the first char of both words are similar, we proceed.
+				if($first_ablaut[0] == $second_ablaut[0]) {
+				
+					if($cfirst == 'a'
+						&& $csecond == 'i'
+						&& $cthird == 'o') {
+						$replace_holder = join(' ',array($matches[1],$matches[3],$matches[2],$matches[4]));  
+						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
 					}
+					
+				} else {
+				    
+					if($cfirst == 'i'
+						&& $csecond == 'e'
+						&& $cthird == 'o') {
+						$replace_holder = join(' ',array($matches[1],$matches[3],$matches[2],$matches[4]));  
+						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
+					} 
+				    
 				}
 			}
+			
+			// Scan for demonstratives and a 2 word boundary on the ablaut.
+			if(preg_match("/(to|do|was|like|make|have|see|get)\s+(a)\s+(\w+)(?:\s+|-)(\w+)/i",$textsplit[$t],$matches)) {
+			
+				$replace_holder = '';
+				$string_boundary = strtolower($matches[0]);
+			    	$first_ablaut  = strtolower($matches[3]);
+				$second_ablaut = strtolower($matches[4]);
+				
+				$cfirst  = $first_ablaut[1];
+				$csecond = $second_ablaut[1];
+				// Second level char on the ablaut. i.e chit-chat: ch-A ch-I.
+				$firstlc2  = $first_ablaut[2];
+				$secondlc2 = $second_ablaut[2];
+			
+				// if the first char of both words are similar, we proceed.
+				if($first_ablaut[0] == $second_ablaut[0]) {
+				
+					if($cfirst == 'a'
+						&& $csecond == 'i'
+						) {
+						$replace_holder = join(' ',array($matches[1],$matches[2],$matches[4],$matches[3]));  
+						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
+					}
+					
+					if($firstlc2 == 'a'
+						&& $secondlc2 == 'i'
+						) {
+						$replace_holder = join(' ',array($matches[1],$matches[2],$matches[4],$matches[3]));  
+						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
+					}
+				} 
+			}
 		}
+		
+		return $text;
 	}	
 	
 	/**
