@@ -37,8 +37,6 @@ class grammar {
 	
 	public $punctuationFind    	= ['’' ,'’' ,'’' ,'‛' ,'´' ,'′','.!','”!','"!','"?','-'];
 	public $punctuationReplace 	= ['\'','\'','\'','\'','\'','\'','!','!”','!"','?"','–'];
-	public $punctuationRestoreFind	= ['\'','\'','\'','\'','\'','\'','–']; 
-	public $punctuationRestoreReplace = ['’' ,'’' ,'’' ,'‛' ,'´' ,'′','-']; 
 	
 	public function __construct($params = array()) 
 	{ 
@@ -283,22 +281,7 @@ class grammar {
 					}
 			}
 		return $output;
-	}	
-
-	/**
-	* restore punctuation
-	* @param string
-	* @return string
-	*/
-	public function restorePunctuation($text) {
-		
-		// Restores the correction of the punction function, which was needed to process text.
-		$find 	= $this->punctuationRestoreFind;
-		$replace = $this->punctuationRestoreReplace;
-		$text = str_replace($find,$replace,$text);
-
-		return $text;
-	}	
+	}		
 	
 	/**
 	* name punctuation
@@ -306,27 +289,29 @@ class grammar {
 	* @return string
 	*/
 	public function punctuation($text) {
-	
-		$find 	 = $this->punctuationFind;
-		$replace = $this->punctuationReplace;
 
-		$text = str_replace($find,$replace,$text);
+		// Replace character style punctuation for processing text. (Cannot be undone)
+		$text = str_replace($this->punctuationFind,$this->punctuationReplace,$text);
 		
 		// Limit exclamation points (!) and only on end of paragraph.
 		$text = preg_replace($this->exclamationPoints,'!',$text);
-		// Only use a colon ; if you want to set a list of items
+		
 		// Dollar sign placement
 		$text =  preg_replace($this->dollarSign, ' $\1', $text);
+		
 		// Use a comma when a dialogue tag follows a quote.
 		$text =  preg_replace($this->dialogueTag,'," \1',$text);
+		
 		// Add a comma to introduce a quote, or text.
 		$text =  preg_replace($this->introduceQuote,'\1 \2, "',$text);
+		
 		// No comma is required with conjunctions
 		$text =  preg_replace($this->conjunctionComma,'that "\1',$text);
 		$text =  preg_replace($this->quoteComma,'whether "\1',$text);
-		// Interrogation point: (?)
+		
 		// nons should always be seperated by a single hyphen
 		$text =  preg_replace($this->nonHyphen,' non-',$text);
+		
 		// Remove repeating letters.
 		$text =  preg_replace($this->characterRepeats,'$1',$text);
 		
