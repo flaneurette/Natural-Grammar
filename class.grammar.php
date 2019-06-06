@@ -115,104 +115,7 @@ class grammar {
        	return $text;
 	}
 	
-	/**
-	* Ablaut Reduplication function (proposed function: works, but does not run automatically.)
-	* If there are three words, the vowels have to appear in the I-A-O order. 
-	* Example: "The [Big Bad Wolf]".
-	* If there are two words, the first has to be I, and the second either A or O.
-	* Example: "Get a [Tic-Tac]".
-	* @param string
-	* @return string
-	*/
-	
-	public function ablautReduplication($text){
-	
-		$vowelset 	= $this->ablaut_vowels; 
-		$textsplit 	= explode(PHP_EOL,$text);
-		$replace_holder = '';
-		$textnew 	= [];
-		$offset_x 	= 3;
-		$offset_y 	= 2;
 		
-		for($t = 0; $t < count($textsplit); $t++) {
-			
-			// 3 word boundary.
-			if(preg_match($this->ablautRegex1,$textsplit[$t],$matches)) {
-				$string_boundary = strtolower($matches[0]);
-			    	$first_ablaut  = strtolower($matches[2]);
-				$second_ablaut = strtolower($matches[3]);
-				$third_ablaut  = strtolower($matches[4]);
-				
-				$cfirst  = $first_ablaut[1];
-				$csecond = $second_ablaut[1];
-				$cthird  = $third_ablaut[1];
-				
-				// if the first char of both words are similar, we proceed.
-				if($first_ablaut[0] == $second_ablaut[0]) {
-					if($cfirst == 'a'
-						&& $csecond == 'i'
-						&& $cthird == 'o') {
-						$replace_holder = join(' ',array($matches[1],$matches[3],$matches[2],$matches[4]));  
-						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
-					}
-				} else {
-					if($cfirst == 'i'
-						&& $csecond == 'e'
-						&& $cthird == 'o') {
-						$replace_holder = join(' ',array($matches[1],$matches[3],$matches[2],$matches[4]));  
-						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
-					} 
-				}
-			}
-			
-			// Scan for demonstratives and a 2 word boundary on the ablaut.
-			if(preg_match($this->ablautRegex2,$textsplit[$t],$matches)) {
-			
-				$replace_holder = '';
-				$string_boundary = strtolower($matches[0]);
-			    	$first_ablaut  = strtolower($matches[3]);
-				$second_ablaut = strtolower($matches[4]);
-				
-				$cfirst  = $first_ablaut[1];
-				$csecond = $second_ablaut[1];
-				// Second level char on the ablaut. i.e chit-chat: ch-A ch-I.
-				$firstlc2  = $first_ablaut[2];
-				$secondlc2 = $second_ablaut[2];
-			
-				// if the first char of both words are similar, we proceed.
-				if($first_ablaut[0] == $second_ablaut[0]) {
-					if($cfirst == 'a'
-						&& $csecond == 'i'
-						) {
-						$replace_holder = join(' ',array($matches[1],$matches[2],$matches[4],$matches[3]));  
-						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
-					}
-					if($firstlc2 == 'a'
-						&& $secondlc2 == 'i'
-						) {
-						$replace_holder = join(' ',array($matches[1],$matches[2],$matches[4],$matches[3]));  
-						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
-					}
-				} 
-			}
-		}
-	return $text;
-	}	
-	
-	/**
-	* Adjective ordering function (proposed function)
-	* Adjective must always be in this order:
-	* opinion -> size -> age -> shape -> colour -> origin -> material -> purpose -> noun.
-	* Example: "Little Red Riding Hood".
-	* @param string
-	* @return string
-	*/
-	
-	public function adjectiveOrder($text){
-		
-	}
-		
-
 	/**
 	* name helper function
 	* @param string
@@ -329,6 +232,141 @@ class grammar {
 			}
 		}
 	return $newtext;
+	}
+	
+	
+	/**
+	* Ablaut Reduplication function (proposed function: works, but does not run automatically.)
+	* If there are three words, the vowels have to appear in the I-A-O order. 
+	* Example: "The [Big Bad Wolf]".
+	* If there are two words, the first has to be I, and the second either A or O.
+	* Example: "Get a [Tic-Tac]".
+	* @param string
+	* @return string
+	*/
+	
+	public function ablautReduplication($text){
+	
+		$vowelset 	= $this->ablaut_vowels; 
+		$textsplit 	= explode(PHP_EOL,$text);
+		$replace_holder = '';
+		$textnew 	= [];
+		$offset_x 	= 3;
+		$offset_y 	= 2;
+		
+		for($t = 0; $t < count($textsplit); $t++) {
+			
+			// 3 word boundary.
+			if(preg_match($this->ablautRegex1,$textsplit[$t],$matches)) {
+				$string_boundary = strtolower($matches[0]);
+			    	$first_ablaut  = strtolower($matches[2]);
+				$second_ablaut = strtolower($matches[3]);
+				$third_ablaut  = strtolower($matches[4]);
+				
+				$cfirst  = $first_ablaut[1];
+				$csecond = $second_ablaut[1];
+				$cthird  = $third_ablaut[1];
+				
+				// if the first char of both words are similar, we proceed.
+				if($first_ablaut[0] == $second_ablaut[0]) {
+					if($cfirst == 'a'
+						&& $csecond == 'i'
+						&& $cthird == 'o') {
+						$replace_holder = join(' ',array($matches[1],$matches[3],$matches[2],$matches[4]));  
+						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
+					}
+				} else {
+					if($cfirst == 'i'
+						&& $csecond == 'e'
+						&& $cthird == 'o') {
+						$replace_holder = join(' ',array($matches[1],$matches[3],$matches[2],$matches[4]));  
+						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
+					} 
+				}
+			}
+			
+			// Scan for demonstratives and a 2 word boundary on the ablaut.
+			if(preg_match($this->ablautRegex2,$textsplit[$t],$matches)) {
+			
+				$replace_holder = '';
+				$string_boundary = strtolower($matches[0]);
+			    	$first_ablaut  = strtolower($matches[3]);
+				$second_ablaut = strtolower($matches[4]);
+				
+				$cfirst  = $first_ablaut[1];
+				$csecond = $second_ablaut[1];
+				// Second level char on the ablaut. i.e chit-chat: ch-A ch-I.
+				$firstlc2  = $first_ablaut[2];
+				$secondlc2 = $second_ablaut[2];
+			
+				// if the first char of both words are similar, we proceed.
+				if($first_ablaut[0] == $second_ablaut[0]) {
+					if($cfirst == 'a'
+						&& $csecond == 'i'
+						) {
+						$replace_holder = join(' ',array($matches[1],$matches[2],$matches[4],$matches[3]));  
+						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
+					}
+					if($firstlc2 == 'a'
+						&& $secondlc2 == 'i'
+						) {
+						$replace_holder = join(' ',array($matches[1],$matches[2],$matches[4],$matches[3]));  
+						$text = str_ireplace($string_boundary,$replace_holder,$textsplit[$t]);
+					}
+				} 
+			}
+		}
+	return $text;
+	}	
+	
+	/**
+	* Adjective ordering function (proposed function)
+	* Adjective must always be in this order:
+	* opinion -> size -> age -> shape -> colour -> origin -> material -> purpose -> noun.
+	* Example: "Little Red Riding Hood".
+	* @param string
+	* @return string
+	*/
+	
+	public function adjectiveOrder($text){
+		
+		$vowelset 	= $this->ablaut_vowels; 
+		$textsplit 	= explode(PHP_EOL,$text);
+		$replace_holder = '';
+		$textnew 	= [];
+		
+		for($t = 0; $t < count($textsplit); $t++) {
+			
+			// create adjective polygon from string.
+			$adjective_points = preg_split( "/[\s]+/", $textsplit[$t]);
+			$adjective_split = count($adjective_points);
+			
+			foreach($adjective_points as $adjective) {
+				
+				$adjective_polygon = [
+					1 => array_search($adjective_points[$adjective],$this->opinionAdjectives),
+					2 => array_search($adjective_points[$adjective],$this->sizeAdjectives),
+					3 => array_search($adjective_points[$adjective],$this->ageAdjectives),
+					4 => array_search($adjective_points[$adjective],$this->shapeAdjectives),
+					5 => array_search($adjective_points[$adjective],$this->colorAdjectivesPrepend),
+					6 => array_search($adjective_points[$adjective],$this->colorAdjectives),
+					7 => array_search($adjective_points[$adjective],$this->originAdjectives),
+					8 => array_search($adjective_points[$adjective],$this->materialAdjectives)
+				];
+				
+				// check overlapping
+				for($i=1; $i <= 8; $i++) {
+					if($adjective_polygon[$i] !== false) {
+						$boundary = $i;
+						if($adjective_polygon[$i] > $boundary) {
+						// rebuild adjective polygon.
+						} else {
+						// boundary is too large.
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	/**
