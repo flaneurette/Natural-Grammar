@@ -57,9 +57,3 @@ Oouch!*
 # License
 Copyright 2019 Alexandra van den Heetkamp.
 This class is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published      by the Free Software Foundation, either version 3 of the License, or any later version. Be sure to include the attached license when you distribute the software.   
-
-# Credits and reference
-
-enchantedlearning.com
-
-english.tutorvista.com
