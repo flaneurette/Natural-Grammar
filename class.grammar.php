@@ -15,6 +15,7 @@
 ##  <http://www.gnu.org/licenses/>.                                      ##
 ##                                                                       ##
 ###########################################################################
+
 class grammar {
 	
 	public $consonants 		= ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','x','y','z'];
@@ -29,10 +30,10 @@ class grammar {
 	public $dollarSign 		= "/\s+([0-9]*)\s*\$/msi";
 	public $dialogueTag		= "/\.\"\s*(she|he|they|I)/msi";
 	public $introduceQuote 		= "/(she|he|they|I)\s+(said)(\s*|:|;)\s*\"/msi";
-	public $conjunctionComma 	= "/that,\s*\"(there|this|the)/msi";
+	public $conjunctionComma 		= "/that,\s*\"(there|this|the)/msi";
 	public $quoteComma  		= "/whether,\s*\"(there|this|the)/msi";
 	public $nonHyphen		= "/(\s+non\s+)/msi";
-	public $characterRepeats 	= "/(.)\1{3,}/msi";
+	public $characterRepeats 	= '/(.)\1{3,}/msi';
 	
 	public $punctuationFind    	= ['’' ,'’' ,'’' ,'‛' ,'´' ,'′','.!','”!','"!','"?','-'];
 	public $punctuationReplace 	= ['\'','\'','\'','\'','\'','\'','!','!”','!"','?"','–'];
