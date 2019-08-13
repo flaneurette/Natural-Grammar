@@ -438,6 +438,12 @@ class grammar {
 			
 			The fragments are case-sensitive.
 			
+			Most of these fragments will eventually be translated into regular expressions.
+			It could be that some fragments are already caught by some of our new functions. 
+			These fragments, therefore, serve more than one purpose: a way to manually correct, 
+			and hinting at how to build our new functions. Most of the past tense fragments are already 
+			caught by the past tense function, yet are still listend to below for reference.
+			
 			*/
 			// only 12 words in all of english have this sequence. Most cases it is a mistake.
 			[[' akn'],[' ack']],
