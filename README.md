@@ -4,7 +4,7 @@ A class to process text and auto–correct grammar following the guidelines as d
 
 Auto–correction includes:
 
-       Ablaut reduplication (proposed)
+       Ablaut reduplication
        Adjective ordering  (proposed)
        Anglicized words
        Character repeats
