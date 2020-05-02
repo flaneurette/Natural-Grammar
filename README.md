@@ -10,6 +10,7 @@ Auto–correction includes:
        Character repeats
        Capitals
        Dashes
+       Diagramming (proposed)
        Exaggerations (characters,values)
        Grammar fragments
        Hyperbole
