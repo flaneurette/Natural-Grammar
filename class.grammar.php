@@ -75,6 +75,68 @@ class grammar {
 	{
 		return $string;
 	}	
+	
+	/**
+	* Diagramming function (proposed function)
+	* @param string
+	* @return string
+	*/
+	
+	public function diagramming($text){
+		
+		$diagram_direction = [
+			'verb'					=> ['adverb','adverbial_objective'],
+			'adverb'				=> ['adverb','adverb','adverbial_objective'],
+			'attributive_adjective' => ['adverb'],
+			'predicate_adjective' 	=> ['adverb'],
+			'word' 					=> ['appositive'],
+			'noun' 					=> ['article','attributive_adjective'],
+			'infinitive' 			=> ['complementary_infinitive','verb'],
+			'infinitive'			=> ['complementary_infinitive','verb']
+		];
+		
+	/**
+	* Grammatical Terms and Diagramming Symbols.
+	* originally charted by Eugene R. Moutoux.
+	*/
+		$terminology = [
+			'absolute phrase',
+			'active voice',
+			'adjective clause',
+			'adjective',
+			'adverb',
+			'adverbial objective',
+			'antecedent',
+			'appositive',
+			'article',
+			'attributive adjective',
+			'auxilliary verb',
+			'clause',
+			'comparative degree',
+			'complement',
+			'complementary infinitive',
+			'complex sentence',
+			'compound sentence',
+			'compound-complex sentence',
+			'conjunction',
+			'conjunctive adverb',
+			'coordinating conjunction',
+			'correlative adverbs',
+			'correlative',
+			'definite article',
+			'demonstrative adjective',
+			'demonstrative pronoun',
+			'dependent clause',
+			'direct address',
+			'direct object',
+			'elliptical clause',
+			'equal comparison',
+			'expletive',
+			'finite verb'
+		];
+		
+	}
+	
 	/**
 	* name grammary function
 	* @param string
@@ -369,6 +431,9 @@ class grammar {
 			}
 		}
 	}
+	
+	
+	
 	
 	/**
 	* Arrays
@@ -1277,6 +1342,5 @@ class grammar {
 				*/	
 		
 }
-
 
 ?>
