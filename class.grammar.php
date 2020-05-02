@@ -75,15 +75,129 @@ class grammar {
 	{
 		return $string;
 	}	
+
+
+	public function sentence_analysis($text){
+		
+		/**
+		* Sentence Analysis (proposed function)
+		* @param string
+		* @return string
+		*/
+			
+		$grammatical_terms = [
+			'fewer' => 'determiner',
+			'fewest' => 'determiner',
+			'every' => 'determiner',
+			'most' => 'determiner',
+			'that' => 'determiner',
+			'little' => 'determiner',
+			'half' => 'determiner',
+			'much' => 'determiner',
+			'the' => 'determiner',
+			'another' => 'determiner',
+			'other' => 'determiner',
+			'her' => 'determiner',
+			'my' => 'determiner',
+			'their' => 'determiner',
+			'a' => 'determiner',
+			'an' => 'determiner',
+			'his' => 'determiner',
+			'neither' => 'determiner',
+			'these' => 'determiner',
+			'all' => 'determiner',
+			'its' => 'determiner',
+			'no' => 'determiner',
+			'this' => 'determiner',
+			'any' => 'determiner',
+			'those' => 'determiner',
+			'both' => 'determiner',
+			'least' => 'determiner',
+			'our' => 'determiner',
+			'what' => 'determiner',
+			'each' => 'determiner',
+			'less' => 'determiner',
+			'several' => 'determiner',
+			'which' => 'determiner',
+			'either' => 'determiner',
+			'many' => 'determiner',
+			'some' => 'determiner',
+			'whose' => 'determiner',
+			'enough' => 'determiner',
+			'more' => 'determiner',
+			'such' => 'determiner',
+			'your' => 'determiner',
+			'after' => 'particle',
+			'against' => 'particle',
+			'among' => 'particle',
+			'amongst' => 'particle',
+			'at' => 'particle',
+			'at' => 'particle',
+			'in' => 'particle',
+			'to' => 'particle',
+			'below' => 'particle',
+			'beneath' => 'particle',
+			'beyond' => 'particle',
+			'by' => 'particle',
+			'during' => 'particle',
+			'for' => 'particle',
+			'foring' => 'particle',
+			'from' => 'particle',
+			'infront of' => 'particle',
+			'inspite of' => 'particle',
+			'despite' => 'particle',
+			'into' => 'particle',
+			'near' => 'particle',
+			'nearto' => 'particle',
+			'of' => 'particle',
+			'on' => 'particle',
+			'onto' => 'particle',
+			'over' => 'particle',
+			'under' => 'particle',
+			'until' => 'particle',
+			'with' => 'particle',
+			'within' => 'particle',
+			'without' => 'particle',
+			'all' => 'quantifier',
+			'any' => 'quantifier',
+			'either' => 'quantifier',
+			'enough' => 'quantifier',
+			'least' => 'quantifier',
+			'the least' => 'quantifier',
+			'at least' => 'quantifier',
+			'less' => 'quantifier',
+			'few' => 'quantifier',
+			'a few' => 'quantifier',
+			'a little' => 'quantifier',
+			'lots' => 'quantifier',
+			'a lot' => 'quantifier',
+			'plenty' => 'quantifier',
+			'many' => 'quantifier',
+			'more' => 'quantifier',
+			'most' => 'quantifier',
+			'the most' => 'quantifier',
+			'mostly' => 'quantifier',
+			'much' => 'quantifier',
+			'many' => 'quantifier',
+			'alot' => 'quantifier',
+			'lots of' => 'quantifier',
+			'no' => 'quantifier',
+			'none' => 'quantifier',
+			'noneof' => 'quantifier',
+			'plenty' => 'quantifier',
+			'some' => 'quantifier'
+		];
+		
+	}
 	
 	/**
 	* Diagramming function (proposed function)
 	* @param string
 	* @return string
-	*/
+	*/	
 	
 	public function diagramming($text){
-		
+
 		$diagram_direction = [
 			'verb' => ['adverb','adverbial_objective'],
 			'adverb' => ['adverb','adverb','adverbial_objective'],
@@ -1340,6 +1454,7 @@ class grammar {
 		    [['unhappy'],['miserable', 'uncomfortable', 'wretched', 'heart-broken', 'unfortunate', 'poor', 'downhearted', 'sorrowful', 'depressed', 'dejected', 'melancholy', 'glum', 'gloomy', 'dismal', 'discouraged', 'sad']],
 		    [['wrong'],['incorrect', 'inaccurate', 'mistaken', 'erroneous', 'improper', 'unsuitable']]
 	*/	
+		
 }
 
 
