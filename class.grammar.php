@@ -85,14 +85,14 @@ class grammar {
 	public function diagramming($text){
 		
 		$diagram_direction = [
-			'verb'					=> ['adverb','adverbial_objective'],
-			'adverb'				=> ['adverb','adverb','adverbial_objective'],
+			'verb' => ['adverb','adverbial_objective'],
+			'adverb' => ['adverb','adverb','adverbial_objective'],
 			'attributive_adjective' => ['adverb'],
-			'predicate_adjective' 	=> ['adverb'],
-			'word' 					=> ['appositive'],
-			'noun' 					=> ['article','attributive_adjective'],
-			'infinitive' 			=> ['complementary_infinitive','verb'],
-			'infinitive'			=> ['complementary_infinitive','verb']
+			'predicate_adjective' => ['adverb'],
+			'word' => ['appositive'],
+			'noun' => ['article','attributive_adjective'],
+			'infinitive' => ['complementary_infinitive','verb'],
+			'infinitive'=> ['complementary_infinitive','verb']
 		];
 		
 	/**
@@ -1339,8 +1339,8 @@ class grammar {
 		    [['ugly'],['hideous', 'frightful', 'frightening', 'shocking', 'horrible', 'unpleasant', 'monstrous', 'terrifying', 'gross', 'grisly', 'ghastly', 'horrid', 'unsightly', 'plain', 'homely', 'evil', 'repulsive', 'repugnant', 'gruesome']],
 		    [['unhappy'],['miserable', 'uncomfortable', 'wretched', 'heart-broken', 'unfortunate', 'poor', 'downhearted', 'sorrowful', 'depressed', 'dejected', 'melancholy', 'glum', 'gloomy', 'dismal', 'discouraged', 'sad']],
 		    [['wrong'],['incorrect', 'inaccurate', 'mistaken', 'erroneous', 'improper', 'unsuitable']]
-				*/	
-		
+	*/	
 }
+
 
 ?>
