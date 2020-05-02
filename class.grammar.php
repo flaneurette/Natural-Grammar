@@ -1,8 +1,8 @@
 <?php
 ###########################################################################
-##                                                                       ##
-##  Copyright 2019 Alexandra van den Heetkamp.                           ##
-##                                                                       ##
+##                                                                 		 ##
+##  Copyright 2019 Alexandra van den Heetkamp.                         	 ##
+##                                                                 		 ##
 ##  This class is free software: you can redistribute it and/or modify it##
 ##  under the terms of the GNU General Public License as published       ##
 ##  by the Free Software Foundation, either version 3 of the             ##
@@ -76,228 +76,6 @@ class grammar {
 		return $string;
 	}	
 
-
-	public function sentence_analysis($text){
-		
-		/**
-		* Sentence Analysis (proposed function)
-		* @param string
-		* @return string
-		*/
-		
-		$determiners = [
-		'fewer',
-		'fewest',
-		'every',
-		'most',
-		'that',
-		'little',
-		'half',
-		'much',
-		'the',
-		'another',
-		'other',
-		'her',
-		'my',
-		'their',
-		'a',
-		'an',
-		'his',
-		'neither',
-		'these',
-		'all',
-		'its',
-		'no',
-		'this',
-		'any',
-		'those',
-		'both',
-		'least',
-		'our',
-		'what',
-		'each',
-		'less',
-		'several',
-		'which',
-		'either',
-		'many',
-		'some',
-		'whose',
-		'enough',
-		'more',
-		'such',
-		'your'
-		];
-		
-		$particles = [
-		'after',
-		'against',
-		'among',
-		'amongst',
-		'at',
-		'at',
-		'in',
-		'to',
-		'below',
-		'beneath',
-		'beyond',
-		'by',
-		'during',
-		'for',
-		'foring',
-		'from',
-		'infront of',
-		'inspite of',
-		'despite',
-		'into',
-		'near',
-		'nearto',
-		'of',
-		'on',
-		'onto',
-		'over',
-		'under',
-		'until',
-		'with',
-		'within',
-		'without'
-		];
-		
-		$quantifiers = [
-		'all',
-		'any',
-		'either',
-		'enough',
-		'least',
-		'the least',
-		'at least',
-		'less',
-		'few',
-		'a few',
-		'a little',
-		'lots',
-		'a lot',
-		'plenty',
-		'many',
-		'more',
-		'most',
-		'the most',
-		'mostly',
-		'much',
-		'many',
-		'alot',
-		'lots of',
-		'no',
-		'none',
-		'noneof',
-		'plenty',
-		'some'
-		];
-	
-	$grammatical_terms = [
-		'fewer' => 'determiner',
-		'fewest' => 'determiner',
-		'every' => 'determiner',
-		'most' => 'determiner',
-		'that' => 'determiner',
-		'little' => 'determiner',
-		'half' => 'determiner',
-		'much' => 'determiner',
-		'the' => 'determiner',
-		'another' => 'determiner',
-		'other' => 'determiner',
-		'her' => 'determiner',
-		'my' => 'determiner',
-		'their' => 'determiner',
-		'a' => 'determiner',
-		'an' => 'determiner',
-		'his' => 'determiner',
-		'neither' => 'determiner',
-		'these' => 'determiner',
-		'all' => 'determiner',
-		'its' => 'determiner',
-		'no' => 'determiner',
-		'this' => 'determiner',
-		'any' => 'determiner',
-		'those' => 'determiner',
-		'both' => 'determiner',
-		'least' => 'determiner',
-		'our' => 'determiner',
-		'what' => 'determiner',
-		'each' => 'determiner',
-		'less' => 'determiner',
-		'several' => 'determiner',
-		'which' => 'determiner',
-		'either' => 'determiner',
-		'many' => 'determiner',
-		'some' => 'determiner',
-		'whose' => 'determiner',
-		'enough' => 'determiner',
-		'more' => 'determiner',
-		'such' => 'determiner',
-		'your' => 'determiner',
-		'after' => 'particle',
-		'against' => 'particle',
-		'among' => 'particle',
-		'amongst' => 'particle',
-		'at' => 'particle',
-		'at' => 'particle',
-		'in' => 'particle',
-		'to' => 'particle',
-		'below' => 'particle',
-		'beneath' => 'particle',
-		'beyond' => 'particle',
-		'by' => 'particle',
-		'during' => 'particle',
-		'for' => 'particle',
-		'foring' => 'particle',
-		'from' => 'particle',
-		'infront of' => 'particle',
-		'inspite of' => 'particle',
-		'despite' => 'particle',
-		'into' => 'particle',
-		'near' => 'particle',
-		'nearto' => 'particle',
-		'of' => 'particle',
-		'on' => 'particle',
-		'onto' => 'particle',
-		'over' => 'particle',
-		'under' => 'particle',
-		'until' => 'particle',
-		'with' => 'particle',
-		'within' => 'particle',
-		'without' => 'particle',
-		'all' => 'quantifier',
-		'any' => 'quantifier',
-		'either' => 'quantifier',
-		'enough' => 'quantifier',
-		'least' => 'quantifier',
-		'the least' => 'quantifier',
-		'at least' => 'quantifier',
-		'less' => 'quantifier',
-		'few' => 'quantifier',
-		'a few' => 'quantifier',
-		'a little' => 'quantifier',
-		'lots' => 'quantifier',
-		'a lot' => 'quantifier',
-		'plenty' => 'quantifier',
-		'many' => 'quantifier',
-		'more' => 'quantifier',
-		'most' => 'quantifier',
-		'the most' => 'quantifier',
-		'mostly' => 'quantifier',
-		'much' => 'quantifier',
-		'many' => 'quantifier',
-		'alot' => 'quantifier',
-		'lots of' => 'quantifier',
-		'no' => 'quantifier',
-		'none' => 'quantifier',
-		'noneof' => 'quantifier',
-		'plenty' => 'quantifier',
-		'some' => 'quantifier'
-		];
-		
-	}
 	
 	/**
 	* Diagramming function (proposed function)
@@ -308,57 +86,67 @@ class grammar {
 	public function diagramming($text){
 
 		$diagram_direction = [
-		'verb' => ['adverb','adverbial_objective'],
-		'adverb' => ['adverb','adverb','adverbial_objective'],
-		'attributive_adjective' => ['adverb'],
-		'predicate_adjective' => ['adverb'],
-		'word' => ['appositive'],
-		'noun' => ['article','attributive_adjective'],
-		'infinitive' => ['complementary_infinitive','verb'],
-		'infinitive'=> ['complementary_infinitive','verb']
+			'verb' => ['adverb','adverbial_objective'],
+			'adverb' => ['adverb','adverb','adverbial_objective'],
+			'attributive_adjective' => ['adverb'],
+			'predicate_adjective' => ['adverb'],
+			'word' => ['appositive'],
+			'noun' => ['article','attributive_adjective'],
+			'infinitive' => ['complementary_infinitive','verb'],
+			'infinitive'=> ['complementary_infinitive','verb']
 		];
+		
+		/**
+		* Grammatical Terms and Diagramming Symbols.
+		* originally charted by Eugene R. Moutoux.
+		*/
+		
+		$terminology = [
+			'absolute phrase',
+			'active voice',
+			'adjective clause',
+			'adjective',
+			'adverb',
+			'adverbial objective',
+			'antecedent',
+			'appositive',
+			'article',
+			'attributive adjective',
+			'auxilliary verb',
+			'clause',
+			'comparative degree',
+			'complement',
+			'complementary infinitive',
+			'complex sentence',
+			'compound sentence',
+			'compound-complex sentence',
+			'conjunction',
+			'conjunctive adverb',
+			'coordinating conjunction',
+			'correlative adverbs',
+			'correlative',
+			'definite article',
+			'demonstrative adjective',
+			'demonstrative pronoun',
+			'dependent clause',
+			'direct address',
+			'direct object',
+			'elliptical clause',
+			'equal comparison',
+			'expletive',
+			'finite verb'
+		];
+	}
+	
+	public function sentence_analysis($text){
 		
 	/**
-	* Grammatical Terms and Diagramming Symbols.
-	* originally charted by Eugene R. Moutoux.
+	* Sentence Analysis (proposed function)
+	* @param string
+	* @return string
 	*/
-		$terminology = [
-		'absolute phrase',
-		'active voice',
-		'adjective clause',
-		'adjective',
-		'adverb',
-		'adverbial objective',
-		'antecedent',
-		'appositive',
-		'article',
-		'attributive adjective',
-		'auxilliary verb',
-		'clause',
-		'comparative degree',
-		'complement',
-		'complementary infinitive',
-		'complex sentence',
-		'compound sentence',
-		'compound-complex sentence',
-		'conjunction',
-		'conjunctive adverb',
-		'coordinating conjunction',
-		'correlative adverbs',
-		'correlative',
-		'definite article',
-		'demonstrative adjective',
-		'demonstrative pronoun',
-		'dependent clause',
-		'direct address',
-		'direct object',
-		'elliptical clause',
-		'equal comparison',
-		'expletive',
-		'finite verb'
-		];
 		
-	}
+	}	
 	
 	/**
 	* name grammary function
@@ -520,7 +308,6 @@ class grammar {
 	return $newtext;
 	}
 	
-	
 	/**
 	* Ablaut Reduplication function (proposed function: works, but does not run automatically.)
 	* If there are three words, the vowels have to appear in the I-A-O order. 
@@ -545,7 +332,7 @@ class grammar {
 		// 3 word boundary.
 		if(preg_match($this->ablautRegex1,$textsplit[$t],$matches)) {
 			$string_boundary = strtolower($matches[0]);
-		    	$first_ablaut  = strtolower($matches[2]);
+		$first_ablaut  = strtolower($matches[2]);
 			$second_ablaut = strtolower($matches[3]);
 			$third_ablaut  = strtolower($matches[4]);
 			
@@ -576,7 +363,7 @@ class grammar {
 		
 			$replace_holder = '';
 			$string_boundary = strtolower($matches[0]);
-		    	$first_ablaut  = strtolower($matches[3]);
+		$first_ablaut  = strtolower($matches[3]);
 			$second_ablaut = strtolower($matches[4]);
 			
 			$cfirst  = $first_ablaut[1];
@@ -629,40 +416,250 @@ class grammar {
 		
 		foreach($adjective_points as $adjective) {
 			
-			$adjective_polygon = [
-				1 => array_search($adjective_points[$adjective],$this->opinionAdjectives),
-				2 => array_search($adjective_points[$adjective],$this->sizeAdjectives),
-				3 => array_search($adjective_points[$adjective],$this->ageAdjectives),
-				4 => array_search($adjective_points[$adjective],$this->shapeAdjectives),
-				5 => array_search($adjective_points[$adjective],$this->colorAdjectivesPrepend),
-				6 => array_search($adjective_points[$adjective],$this->colorAdjectives),
-				7 => array_search($adjective_points[$adjective],$this->originAdjectives),
-				8 => array_search($adjective_points[$adjective],$this->materialAdjectives)
-			];
-			
-			// check overlapping
-			for($i=1; $i <= 8; $i++) {
-				if($adjective_polygon[$i] !== false) {
-				$boundary = $i;
-				if($adjective_polygon[$i] > $boundary) {
-				// rebuild adjective polygon.
-				} else {
-				// boundary is too large.
-				}
+				$adjective_polygon = [
+					1 => array_search($adjective_points[$adjective],$this->opinionAdjectives),
+					2 => array_search($adjective_points[$adjective],$this->sizeAdjectives),
+					3 => array_search($adjective_points[$adjective],$this->ageAdjectives),
+					4 => array_search($adjective_points[$adjective],$this->shapeAdjectives),
+					5 => array_search($adjective_points[$adjective],$this->colorAdjectivesPrepend),
+					6 => array_search($adjective_points[$adjective],$this->colorAdjectives),
+					7 => array_search($adjective_points[$adjective],$this->originAdjectives),
+					8 => array_search($adjective_points[$adjective],$this->materialAdjectives)
+				];
+				
+				// check overlapping
+				for($i=1; $i <= 8; $i++) {
+					if($adjective_polygon[$i] !== false) {
+					$boundary = $i;
+					if($adjective_polygon[$i] > $boundary) {
+					// rebuild adjective polygon.
+					} else {
+					// boundary is too large.
+					}
+					}
 				}
 			}
 		}
-		}
 	}
-	
-	
-	
+
 	
 	/**
 	* Arrays
 	* @var array
 	*/			
 	
+	public  $determiners = [
+		'fewer',
+		'fewest',
+		'every',
+		'most',
+		'that',
+		'little',
+		'half',
+		'much',
+		'the',
+		'another',
+		'other',
+		'her',
+		'my',
+		'their',
+		'a',
+		'an',
+		'his',
+		'neither',
+		'these',
+		'all',
+		'its',
+		'no',
+		'this',
+		'any',
+		'those',
+		'both',
+		'least',
+		'our',
+		'what',
+		'each',
+		'less',
+		'several',
+		'which',
+		'either',
+		'many',
+		'some',
+		'whose',
+		'enough',
+		'more',
+		'such',
+		'your'
+		];
+		
+	public  $particles = [
+		'after',
+		'against',
+		'among',
+		'amongst',
+		'at',
+		'at',
+		'in',
+		'to',
+		'below',
+		'beneath',
+		'beyond',
+		'by',
+		'during',
+		'for',
+		'foring',
+		'from',
+		'infront of',
+		'inspite of',
+		'despite',
+		'into',
+		'near',
+		'nearto',
+		'of',
+		'on',
+		'onto',
+		'over',
+		'under',
+		'until',
+		'with',
+		'within',
+		'without'
+		];
+		
+	public  $quantifiers = [
+		'all',
+		'any',
+		'either',
+		'enough',
+		'least',
+		'the least',
+		'at least',
+		'less',
+		'few',
+		'a few',
+		'a little',
+		'lots',
+		'a lot',
+		'plenty',
+		'many',
+		'more',
+		'most',
+		'the most',
+		'mostly',
+		'much',
+		'many',
+		'alot',
+		'lots of',
+		'no',
+		'none',
+		'noneof',
+		'plenty',
+		'some'
+		];
+	
+	public  $grammatical_terms = [
+		'fewer' => 'determiner',
+		'fewest' => 'determiner',
+		'every' => 'determiner',
+		'most' => 'determiner',
+		'that' => 'determiner',
+		'little' => 'determiner',
+		'half' => 'determiner',
+		'much' => 'determiner',
+		'the' => 'determiner',
+		'another' => 'determiner',
+		'other' => 'determiner',
+		'her' => 'determiner',
+		'my' => 'determiner',
+		'their' => 'determiner',
+		'a' => 'determiner',
+		'an' => 'determiner',
+		'his' => 'determiner',
+		'neither' => 'determiner',
+		'these' => 'determiner',
+		'all' => 'determiner',
+		'its' => 'determiner',
+		'no' => 'determiner',
+		'this' => 'determiner',
+		'any' => 'determiner',
+		'those' => 'determiner',
+		'both' => 'determiner',
+		'least' => 'determiner',
+		'our' => 'determiner',
+		'what' => 'determiner',
+		'each' => 'determiner',
+		'less' => 'determiner',
+		'several' => 'determiner',
+		'which' => 'determiner',
+		'either' => 'determiner',
+		'many' => 'determiner',
+		'some' => 'determiner',
+		'whose' => 'determiner',
+		'enough' => 'determiner',
+		'more' => 'determiner',
+		'such' => 'determiner',
+		'your' => 'determiner',
+		'after' => 'particle',
+		'against' => 'particle',
+		'among' => 'particle',
+		'amongst' => 'particle',
+		'at' => 'particle',
+		'at' => 'particle',
+		'in' => 'particle',
+		'to' => 'particle',
+		'below' => 'particle',
+		'beneath' => 'particle',
+		'beyond' => 'particle',
+		'by' => 'particle',
+		'during' => 'particle',
+		'for' => 'particle',
+		'foring' => 'particle',
+		'from' => 'particle',
+		'infront of' => 'particle',
+		'inspite of' => 'particle',
+		'despite' => 'particle',
+		'into' => 'particle',
+		'near' => 'particle',
+		'nearto' => 'particle',
+		'of' => 'particle',
+		'on' => 'particle',
+		'onto' => 'particle',
+		'over' => 'particle',
+		'under' => 'particle',
+		'until' => 'particle',
+		'with' => 'particle',
+		'within' => 'particle',
+		'without' => 'particle',
+		'all' => 'quantifier',
+		'any' => 'quantifier',
+		'either' => 'quantifier',
+		'enough' => 'quantifier',
+		'least' => 'quantifier',
+		'the least' => 'quantifier',
+		'at least' => 'quantifier',
+		'less' => 'quantifier',
+		'few' => 'quantifier',
+		'a few' => 'quantifier',
+		'a little' => 'quantifier',
+		'lots' => 'quantifier',
+		'a lot' => 'quantifier',
+		'plenty' => 'quantifier',
+		'many' => 'quantifier',
+		'more' => 'quantifier',
+		'most' => 'quantifier',
+		'the most' => 'quantifier',
+		'mostly' => 'quantifier',
+		'much' => 'quantifier',
+		'many' => 'quantifier',
+		'alot' => 'quantifier',
+		'lots of' => 'quantifier',
+		'no' => 'quantifier',
+		'none' => 'quantifier',
+		'noneof' => 'quantifier',
+		'plenty' => 'quantifier',
+		'some' => 'quantifier'
+	];
+		
 	// opinion -> size -> age -> shape -> colour -> origin -> material -> purpose -> noun.
 	
 	public $opinionAdjectives = [	
@@ -882,11 +879,11 @@ class grammar {
 		[['simple'],['easy']],
 		[['full proof'],['foolproof']],
 		[['fullproof'],['foolproof']],
-            		// Further contractions
+           // Further contractions
            		[['I\'ve'],['I have']],
            		[['I\'ll'],['I will']],
 		[['I\'ve never'],['I have never']], 
-            		[['They\'ve'],['They have']],
+           [['They\'ve'],['They have']],
 		[['Yes, I'],['Indeed, I','I']], 
 		[['truly'],['absolutely','actually','definitely','genuinely','rightly']],
 		[['Lots of people'],['A lot of people','Many']],
@@ -946,10 +943,10 @@ class grammar {
 		[['ontrary what many people believe'],['ontrary to popular belief']],	
 		[['than we are used to'],['than we are acustomed to','than we are conditioned to']],
 		[['jealous'],['invidious', 'jaundiced', 'apprehensive', 'envious', 'intolerant', 'possessive', 'protective', 'begrudging', 'covetous', 'doubting']],
-            		[['amazing'],['incredible', 'fabulous', 'wonderful', 'fantastic', 'astonishing', 'astounding']],
-            		[['her anger'],['her rage', 'her fury', 'her arousal', 'her nettled', 'her exasperation', 'her maddening']],
-            		[['his anger'],['his rage', 'his fury', 'his arousal', 'his nettled', 'his exasperation', 'his maddening']],
-            		[['my anger'],['my rage', 'my fury', 'my arousal', 'my nettled', 'my exasperation', 'my maddening']],
+           [['amazing'],['incredible', 'fabulous', 'wonderful', 'fantastic', 'astonishing', 'astounding']],
+           [['her anger'],['her rage', 'her fury', 'her arousal', 'her nettled', 'her exasperation', 'her maddening']],
+           [['his anger'],['his rage', 'his fury', 'his arousal', 'his nettled', 'his exasperation', 'his maddening']],
+           [['my anger'],['my rage', 'my fury', 'my arousal', 'my nettled', 'my exasperation', 'my maddening']],
 		// Catches both: i-t, tha-t and many other words ending on a t.
 		[['t sounds crazy'],['t sounds preposterous','t sounds irrational', 't sounds unreasonable']],
 		[['famous'],['well-known', 'renowned', 'celebrated', 'famed', 'eminent', 'illustrious', 'distinguished']],
@@ -1431,139 +1428,135 @@ class grammar {
 	public $thesaurus = [
 		// thesaurus 
 		[['mitigating'],['alleviating','lessen','reduce']],
-	    		[['mitigate'],['alleviate','lessen','reduce']],
-            		[['beautiful'],['pretty', 'lovely', 'handsome', 'attractive', 'gorgeous', 'dazzling', 'splendid', 'magnificent', 'comely', 'fair', 'ravishing', 'graceful', 'elegant', 'fine', 'exquisite', 'aesthetic', 'pleasing', 'shapely', 'delicate', 'stunning', 'glorious', 'heavenly', 'resplendent', 'radiant', 'glowing', 'blooming', 'sparkling']],
-            		[['awful'],['dreadful', 'terrible', 'abominable', 'unpleasant']],
-            		[['brave'],['courageous', 'fearless', 'dauntless', 'intrepid', 'plucky', 'daring', 'heroic', 'valorous', 'audacious', 'bold', 'gallant', 'valiant', 'doughty', 'mettlesome']],
-		    	[['it breaks'],['it fractures', 'it shatters','it breaks']],
-            		[['calm'],['quiet', 'peaceful', 'still', 'tranquil', 'mild', 'serene', 'smooth', 'composed', 'collected', 'unruffled', 'level-headed', 'unexcited', 'detached', 'aloof']],
-		    	[['would cry'],['would shout', 'would yell', 'would yowl', 'would scream', 'would roar', 'would bellow', 'would weep', 'would wail', 'would sob', 'bawl']],
-            		[['would shout'],['would yell', 'would yowl', 'would scream', 'would roar', 'would bellow', 'would weep', 'would wail', 'would sob', 'bawl']],
+	    [['mitigate'],['alleviate','lessen','reduce']],
+        [['beautiful'],['pretty', 'lovely', 'handsome', 'attractive', 'gorgeous', 'dazzling', 'splendid', 'magnificent', 'comely', 'fair', 'ravishing', 'graceful', 'elegant', 'fine', 'exquisite', 'aesthetic', 'pleasing', 'shapely', 'delicate', 'stunning', 'glorious', 'heavenly', 'resplendent', 'radiant', 'glowing', 'blooming', 'sparkling']],
+        [['awful'],['dreadful', 'terrible', 'abominable', 'unpleasant']],
+        [['brave'],['courageous', 'fearless', 'dauntless', 'intrepid', 'plucky', 'daring', 'heroic', 'valorous', 'audacious', 'bold', 'gallant', 'valiant', 'doughty', 'mettlesome']],
+		[['it breaks'],['it fractures', 'it shatters','it breaks']],
+        [['calm'],['quiet', 'peaceful', 'still', 'tranquil', 'mild', 'serene', 'smooth', 'composed', 'collected', 'unruffled', 'level-headed', 'unexcited', 'detached', 'aloof']],
+		[['would cry'],['would shout', 'would yell', 'would yowl', 'would scream', 'would roar', 'would bellow', 'would weep', 'would wail', 'would sob', 'bawl']],
+        [['would shout'],['would yell', 'would yowl', 'would scream', 'would roar', 'would bellow', 'would weep', 'would wail', 'would sob', 'bawl']],
 		[['delicious'],['savory', 'delectable', 'appetizing', 'luscious', 'scrumptious', 'palatable', 'delightful', 'enjoyable', 'toothsome', 'exquisite']],
-            		[['enjoy it'],['appreciate it', 'delight in it', 'bepleased by it','indulge in it','relish it', 'savor it', 'like it']],
-            		[['explained'],['elaborated', 'clarified', 'defined']],
-		    	[['explain'],['elaborate', 'clarify', 'define','explain']],
-            		[['differences'],['dissimilarities','differences']],
-		    	[['difference'],['dissimilarity','difference']],
-		    	[['delicious'],['savory', 'delectable', 'appetizing', 'luscious', 'scrumptious', 'palatable', 'delightful', 'enjoyable', 'toothsome', 'exquisite']],
-		    	[['famous'],['well-known', 'renowned', 'celebrated', 'famed', 'eminent', 'illustrious', 'distinguished', 'noted', 'notorious']],
-            		[['a fat'],['a stout', 'a corpulent', 'a fleshy', 'a beefy', 'a paunchy', 'a plump', 'a full', 'a rotund','a bulky']],
+        [['enjoy it'],['appreciate it', 'delight in it', 'bepleased by it','indulge in it','relish it', 'savor it', 'like it']],
+        [['explained'],['elaborated', 'clarified', 'defined']],
+		[['explain'],['elaborate', 'clarify', 'define','explain']],
+        [['differences'],['dissimilarities','differences']],
+		[['difference'],['dissimilarity','difference']],
+		[['delicious'],['savory', 'delectable', 'appetizing', 'luscious', 'scrumptious', 'palatable', 'delightful', 'enjoyable', 'toothsome', 'exquisite']],
+		[['famous'],['well-known', 'renowned', 'celebrated', 'famed', 'eminent', 'illustrious', 'distinguished', 'noted', 'notorious']],
+        [['a fat'],['a stout', 'a corpulent', 'a fleshy', 'a beefy', 'a paunchy', 'a plump', 'a full', 'a rotund','a bulky']],
 		[['funny'],['humorous', 'amusing', 'comical', 'laughable']],
-            		[['fast'],['quick', 'rapid', 'speedy', 'fleet', 'hasty', 'snappy']],
-           		[['fear'],['fright', 'dread', 'dismay', 'anxiety','apprehension']],
-            		[['gross'],['improper', 'coarse', 'indecent', 'crude', 'vulgar', 'outrageous', 'extreme', 'grievous', 'shameful', 'uncouth', 'obscene', 'low']],
-            		[['moody'],['temperamental', 'changeable', 'short-tempered', 'glum', 'morose', 'sullen', 'mopish', 'irritable', 'testy', 'peevish', 'fretful', 'spiteful', 'sulky', 'touchy']],
-            		[['interesting'],['fascinating','intriguing', 'provocative', 'though-provoking', 'inspiring', 'involving', 'moving', 'titillating', 'tantalizing', 'exciting', 'entertaining', 'piquant', 'lively', 'racy', 'spicy', 'gripping', 'enthralling', 'spellbinding', 'curious', 'captivating', 'enchanting', 'bewitching', 'appealing']],
-            		[['good'],['good','excellent', 'fine', 'superior', 'wonderful', 'marvelous', 'qualified', 'suited', 'suitable', 'apt', 'proper', 'superb', 'respectable', 'edifying']],
-           		[[' big '],[' enormous ', ' immense ', ' sizable ', ' grand ', ' great ']],
+        [['fast'],['quick', 'rapid', 'speedy', 'fleet', 'hasty', 'snappy']],
+        [['fear'],['fright', 'dread', 'dismay', 'anxiety','apprehension']],
+        [['gross'],['improper', 'coarse', 'indecent', 'crude', 'vulgar', 'outrageous', 'extreme', 'grievous', 'shameful', 'uncouth', 'obscene', 'low']],
+        [['moody'],['temperamental', 'changeable', 'short-tempered', 'glum', 'morose', 'sullen', 'mopish', 'irritable', 'testy', 'peevish', 'fretful', 'spiteful', 'sulky', 'touchy']],
+        [['interesting'],['fascinating','intriguing', 'provocative', 'though-provoking', 'inspiring', 'involving', 'moving', 'titillating', 'tantalizing', 'exciting', 'entertaining', 'piquant', 'lively', 'racy', 'spicy', 'gripping', 'enthralling', 'spellbinding', 'curious', 'captivating', 'enchanting', 'bewitching', 'appealing']],
+        [['good'],['good','excellent', 'fine', 'superior', 'wonderful', 'marvelous', 'qualified', 'suited', 'suitable', 'apt', 'proper', 'superb', 'respectable', 'edifying']],
+        [[' big '],[' enormous ', ' immense ', ' sizable ', ' grand ', ' great ']],
 		[['to do '],['to accomplish ', 'to achieve ', 'to attain ']],
 		[['a great '],['a noteworthy ', 'a worthy ', 'a distinguished ', 'a remarkable ', 'a grand ', 'a considerable ', 'a powerful ', 'a much ', 'a mighty ']],
-            		[['important'],['necessary', 'vital', 'critical', 'indispensable', 'valuable', 'essential', 'significant', 'primary', 'principal']],
-            		[['strange '],['odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious', 'irregular']],
+        [['important'],['necessary', 'vital', 'critical', 'indispensable', 'valuable', 'essential', 'significant', 'primary', 'principal']],
+        [['strange '],['odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious', 'irregular']],
 		[['show '],['display ', 'exhibit ', 'present ', 'reveal ', 'demonstrate ']],
-		   	[['wrong '],['incorrect ', 'inaccurate ', 'mistaken ', 'erroneous ', 'improper ', 'unsuitable ']],
-            		[['little '],['tiny ', 'small ', 'diminutive ']],
-           		[['am right'],['am correct', 'am accurate', 'am factual']],
+		[['wrong '],['incorrect ', 'inaccurate ', 'mistaken ', 'erroneous ', 'improper ', 'unsuitable ']],
+        [['little '],['tiny ', 'small ', 'diminutive ']],
+        [['am right'],['am correct', 'am accurate', 'am factual']],
 		[['is right'],['is correct', 'is accurate', 'is factual']],
 		[['crazy '],['strange ', 'odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious ']]
-		
-		];	
-		    /* OPTIONAL VALUES, BUT PRONE TO FALSE POSITIVES UNSUITABLE FOR AUTO CORRECTION (?)
-		    [['mad'],['preposterous', 'irrational', 'distracted', 'aberrant', 'frenetic', 'imprudent', 'unreasonable']],
-		    [['angry'],['furious', 'enraged', 'excited', 'wrathful', 'indignant', 'exasperated', 'aroused', 'inflamed']],
-		    [['answer'],['reply', 'respond', 'retort', 'acknowledge']],
-		    [['ask–'],['question', 'inquireof', 'seekinformationfrom', 'request']],
-		    [['awful'],['dreadful', 'terrible', 'abominable', 'unpleasant']],
-		    [['bad'],['evil', 'immoral', 'wicked', 'corrupt', 'sinful', 'depraved', 'spoiled', 'tainted', 'harmful', 'injurious', 'unfavorable', 'defective', 'inferior', 'imperfect', 'substandard', 'faulty', 'improper', 'inappropriate', 'unsuitable', 'disagreeable', 'unpleasant', 'unfriendly', 'irascible', 'horrible', 'atrocious', 'outrageous', 'scandalous', 'noxious', 'sinister', 'putrid', 'snide', 'deplorable', 'dismal', 'heinous', 'nefarious', 'obnoxious', 'detestable', 'despicable', 'contemptible', 'rank', 'ghastly', 'execrable']],
-		    [['evil'],['immoral', 'wicked', 'corrupt', 'sinful', 'depraved', 'spoiled', 'tainted', 'harmful', 'injurious', 'unfavorable', 'defective', 'inferior', 'imperfect', 'substandard', 'faulty', 'improper', 'inappropriate', 'unsuitable', 'disagreeable', 'unpleasant', 'unfriendly', 'irascible', 'horrible', 'atrocious', 'outrageous', 'scandalous', 'noxious', 'sinister', 'putrid', 'snide', 'deplorable', 'dismal', 'heinous', 'nefarious', 'obnoxious', 'detestable', 'despicable', 'contemptible', 'rank', 'ghastly', 'execrable']],
-		    [['beautiful'],['pretty', 'lovely', 'handsome', 'attractive', 'gorgeous', 'dazzling', 'splendid', 'magnificent', 'comely', 'fair', 'ravishing', 'graceful', 'elegant', 'fine', 'exquisite', 'aesthetic', 'pleasing', 'shapely', 'delicate', 'stunning', 'glorious', 'heavenly', 'resplendent', 'radiant', 'glowing', 'blooming', 'sparkling']],
-		    [['begin'],['start', 'open', 'launch', 'initiate', 'commence', 'inaugurate', 'originate']],
-		    [['big'],['enormous', 'immense', 'sizable', 'grand', 'great', 'tall', 'substantial', 'ample', 'broad', 'expansive', 'spacious', 'stout', 'tremendous', 'mountainous']],
-		    [['brave'],['courageous', 'fearless', 'dauntless', 'intrepid', 'plucky', 'daring', 'heroic', 'valorous', 'audacious', 'bold', 'gallant', 'valiant', 'doughty', 'mettlesome']],
-		    [['breaks'],['fractures', 'shatters']],
-		    [['a break'],['a pause']],
-		    [['bright'],['shining', 'shiny', 'gleaming', 'brilliant', 'sparkling', 'shimmering', 'radiant', 'vivid', 'colorful', 'lustrous', 'luminous', 'incandescent', 'intelligent', 'knowing', 'quick-witted', 'smart', 'intellectual']],
-		    [['calm'],['quiet', 'peaceful', 'still', 'tranquil', 'mild', 'serene', 'smooth', 'composed', 'collected', 'unruffled', 'level-headed', 'unexcited', 'detached', 'aloof']],
-		    [['come'],['approach', 'advance', 'near', 'arrive', 'reach']],
-		    [['cool'],['chilly', 'cold', 'frosty', 'wintry', 'icy', 'frigid']],
-		    [['crooked'],['bent', 'twisted', 'curved', 'hooked', 'zigzag']],
-		    [['cry'],['shout', 'yell', 'yowl', 'scream', 'roar', 'bellow', 'weep', 'wail', 'sob', 'bawl']],
-		    [['cut'],['slash', 'sever']],
-		    [['dangerous'],['perilous', 'hazardous', 'risky', 'uncertain', 'unsafe']],
-		    [['dark'],['shadowy', 'unlit', 'murky', 'gloomy', 'dim', 'dusky', 'shaded', 'sunless', 'dismal', 'sad']],
-		    [['decide'],['determine', 'settle', 'choose', 'resolve']],
-		    [['definite'],['certain', 'sure', 'determined', 'clear', 'distinct', 'obvious']],
-		    [['delicious'],['savory', 'delectable', 'appetizing', 'luscious', 'scrumptious', 'palatable', 'delightful', 'enjoyable', 'toothsome', 'exquisite']],
-		    [['describe'],['portray', 'characterize', 'picture', 'narrate', 'relate', 'recount', 'represent', 'report', 'record']],
-		    [['destroy'],['ruin', 'demolish', 'raze', 'waste', 'kill', 'slay', 'end', 'extinguish']],
-		    [['difference'],['disagreement', 'inequity', 'contrast', 'dissimilarity', 'incompatibility']],
-		    [['do'],['accomplish', 'achieve', 'attain']],
-		    [['dull'],['boring', 'tiring','tiresome', 'uninteresting', 'slow', 'dumb', 'stupid', 'unimaginative', 'lifeless', 'dead', 'insensible', 'tedious', 'wearisome', 'listless', 'expressionless', 'plain', 'monotonous', 'humdrum', 'dreary']],
-		    [['eager'],['keen', 'fervent', 'enthusiastic', 'involved', 'interested', 'aliveto']],
-		    [['end'],['stop', 'finish', 'terminate', 'conclude', 'close', 'halt', 'cessation', 'discontinuance']],
-		    [['enjoy'],['appreciate', 'delightin', 'bepleased', 'indulgein', 'luxuriatein', 'baskin', 'relish', 'devour', 'savor', 'like']],
-		    [['explain'],['elaborate', 'clarify', 'define', 'interpret', 'justify', 'accountfor']],
-		    [['fair'],['just', 'impartial', 'unbiased', 'objective', 'unprejudiced', 'honest']],
-		    [['fall'],['drop', 'descend', 'plunge', 'topple', 'tumble']],
-		    [['false'],['fake', 'fraudulent', 'counterfeit', 'spurious', 'untrue', 'unfounded', 'erroneous', 'deceptive', 'groundless', 'fallacious']],
-		    [['famous'],['well-known', 'renowned', 'celebrated', 'famed', 'eminent', 'illustrious', 'distinguished', 'noted', 'notorious']],
-		    [['fast'],['quick', 'rapid', 'speedy', 'fleet', 'hasty', 'snappy', 'mercurial', 'swiftly', 'rapidly', 'quickly', 'snappily', 'speedily', 'lickety-split', 'posthaste', 'hastily', 'expeditiously', 'likeaflash']],
-		    [['fat'],['stout', 'corpulent', 'fleshy', 'beefy', 'paunchy', 'plump', 'full', 'rotund', 'tubby', 'pudgy', 'chubby', 'chunky', 'burly', 'bulky', 'elephantine']],
-		    [['fear'],['fright', 'dread', 'terror', 'alarm', 'dismay', 'anxiety', 'scare', 'awe', 'horror', 'panic', 'apprehension']],
-		    [['fly'],['soar', 'hover', 'flit', 'wing', 'flee', 'waft', 'glide', 'coast', 'skim', 'sail', 'cruise']],
-		    [['funny'],['humorous', 'amusing', 'droll', 'comic', 'comical', 'laughable', 'silly']],
-		    [['get'],['acquire', 'obtain', 'secure', 'procure', 'gain', 'fetch', 'find', 'score', 'accumulate', 'win', 'earn', 'rep', 'catch', 'net', 'bag', 'derive', 'collect', 'gather', 'glean', 'pickup', 'accept', 'comeby', 'regain', 'salvage']],
-		    [['go'],['recede', 'depart', 'fade', 'disappear', 'move', 'travel', 'proceed']],
-		    [['good'],['excellent', 'fine', 'superior', 'wonderful', 'marvelous', 'qualified', 'suited', 'suitable', 'apt', 'proper', 'capable', 'generous', 'kindly', 'friendly', 'gracious', 'obliging', 'pleasant', 'agreeable', 'pleasurable', 'satisfactory', 'well-behaved', 'obedient', 'honorable', 'reliable', 'trustworthy', 'safe', 'favorable', 'profitable', 'advantageous', 'righteous', 'expedient', 'helpful', 'valid', 'genuine', 'ample', 'salubrious', 'estimable', 'beneficial', 'splendid', 'great', 'noble', 'worthy', 'first-rate', 'top-notch', 'grand', 'sterling', 'superb', 'respectable', 'edifying']],
-		    [['great'],['noteworthy', 'worthy', 'distinguished', 'remarkable', 'grand', 'considerable', 'powerful', 'much', 'mighty']],
-		    [['gross'],['improper', 'coarse', 'indecent', 'crude', 'vulgar', 'outrageous', 'extreme', 'grievous', 'shameful', 'uncouth', 'obscene', 'low']],
-		    [['happy'],['pleased', 'contented', 'satisfied', 'delighted', 'elated', 'joyful', 'cheerful', 'ecstatic', 'jubilant', 'gay', 'tickled', 'gratified', 'glad', 'blissful', 'overjoyed']],
-		    [['hate'],['despise', 'loathe', 'detest', 'abhor', 'disfavor', 'dislike', 'disapprove', 'abominate']],
-		    [['help'],['aid', 'assist', 'support', 'encourage', 'back', 'waiton', 'attend', 'serve', 'relieve', 'succor', 'benefit', 'befriend', 'abet']],
-		    [['hide'],['conceal', 'cover', 'mask', 'cloak', 'camouflage', 'screen', 'shroud', 'veil']],
-		    [['hurry'],['rush', 'run', 'speed', 'race', 'hasten', 'urge', 'accelerate', 'bustle']],
-		    [['hurt'],['damage', 'harm', 'injure', 'wound', 'distress', 'afflict', 'pain']],
-		    [['idea'],['thought', 'concept', 'conception', 'notion', 'understanding', 'opinion', 'plan', 'view', 'belief']],
-		    [['important'],['necessary', 'vital', 'critical', 'indispensable', 'valuable', 'essential', 'significant', 'primary', 'principal', 'considerable', 'famous', 'distinguished', 'notable', 'well-known']],
-		    [['interesting'],['fascinating', 'engaging', 'sharp', 'keen', 'bright', 'intelligent', 'animated', 'spirited', 'attractive', 'inviting', 'intriguing', 'provocative', 'though-provoking', 'challenging', 'inspiring', 'involving', 'moving', 'titillating', 'tantalizing', 'exciting', 'entertaining', 'piquant', 'lively', 'racy', 'spicy', 'engrossing', 'absorbing', 'consuming', 'gripping', 'arresting', 'enthralling', 'spellbinding', 'curious', 'captivating', 'enchanting', 'bewitching', 'appealing']],
-		    [['keep'],['hold', 'retain', 'withhold', 'preserve', 'maintain', 'sustain', 'support']],
-		    [['kill'],['slay', 'execute', 'assassinate', 'destroy', 'cancel', 'abolish']],
-		    [['lazy'],['indolent', 'slothful', 'idle', 'inactive', 'sluggish']],
-		    [['little'],['tiny', 'small', 'diminutive', 'runt', 'miniature', 'puny', 'exiguous', 'dinky', 'cramped', 'limited', 'slight', 'petite', 'minute']],
-		    [['look'],['gaze', 'see', 'glance', 'watch', 'survey', 'study', 'seek', 'searchfor', 'peek', 'peep', 'glimpse', 'stare', 'contemplate', 'examine', 'gape', 'ogle', 'scrutinize', 'inspect', 'leer', 'behold', 'observe', 'view', 'witness', 'perceive', 'spy', 'sight', 'discover', 'notice', 'recognize', 'peer', 'eye', 'gawk', 'peruse', 'explore']],
-		    [['love'],['like', 'admire', 'esteem', 'fancy', 'carefor', 'cherish', 'adore', 'treasure', 'worship', 'appreciate', 'savor']],
-		    [['make'],['create', 'originate', 'invent', 'beget', 'form', 'construct', 'design', 'fabricate', 'manufacture', 'produce', 'build', 'develop', 'do', 'effect', 'execute', 'compose', 'perform', 'accomplish', 'earn', 'gain', 'obtain', 'acquire', 'get']],
-		    [['mark'],['label', 'tag', 'price', 'ticket', 'impress', 'effect', 'trace', 'imprint', 'stamp', 'brand', 'sign', 'note', 'heed', 'notice', 'designate']],
-		    [['mischievous'],['prankish', 'playful', 'naughty', 'roguish', 'waggish', 'impish', 'sportive']],
-		    [['move'],['plod', 'go', 'creep', 'crawl', 'inch', 'poke', 'drag', 'toddle', 'shuffle', 'trot', 'dawdle', 'walk', 'traipse', 'mosey', 'jog', 'plug', 'trudge', 'slump', 'lumber', 'trail', 'lag', 'run', 'sprint', 'trip', 'bound', 'hotfoot', 'high-tail', 'streak', 'stride', 'tear', 'breeze', 'whisk', 'rush', 'dash', 'dart', 'bolt', 'fling', 'scamper', 'scurry', 'skedaddle', 'scoot', 'scuttle', 'scramble', 'race', 'chase', 'hasten', 'hurry', 'hump', 'gallop', 'lope', 'accelerate', 'stir', 'budge', 'travel', 'wander', 'roam', 'journey', 'trek', 'ride', 'spin', 'slip', 'glide', 'slide', 'slither', 'coast', 'flow', 'sail', 'saunter', 'hobble', 'amble', 'stagger', 'paddle', 'slouch', 'prance', 'straggle', 'meander', 'perambulate', 'waddle', 'wobble', 'pace', 'swagger', 'promenade', 'lunge']],
-		    [['moody'],['temperamental', 'changeable', 'short-tempered', 'glum', 'morose', 'sullen', 'mopish', 'irritable', 'testy', 'peevish', 'fretful', 'spiteful', 'sulky', 'touchy']],
-		    [['neat'],['clean', 'orderly', 'tidy', 'trim', 'dapper', 'natty', 'smart', 'elegant', 'well-organized', 'super', 'desirable', 'spruce', 'shipshape', 'well-kept', 'shapely']],
-		    [['new'],['fresh', 'unique', 'original', 'unusual', 'novel', 'modern', 'recent']],
-		    [['old'],['feeble', 'frail', 'aged']],
-		    [['part'],['portion', 'share', 'piece', 'allotment', 'section', 'fraction', 'fragment']],
-		    [['place'],['space', 'area', 'spot', 'plot', 'region', 'location', 'situation', 'position', 'residence', 'dwelling', 'set', 'site', 'station', 'status', 'state']],
-		    [['plan'],['plot', 'scheme', 'design', 'draw', 'map', 'diagram', 'procedure', 'arrangement', 'intention', 'device', 'contrivance', 'method', 'way', 'blueprint']],
-		    [['popular'],['well-liked', 'approved', 'accepted', 'favorite', 'celebrated']],
-		    [['predicament'],['quandary', 'dilemma', 'pickle', 'problem', 'plight', 'spot', 'scrape', 'jam']],
-		    [['put'],['place', 'set', 'attach', 'establish', 'assign', 'keep', 'save', 'setaside', 'effect', 'achieve', 'do', 'build']],
-		    [['quiet'],['silent', 'still', 'soundless', 'mute', 'tranquil', 'peaceful', 'calm', 'restful']],
-		    [['right'],['correct', 'accurate', 'factual', 'true', 'good', 'just', 'honest', 'upright', 'lawful', 'moral', 'proper', 'suitable', 'apt', 'legal', 'fair']],
-		    [['run'],['race', 'speed', 'hurry', 'hasten', 'sprint', 'dash', 'rush', 'escape', 'elope', 'flee']],
-		    [['scared'],['afraid', 'frightened', 'alarmed', 'terrified', 'panicked', 'fearful', 'unnerved', 'insecure', 'timid', 'shy', 'skittish', 'jumpy', 'disquieted', 'worried', 'vexed', 'troubled', 'disturbed', 'horrified', 'terrorized', 'shocked', 'petrified', 'haunted', 'timorous', 'shrinking', 'tremulous', 'stupefied', 'paralyzed', 'stunned', 'apprehensive']],
-		    [['show'],['display', 'exhibit', 'present', 'note', 'pointto', 'indicate', 'explain', 'reveal', 'prove', 'demonstrate', 'expose']],
-		    [['slow'],['unhurried', 'gradual', 'leisurely', 'late', 'behind', 'tedious', 'slack']],
-		    [['stop'],['cease', 'halt', 'stay', 'pause', 'discontinue', 'conclude', 'end', 'finish', 'quit']],
-		    [['story'],['tale', 'myth', 'legend', 'fable', 'yarn', 'account', 'narrative', 'chronicle', 'epic', 'sage', 'anecdote', 'record', 'memoir']],
-		    [['strange'],['odd', 'peculiar', 'unusual', 'unfamiliar', 'uncommon', 'queer', 'weird', 'outlandish', 'curious', 'unique', 'exclusive', 'irregular']],
-		    [['take'],['hold', 'catch', 'seize', 'grasp', 'win', 'capture', 'acquire', 'pick', 'choose', 'select', 'prefer', 'remove', 'steal', 'lift', 'rob', 'engage', 'bewitch', 'purchase', 'buy', 'retract', 'recall', 'assume', 'occupy', 'consume']],
-		    [['tell'],['disclose', 'reveal', 'show']],
-		    [['trouble'],['distress', 'anguish', 'anxiety', 'worry', 'wretchedness', 'pain', 'danger', 'peril', 'disaster', 'grief', 'misfortune', 'difficulty', 'concern', 'pains', 'inconvenience', 'exertion', 'effort']],
-		    [['true'],['accurate', 'right', 'proper', 'precise', 'exact', 'valid', 'genuine', 'real', 'actual', 'trusty', 'steady', 'loyal', 'dependable', 'sincere', 'staunch']],
-		    [['ugly'],['hideous', 'frightful', 'frightening', 'shocking', 'horrible', 'unpleasant', 'monstrous', 'terrifying', 'gross', 'grisly', 'ghastly', 'horrid', 'unsightly', 'plain', 'homely', 'evil', 'repulsive', 'repugnant', 'gruesome']],
-		    [['unhappy'],['miserable', 'uncomfortable', 'wretched', 'heart-broken', 'unfortunate', 'poor', 'downhearted', 'sorrowful', 'depressed', 'dejected', 'melancholy', 'glum', 'gloomy', 'dismal', 'discouraged', 'sad']],
-		    [['wrong'],['incorrect', 'inaccurate', 'mistaken', 'erroneous', 'improper', 'unsuitable']]
-			*/	
-		
+		[['mad'],['preposterous', 'irrational', 'distracted', 'aberrant', 'frenetic', 'imprudent', 'unreasonable']],
+		[['angry'],['furious', 'enraged', 'excited', 'wrathful', 'indignant', 'exasperated', 'aroused', 'inflamed']],
+		[['answer'],['reply', 'respond', 'retort', 'acknowledge']],
+		[['ask–'],['question', 'inquireof', 'seekinformationfrom', 'request']],
+		[['awful'],['dreadful', 'terrible', 'abominable', 'unpleasant']],
+		[['bad'],['evil', 'immoral', 'wicked', 'corrupt', 'sinful', 'depraved', 'spoiled', 'tainted', 'harmful', 'injurious', 'unfavorable', 'defective', 'inferior', 'imperfect', 'substandard', 'faulty', 'improper', 'inappropriate', 'unsuitable', 'disagreeable', 'unpleasant', 'unfriendly', 'irascible', 'horrible', 'atrocious', 'outrageous', 'scandalous', 'noxious', 'sinister', 'putrid', 'snide', 'deplorable', 'dismal', 'heinous', 'nefarious', 'obnoxious', 'detestable', 'despicable', 'contemptible', 'rank', 'ghastly', 'execrable']],
+		[['evil'],['immoral', 'wicked', 'corrupt', 'sinful', 'depraved', 'spoiled', 'tainted', 'harmful', 'injurious', 'unfavorable', 'defective', 'inferior', 'imperfect', 'substandard', 'faulty', 'improper', 'inappropriate', 'unsuitable', 'disagreeable', 'unpleasant', 'unfriendly', 'irascible', 'horrible', 'atrocious', 'outrageous', 'scandalous', 'noxious', 'sinister', 'putrid', 'snide', 'deplorable', 'dismal', 'heinous', 'nefarious', 'obnoxious', 'detestable', 'despicable', 'contemptible', 'rank', 'ghastly', 'execrable']],
+		[['beautiful'],['pretty', 'lovely', 'handsome', 'attractive', 'gorgeous', 'dazzling', 'splendid', 'magnificent', 'comely', 'fair', 'ravishing', 'graceful', 'elegant', 'fine', 'exquisite', 'aesthetic', 'pleasing', 'shapely', 'delicate', 'stunning', 'glorious', 'heavenly', 'resplendent', 'radiant', 'glowing', 'blooming', 'sparkling']],
+		[['begin'],['start', 'open', 'launch', 'initiate', 'commence', 'inaugurate', 'originate']],
+		[['big'],['enormous', 'immense', 'sizable', 'grand', 'great', 'tall', 'substantial', 'ample', 'broad', 'expansive', 'spacious', 'stout', 'tremendous', 'mountainous']],
+		[['brave'],['courageous', 'fearless', 'dauntless', 'intrepid', 'plucky', 'daring', 'heroic', 'valorous', 'audacious', 'bold', 'gallant', 'valiant', 'doughty', 'mettlesome']],
+		[['breaks'],['fractures', 'shatters']],
+		[['a break'],['a pause']],
+		[['bright'],['shining', 'shiny', 'gleaming', 'brilliant', 'sparkling', 'shimmering', 'radiant', 'vivid', 'colorful', 'lustrous', 'luminous', 'incandescent', 'intelligent', 'knowing', 'quick-witted', 'smart', 'intellectual']],
+		[['calm'],['quiet', 'peaceful', 'still', 'tranquil', 'mild', 'serene', 'smooth', 'composed', 'collected', 'unruffled', 'level-headed', 'unexcited', 'detached', 'aloof']],
+		[['come'],['approach', 'advance', 'near', 'arrive', 'reach']],
+		[['cool'],['chilly', 'cold', 'frosty', 'wintry', 'icy', 'frigid']],
+		[['crooked'],['bent', 'twisted', 'curved', 'hooked', 'zigzag']],
+		[['cry'],['shout', 'yell', 'yowl', 'scream', 'roar', 'bellow', 'weep', 'wail', 'sob', 'bawl']],
+		[['cut'],['slash', 'sever']],
+		[['dangerous'],['perilous', 'hazardous', 'risky', 'uncertain', 'unsafe']],
+		[['dark'],['shadowy', 'unlit', 'murky', 'gloomy', 'dim', 'dusky', 'shaded', 'sunless', 'dismal', 'sad']],
+		[['decide'],['determine', 'settle', 'choose', 'resolve']],
+		[['definite'],['certain', 'sure', 'determined', 'clear', 'distinct', 'obvious']],
+		[['delicious'],['savory', 'delectable', 'appetizing', 'luscious', 'scrumptious', 'palatable', 'delightful', 'enjoyable', 'toothsome', 'exquisite']],
+		[['describe'],['portray', 'characterize', 'picture', 'narrate', 'relate', 'recount', 'represent', 'report', 'record']],
+		[['destroy'],['ruin', 'demolish', 'raze', 'waste', 'kill', 'slay', 'end', 'extinguish']],
+		[['difference'],['disagreement', 'inequity', 'contrast', 'dissimilarity', 'incompatibility']],
+		[['do'],['accomplish', 'achieve', 'attain']],
+		[['dull'],['boring', 'tiring','tiresome', 'uninteresting', 'slow', 'dumb', 'stupid', 'unimaginative', 'lifeless', 'dead', 'insensible', 'tedious', 'wearisome', 'listless', 'expressionless', 'plain', 'monotonous', 'humdrum', 'dreary']],
+		[['eager'],['keen', 'fervent', 'enthusiastic', 'involved', 'interested', 'aliveto']],
+		[['end'],['stop', 'finish', 'terminate', 'conclude', 'close', 'halt', 'cessation', 'discontinuance']],
+		[['enjoy'],['appreciate', 'delightin', 'bepleased', 'indulgein', 'luxuriatein', 'baskin', 'relish', 'devour', 'savor', 'like']],
+		[['explain'],['elaborate', 'clarify', 'define', 'interpret', 'justify', 'accountfor']],
+		[['fair'],['just', 'impartial', 'unbiased', 'objective', 'unprejudiced', 'honest']],
+		[['fall'],['drop', 'descend', 'plunge', 'topple', 'tumble']],
+		[['false'],['fake', 'fraudulent', 'counterfeit', 'spurious', 'untrue', 'unfounded', 'erroneous', 'deceptive', 'groundless', 'fallacious']],
+		[['famous'],['well-known', 'renowned', 'celebrated', 'famed', 'eminent', 'illustrious', 'distinguished', 'noted', 'notorious']],
+		[['fast'],['quick', 'rapid', 'speedy', 'fleet', 'hasty', 'snappy', 'mercurial', 'swiftly', 'rapidly', 'quickly', 'snappily', 'speedily', 'lickety-split', 'posthaste', 'hastily', 'expeditiously', 'likeaflash']],
+		[['fat'],['stout', 'corpulent', 'fleshy', 'beefy', 'paunchy', 'plump', 'full', 'rotund', 'tubby', 'pudgy', 'chubby', 'chunky', 'burly', 'bulky', 'elephantine']],
+		[['fear'],['fright', 'dread', 'terror', 'alarm', 'dismay', 'anxiety', 'scare', 'awe', 'horror', 'panic', 'apprehension']],
+		[['fly'],['soar', 'hover', 'flit', 'wing', 'flee', 'waft', 'glide', 'coast', 'skim', 'sail', 'cruise']],
+		[['funny'],['humorous', 'amusing', 'droll', 'comic', 'comical', 'laughable', 'silly']],
+		[['get'],['acquire', 'obtain', 'secure', 'procure', 'gain', 'fetch', 'find', 'score', 'accumulate', 'win', 'earn', 'rep', 'catch', 'net', 'bag', 'derive', 'collect', 'gather', 'glean', 'pickup', 'accept', 'comeby', 'regain', 'salvage']],
+		[['go'],['recede', 'depart', 'fade', 'disappear', 'move', 'travel', 'proceed']],
+		[['good'],['excellent', 'fine', 'superior', 'wonderful', 'marvelous', 'qualified', 'suited', 'suitable', 'apt', 'proper', 'capable', 'generous', 'kindly', 'friendly', 'gracious', 'obliging', 'pleasant', 'agreeable', 'pleasurable', 'satisfactory', 'well-behaved', 'obedient', 'honorable', 'reliable', 'trustworthy', 'safe', 'favorable', 'profitable', 'advantageous', 'righteous', 'expedient', 'helpful', 'valid', 'genuine', 'ample', 'salubrious', 'estimable', 'beneficial', 'splendid', 'great', 'noble', 'worthy', 'first-rate', 'top-notch', 'grand', 'sterling', 'superb', 'respectable', 'edifying']],
+		[['great'],['noteworthy', 'worthy', 'distinguished', 'remarkable', 'grand', 'considerable', 'powerful', 'much', 'mighty']],
+		[['gross'],['improper', 'coarse', 'indecent', 'crude', 'vulgar', 'outrageous', 'extreme', 'grievous', 'shameful', 'uncouth', 'obscene', 'low']],
+		[['happy'],['pleased', 'contented', 'satisfied', 'delighted', 'elated', 'joyful', 'cheerful', 'ecstatic', 'jubilant', 'gay', 'tickled', 'gratified', 'glad', 'blissful', 'overjoyed']],
+		[['hate'],['despise', 'loathe', 'detest', 'abhor', 'disfavor', 'dislike', 'disapprove', 'abominate']],
+		[['help'],['aid', 'assist', 'support', 'encourage', 'back', 'waiton', 'attend', 'serve', 'relieve', 'succor', 'benefit', 'befriend', 'abet']],
+		[['hide'],['conceal', 'cover', 'mask', 'cloak', 'camouflage', 'screen', 'shroud', 'veil']],
+		[['hurry'],['rush', 'run', 'speed', 'race', 'hasten', 'urge', 'accelerate', 'bustle']],
+		[['hurt'],['damage', 'harm', 'injure', 'wound', 'distress', 'afflict', 'pain']],
+		[['idea'],['thought', 'concept', 'conception', 'notion', 'understanding', 'opinion', 'plan', 'view', 'belief']],
+		[['important'],['necessary', 'vital', 'critical', 'indispensable', 'valuable', 'essential', 'significant', 'primary', 'principal', 'considerable', 'famous', 'distinguished', 'notable', 'well-known']],
+		[['interesting'],['fascinating', 'engaging', 'sharp', 'keen', 'bright', 'intelligent', 'animated', 'spirited', 'attractive', 'inviting', 'intriguing', 'provocative', 'though-provoking', 'challenging', 'inspiring', 'involving', 'moving', 'titillating', 'tantalizing', 'exciting', 'entertaining', 'piquant', 'lively', 'racy', 'spicy', 'engrossing', 'absorbing', 'consuming', 'gripping', 'arresting', 'enthralling', 'spellbinding', 'curious', 'captivating', 'enchanting', 'bewitching', 'appealing']],
+		[['keep'],['hold', 'retain', 'withhold', 'preserve', 'maintain', 'sustain', 'support']],
+		[['kill'],['slay', 'execute', 'assassinate', 'destroy', 'cancel', 'abolish']],
+		[['lazy'],['indolent', 'slothful', 'idle', 'inactive', 'sluggish']],
+		[['little'],['tiny', 'small', 'diminutive', 'runt', 'miniature', 'puny', 'exiguous', 'dinky', 'cramped', 'limited', 'slight', 'petite', 'minute']],
+		[['look'],['gaze', 'see', 'glance', 'watch', 'survey', 'study', 'seek', 'searchfor', 'peek', 'peep', 'glimpse', 'stare', 'contemplate', 'examine', 'gape', 'ogle', 'scrutinize', 'inspect', 'leer', 'behold', 'observe', 'view', 'witness', 'perceive', 'spy', 'sight', 'discover', 'notice', 'recognize', 'peer', 'eye', 'gawk', 'peruse', 'explore']],
+		[['love'],['like', 'admire', 'esteem', 'fancy', 'carefor', 'cherish', 'adore', 'treasure', 'worship', 'appreciate', 'savor']],
+		[['make'],['create', 'originate', 'invent', 'beget', 'form', 'construct', 'design', 'fabricate', 'manufacture', 'produce', 'build', 'develop', 'do', 'effect', 'execute', 'compose', 'perform', 'accomplish', 'earn', 'gain', 'obtain', 'acquire', 'get']],
+		[['mark'],['label', 'tag', 'price', 'ticket', 'impress', 'effect', 'trace', 'imprint', 'stamp', 'brand', 'sign', 'note', 'heed', 'notice', 'designate']],
+		[['mischievous'],['prankish', 'playful', 'naughty', 'roguish', 'waggish', 'impish', 'sportive']],
+		[['move'],['plod', 'go', 'creep', 'crawl', 'inch', 'poke', 'drag', 'toddle', 'shuffle', 'trot', 'dawdle', 'walk', 'traipse', 'mosey', 'jog', 'plug', 'trudge', 'slump', 'lumber', 'trail', 'lag', 'run', 'sprint', 'trip', 'bound', 'hotfoot', 'high-tail', 'streak', 'stride', 'tear', 'breeze', 'whisk', 'rush', 'dash', 'dart', 'bolt', 'fling', 'scamper', 'scurry', 'skedaddle', 'scoot', 'scuttle', 'scramble', 'race', 'chase', 'hasten', 'hurry', 'hump', 'gallop', 'lope', 'accelerate', 'stir', 'budge', 'travel', 'wander', 'roam', 'journey', 'trek', 'ride', 'spin', 'slip', 'glide', 'slide', 'slither', 'coast', 'flow', 'sail', 'saunter', 'hobble', 'amble', 'stagger', 'paddle', 'slouch', 'prance', 'straggle', 'meander', 'perambulate', 'waddle', 'wobble', 'pace', 'swagger', 'promenade', 'lunge']],
+		[['moody'],['temperamental', 'changeable', 'short-tempered', 'glum', 'morose', 'sullen', 'mopish', 'irritable', 'testy', 'peevish', 'fretful', 'spiteful', 'sulky', 'touchy']],
+		[['neat'],['clean', 'orderly', 'tidy', 'trim', 'dapper', 'natty', 'smart', 'elegant', 'well-organized', 'super', 'desirable', 'spruce', 'shipshape', 'well-kept', 'shapely']],
+		[['new'],['fresh', 'unique', 'original', 'unusual', 'novel', 'modern', 'recent']],
+		[['old'],['feeble', 'frail', 'aged']],
+		[['part'],['portion', 'share', 'piece', 'allotment', 'section', 'fraction', 'fragment']],
+		[['place'],['space', 'area', 'spot', 'plot', 'region', 'location', 'situation', 'position', 'residence', 'dwelling', 'set', 'site', 'station', 'status', 'state']],
+		[['plan'],['plot', 'scheme', 'design', 'draw', 'map', 'diagram', 'procedure', 'arrangement', 'intention', 'device', 'contrivance', 'method', 'way', 'blueprint']],
+		[['popular'],['well-liked', 'approved', 'accepted', 'favorite', 'celebrated']],
+		[['predicament'],['quandary', 'dilemma', 'pickle', 'problem', 'plight', 'spot', 'scrape', 'jam']],
+		[['put'],['place', 'set', 'attach', 'establish', 'assign', 'keep', 'save', 'setaside', 'effect', 'achieve', 'do', 'build']],
+		[['quiet'],['silent', 'still', 'soundless', 'mute', 'tranquil', 'peaceful', 'calm', 'restful']],
+		[['right'],['correct', 'accurate', 'factual', 'true', 'good', 'just', 'honest', 'upright', 'lawful', 'moral', 'proper', 'suitable', 'apt', 'legal', 'fair']],
+		[['run'],['race', 'speed', 'hurry', 'hasten', 'sprint', 'dash', 'rush', 'escape', 'elope', 'flee']],
+		[['scared'],['afraid', 'frightened', 'alarmed', 'terrified', 'panicked', 'fearful', 'unnerved', 'insecure', 'timid', 'shy', 'skittish', 'jumpy', 'disquieted', 'worried', 'vexed', 'troubled', 'disturbed', 'horrified', 'terrorized', 'shocked', 'petrified', 'haunted', 'timorous', 'shrinking', 'tremulous', 'stupefied', 'paralyzed', 'stunned', 'apprehensive']],
+		[['show'],['display', 'exhibit', 'present', 'note', 'pointto', 'indicate', 'explain', 'reveal', 'prove', 'demonstrate', 'expose']],
+		[['slow'],['unhurried', 'gradual', 'leisurely', 'late', 'behind', 'tedious', 'slack']],
+		[['stop'],['cease', 'halt', 'stay', 'pause', 'discontinue', 'conclude', 'end', 'finish', 'quit']],
+		[['story'],['tale', 'myth', 'legend', 'fable', 'yarn', 'account', 'narrative', 'chronicle', 'epic', 'sage', 'anecdote', 'record', 'memoir']],
+		[['strange'],['odd', 'peculiar', 'unusual', 'unfamiliar', 'uncommon', 'queer', 'weird', 'outlandish', 'curious', 'unique', 'exclusive', 'irregular']],
+		[['take'],['hold', 'catch', 'seize', 'grasp', 'win', 'capture', 'acquire', 'pick', 'choose', 'select', 'prefer', 'remove', 'steal', 'lift', 'rob', 'engage', 'bewitch', 'purchase', 'buy', 'retract', 'recall', 'assume', 'occupy', 'consume']],
+		[['tell'],['disclose', 'reveal', 'show']],
+		[['trouble'],['distress', 'anguish', 'anxiety', 'worry', 'wretchedness', 'pain', 'danger', 'peril', 'disaster', 'grief', 'misfortune', 'difficulty', 'concern', 'pains', 'inconvenience', 'exertion', 'effort']],
+		[['true'],['accurate', 'right', 'proper', 'precise', 'exact', 'valid', 'genuine', 'real', 'actual', 'trusty', 'steady', 'loyal', 'dependable', 'sincere', 'staunch']],
+		[['ugly'],['hideous', 'frightful', 'frightening', 'shocking', 'horrible', 'unpleasant', 'monstrous', 'terrifying', 'gross', 'grisly', 'ghastly', 'horrid', 'unsightly', 'plain', 'homely', 'evil', 'repulsive', 'repugnant', 'gruesome']],
+		[['unhappy'],['miserable', 'uncomfortable', 'wretched', 'heart-broken', 'unfortunate', 'poor', 'downhearted', 'sorrowful', 'depressed', 'dejected', 'melancholy', 'glum', 'gloomy', 'dismal', 'discouraged', 'sad']],
+		[['wrong'],['incorrect', 'inaccurate', 'mistaken', 'erroneous', 'improper', 'unsuitable']]		
+	];	
 }
 
 ?>
