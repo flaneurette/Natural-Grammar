@@ -879,11 +879,11 @@ class grammar {
 		[['simple'],['easy']],
 		[['full proof'],['foolproof']],
 		[['fullproof'],['foolproof']],
-           // Further contractions
-           		[['I\'ve'],['I have']],
-           		[['I\'ll'],['I will']],
+        // Further contractions
+        [['I\'ve'],['I have']],
+        [['I\'ll'],['I will']],
 		[['I\'ve never'],['I have never']], 
-           [['They\'ve'],['They have']],
+        [['They\'ve'],['They have']],
 		[['Yes, I'],['Indeed, I','I']], 
 		[['truly'],['absolutely','actually','definitely','genuinely','rightly']],
 		[['Lots of people'],['A lot of people','Many']],
@@ -943,10 +943,10 @@ class grammar {
 		[['ontrary what many people believe'],['ontrary to popular belief']],	
 		[['than we are used to'],['than we are acustomed to','than we are conditioned to']],
 		[['jealous'],['invidious', 'jaundiced', 'apprehensive', 'envious', 'intolerant', 'possessive', 'protective', 'begrudging', 'covetous', 'doubting']],
-           [['amazing'],['incredible', 'fabulous', 'wonderful', 'fantastic', 'astonishing', 'astounding']],
-           [['her anger'],['her rage', 'her fury', 'her arousal', 'her nettled', 'her exasperation', 'her maddening']],
-           [['his anger'],['his rage', 'his fury', 'his arousal', 'his nettled', 'his exasperation', 'his maddening']],
-           [['my anger'],['my rage', 'my fury', 'my arousal', 'my nettled', 'my exasperation', 'my maddening']],
+        [['amazing'],['incredible', 'fabulous', 'wonderful', 'fantastic', 'astonishing', 'astounding']],
+        [['her anger'],['her rage', 'her fury', 'her arousal', 'her nettled', 'her exasperation', 'her maddening']],
+        [['his anger'],['his rage', 'his fury', 'his arousal', 'his nettled', 'his exasperation', 'his maddening']],
+        [['my anger'],['my rage', 'my fury', 'my arousal', 'my nettled', 'my exasperation', 'my maddening']],
 		// Catches both: i-t, tha-t and many other words ending on a t.
 		[['t sounds crazy'],['t sounds preposterous','t sounds irrational', 't sounds unreasonable']],
 		[['famous'],['well-known', 'renowned', 'celebrated', 'famed', 'eminent', 'illustrious', 'distinguished']],
@@ -1557,6 +1557,7 @@ class grammar {
 		[['unhappy'],['miserable', 'uncomfortable', 'wretched', 'heart-broken', 'unfortunate', 'poor', 'downhearted', 'sorrowful', 'depressed', 'dejected', 'melancholy', 'glum', 'gloomy', 'dismal', 'discouraged', 'sad']],
 		[['wrong'],['incorrect', 'inaccurate', 'mistaken', 'erroneous', 'improper', 'unsuitable']]		
 	];	
+
 }
 
 ?>
