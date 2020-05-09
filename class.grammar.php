@@ -85,15 +85,15 @@ class grammar {
 	
 	public function diagramming($text){
 
-		$diagram_direction = [
-			'verb' => ['adverb','adverbial_objective'],
-			'adverb' => ['adverb','adverb','adverbial_objective'],
-			'attributive_adjective' => ['adverb'],
-			'predicate_adjective' => ['adverb'],
-			'word' => ['appositive'],
-			'noun' => ['article','attributive_adjective'],
-			'infinitive' => ['complementary_infinitive','verb'],
-			'infinitive'=> ['complementary_infinitive','verb']
+		public 	$diagram_direction = [
+			['verb' => ['adverb','adverbial_objective']],
+			['adverb' => ['adverb','adverb','adverbial_objective']],
+			['attributive_adjective' => ['adverb']],
+			['predicate_adjective' => ['adverb']],
+			['word' => ['appositive']],
+			['noun' => ['article','attributive_adjective']],
+			['infinitive' => ['complementary_infinitive','verb']],
+			['infinitive'=> ['complementary_infinitive','verb']]
 		];
 		
 		/**
