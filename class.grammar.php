@@ -86,7 +86,7 @@ class grammar {
 	
 	public function diagramming($text){
 
-		public 	$diagram_direction = [
+		$diagram_direction = [
 			['verb' => ['adverb','adverbial_objective']],
 			['adverb' => ['adverb','adverb','adverbial_objective']],
 			['attributive_adjective' => ['adverb']],
@@ -1463,7 +1463,7 @@ class grammar {
         	[['little '],['tiny ', 'small ', 'diminutive ']],
         	[['am right'],['am correct', 'am accurate', 'am factual']],
 		[['is right'],['is correct', 'is accurate', 'is factual']],
-		[['crazy '],['strange ', 'odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious ']]
+		[['crazy '],['strange ', 'odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious ']],
 		[['mad'],['preposterous', 'irrational', 'distracted', 'aberrant', 'frenetic', 'imprudent', 'unreasonable']],
 		[['angry'],['furious', 'enraged', 'excited', 'wrathful', 'indignant', 'exasperated', 'aroused', 'inflamed']],
 		[['answer'],['reply', 'respond', 'retort', 'acknowledge']],
