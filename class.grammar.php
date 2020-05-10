@@ -333,7 +333,7 @@ class grammar {
 		// 3 word boundary.
 		if(preg_match($this->ablautRegex1,$textsplit[$t],$matches)) {
 			$string_boundary = strtolower($matches[0]);
-		$first_ablaut  = strtolower($matches[2]);
+			$first_ablaut  = strtolower($matches[2]);
 			$second_ablaut = strtolower($matches[3]);
 			$third_ablaut  = strtolower($matches[4]);
 			
@@ -364,7 +364,7 @@ class grammar {
 		
 			$replace_holder = '';
 			$string_boundary = strtolower($matches[0]);
-		$first_ablaut  = strtolower($matches[3]);
+			$first_ablaut  = strtolower($matches[3]);
 			$second_ablaut = strtolower($matches[4]);
 			
 			$cfirst  = $first_ablaut[1];
