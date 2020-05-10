@@ -1,7 +1,33 @@
 <?php
 
-class library extends grammar
-{
+
+class grammar {
+	
+    public function __construct($params = array())
+    {
+        $this->init($params);
+    }
+
+    /**
+     * Initializes object.
+     * @param array $params
+     * @throws Exception
+    */
+
+    public function init($params)
+    {
+        try {
+            isset($params['var']) ? $this->var = $params['var'] : false;
+        }
+		catch(Exception $e) {
+            $this->message('Problem initializing:' . $e->getMessage());
+        }
+    }	
+	
+}
+
+
+class library extends grammar {
 
     public function __construct($params = array())
     {
@@ -12,7 +38,7 @@ class library extends grammar
      * Initializes object.
      * @param array $params
      * @throws Exception
-     */
+    */
 
     public function init($params)
     {
@@ -27,61 +53,61 @@ class library extends grammar
     }
 
     public $diagram_direction = [
-	['verb' => ['adverb','adverbial_objective']],
-	['adverb' => ['adverb','adverb','adverbial_objective']],
-	['attributive_adjective' => ['adverb']],
-	['predicate_adjective' => ['adverb']],
-	['word' => ['appositive']],
-	['noun' => ['article','attributive_adjective']],
-	['infinitive' => ['complementary_infinitive','verb']],
-	['infinitive'=> ['complementary_infinitive','verb']]
+		['verb' => ['adverb','adverbial_objective']],
+		['adverb' => ['adverb','adverb','adverbial_objective']],
+		['attributive_adjective' => ['adverb']],
+		['predicate_adjective' => ['adverb']],
+		['word' => ['appositive']],
+		['noun' => ['article','attributive_adjective']],
+		['infinitive' => ['complementary_infinitive','verb']],
+		['infinitive'=> ['complementary_infinitive','verb']]
     ];
 	
     /**
      * Grammatical Terms and Diagramming Symbols.
      * originally charted by Eugene R. Moutoux.
-     */
+    */
 	
     public $terminology = [
-	'absolute phrase',
-	'active voice',
-	'adjective clause',
-	'adjective',
-	'adverb',
-	'adverbial objective',
-	'antecedent',
-	'appositive',
-	'article',
-	'attributive adjective',
-	'auxilliary verb',
-	'clause',
-	'comparative degree',
-	'complement',
-	'complementary infinitive',
-	'complex sentence',
-	'compound sentence',
-	'compound-complex sentence',
-	'conjunction',
-	'conjunctive adverb',
-	'coordinating conjunction',
-	'correlative adverbs',
-	'correlative',
-	'definite article',
-	'demonstrative adjective',
-	'demonstrative pronoun',
-	'dependent clause',
-	'direct address',
-	'direct object',
-	'elliptical clause',
-	'equal comparison',
-	'expletive',
-	'finite verb'
+		'absolute phrase',
+		'active voice',
+		'adjective clause',
+		'adjective',
+		'adverb',
+		'adverbial objective',
+		'antecedent',
+		'appositive',
+		'article',
+		'attributive adjective',
+		'auxilliary verb',
+		'clause',
+		'comparative degree',
+		'complement',
+		'complementary infinitive',
+		'complex sentence',
+		'compound sentence',
+		'compound-complex sentence',
+		'conjunction',
+		'conjunctive adverb',
+		'coordinating conjunction',
+		'correlative adverbs',
+		'correlative',
+		'definite article',
+		'demonstrative adjective',
+		'demonstrative pronoun',
+		'dependent clause',
+		'direct address',
+		'direct object',
+		'elliptical clause',
+		'equal comparison',
+		'expletive',
+		'finite verb'
     ];
 	
     /**
      * Arrays
      * @var array
-     */
+    */
 
     public  $determiners = [
 		'fewer',
@@ -342,8 +368,8 @@ class library extends grammar
 	];	
 	
 	public $materialAdjectives = [
-		 'glass', 'wooden', 'wood', 'woody', 'cloth', 'concrete', 'fabric', 'cotton', 'plastic', 'leather', 'ceramic', 'metal', 
-		 'metallic', 'steel', 'silicon', 'synthetic', 'woolen', 'polyester', 'fibrous'
+		'glass', 'wooden', 'wood', 'woody', 'cloth', 'concrete', 'fabric', 'cotton', 'plastic', 'leather', 'ceramic', 'metal', 
+		'metallic', 'steel', 'silicon', 'synthetic', 'woolen', 'polyester', 'fibrous'
 	];
 	
 	public $purposeAdjectives = [
@@ -351,7 +377,8 @@ class library extends grammar
 	];	
 	
 	public $grammar = [
-		/*
+	
+	/*
 		
 		Grammar Fragments. 
 		Copyright 2019 Alexandra van den Heetkamp.
@@ -364,8 +391,10 @@ class library extends grammar
 		and hinting at how to build our new functions. Most of the past tense fragments are already 
 		caught by the past tense function, yet are still listend to below for reference.
 		
-		*/
+	*/
+	
 		// only 12 words in all of english have this sequence. Most cases it is a mistake.
+		
 		[[' akn'],[' ack']],
 		[['uhgt'],['ught']],
 		[['meing'],['ming']],
@@ -384,8 +413,8 @@ class library extends grammar
 		[['Don\'t'],['do not']],
 		[['don\'t'],['do not']],		
 		// Useful contracttions 
-		// too much 'ing' past tense:
-		// (XXX Not needed, as our new past tense checker now fixes it globally.)
+		// too much 'ing' past tense.
+		// (Our new past tense checker now fixes it globally.)
 		[['We were starting to'],['We started to']],
 		[['we were starting to'],['we started to']],
 		// We only should use she said when a comma follows: "she said,"
@@ -514,11 +543,11 @@ class library extends grammar
 		[['simple'],['easy']],
 		[['full proof'],['foolproof']],
 		[['fullproof'],['foolproof']],
-		// Further contractions
-		[['I\'ve'],['I have']],
-		[['I\'ll'],['I will']],
+        // Further contractions
+        [['I\'ve'],['I have']],
+        [['I\'ll'],['I will']],
 		[['I\'ve never'],['I have never']], 
-		[['They\'ve'],['They have']],
+        [['They\'ve'],['They have']],
 		[['Yes, I'],['Indeed, I','I']], 
 		[['truly'],['absolutely','actually','definitely','genuinely','rightly']],
 		[['Lots of people'],['A lot of people','Many']],
@@ -578,10 +607,10 @@ class library extends grammar
 		[['ontrary what many people believe'],['ontrary to popular belief']],	
 		[['than we are used to'],['than we are acustomed to','than we are conditioned to']],
 		[['jealous'],['invidious', 'jaundiced', 'apprehensive', 'envious', 'intolerant', 'possessive', 'protective', 'begrudging', 'covetous', 'doubting']],
-		[['amazing'],['incredible', 'fabulous', 'wonderful', 'fantastic', 'astonishing', 'astounding']],
-		[['her anger'],['her rage', 'her fury', 'her arousal', 'her nettled', 'her exasperation', 'her maddening']],
-		[['his anger'],['his rage', 'his fury', 'his arousal', 'his nettled', 'his exasperation', 'his maddening']],
-		[['my anger'],['my rage', 'my fury', 'my arousal', 'my nettled', 'my exasperation', 'my maddening']],
+        [['amazing'],['incredible', 'fabulous', 'wonderful', 'fantastic', 'astonishing', 'astounding']],
+        [['her anger'],['her rage', 'her fury', 'her arousal', 'her nettled', 'her exasperation', 'her maddening']],
+        [['his anger'],['his rage', 'his fury', 'his arousal', 'his nettled', 'his exasperation', 'his maddening']],
+        [['my anger'],['my rage', 'my fury', 'my arousal', 'my nettled', 'my exasperation', 'my maddening']],
 		// Catches both: i-t, tha-t and many other words ending on a t.
 		[['t sounds crazy'],['t sounds preposterous','t sounds irrational', 't sounds unreasonable']],
 		[['famous'],['well-known', 'renowned', 'celebrated', 'famed', 'eminent', 'illustrious', 'distinguished']],
@@ -1063,41 +1092,41 @@ class library extends grammar
 	public $thesaurus = [
 		// thesaurus 
 		[['mitigating'],['alleviating','lessen','reduce']],
-		[['mitigate'],['alleviate','lessen','reduce']],
-		[['beautiful'],['pretty', 'lovely', 'handsome', 'attractive', 'gorgeous', 'dazzling', 'splendid', 'magnificent', 'comely', 'fair', 'ravishing', 'graceful', 'elegant', 'fine', 'exquisite', 'aesthetic', 'pleasing', 'shapely', 'delicate', 'stunning', 'glorious', 'heavenly', 'resplendent', 'radiant', 'glowing', 'blooming', 'sparkling']],
-		[['awful'],['dreadful', 'terrible', 'abominable', 'unpleasant']],
-		[['brave'],['courageous', 'fearless', 'dauntless', 'intrepid', 'plucky', 'daring', 'heroic', 'valorous', 'audacious', 'bold', 'gallant', 'valiant', 'doughty', 'mettlesome']],
+	    [['mitigate'],['alleviate','lessen','reduce']],
+        [['beautiful'],['pretty', 'lovely', 'handsome', 'attractive', 'gorgeous', 'dazzling', 'splendid', 'magnificent', 'comely', 'fair', 'ravishing', 'graceful', 'elegant', 'fine', 'exquisite', 'aesthetic', 'pleasing', 'shapely', 'delicate', 'stunning', 'glorious', 'heavenly', 'resplendent', 'radiant', 'glowing', 'blooming', 'sparkling']],
+        [['awful'],['dreadful', 'terrible', 'abominable', 'unpleasant']],
+        [['brave'],['courageous', 'fearless', 'dauntless', 'intrepid', 'plucky', 'daring', 'heroic', 'valorous', 'audacious', 'bold', 'gallant', 'valiant', 'doughty', 'mettlesome']],
 		[['it breaks'],['it fractures', 'it shatters','it breaks']],
-		[['calm'],['quiet', 'peaceful', 'still', 'tranquil', 'mild', 'serene', 'smooth', 'composed', 'collected', 'unruffled', 'level-headed', 'unexcited', 'detached', 'aloof']],
+        [['calm'],['quiet', 'peaceful', 'still', 'tranquil', 'mild', 'serene', 'smooth', 'composed', 'collected', 'unruffled', 'level-headed', 'unexcited', 'detached', 'aloof']],
 		[['would cry'],['would shout', 'would yell', 'would yowl', 'would scream', 'would roar', 'would bellow', 'would weep', 'would wail', 'would sob', 'bawl']],
-		[['would shout'],['would yell', 'would yowl', 'would scream', 'would roar', 'would bellow', 'would weep', 'would wail', 'would sob', 'bawl']],
+        [['would shout'],['would yell', 'would yowl', 'would scream', 'would roar', 'would bellow', 'would weep', 'would wail', 'would sob', 'bawl']],
 		[['delicious'],['savory', 'delectable', 'appetizing', 'luscious', 'scrumptious', 'palatable', 'delightful', 'enjoyable', 'toothsome', 'exquisite']],
-		[['enjoy it'],['appreciate it', 'delight in it', 'bepleased by it','indulge in it','relish it', 'savor it', 'like it']],
-        	[['explained'],['elaborated', 'clarified', 'defined']],
+        [['enjoy it'],['appreciate it', 'delight in it', 'bepleased by it','indulge in it','relish it', 'savor it', 'like it']],
+        [['explained'],['elaborated', 'clarified', 'defined']],
 		[['explain'],['elaborate', 'clarify', 'define','explain']],
-		[['differences'],['dissimilarities','differences']],
+        [['differences'],['dissimilarities','differences']],
 		[['difference'],['dissimilarity','difference']],
 		[['delicious'],['savory', 'delectable', 'appetizing', 'luscious', 'scrumptious', 'palatable', 'delightful', 'enjoyable', 'toothsome', 'exquisite']],
 		[['famous'],['well-known', 'renowned', 'celebrated', 'famed', 'eminent', 'illustrious', 'distinguished', 'noted', 'notorious']],
-		[['a fat'],['a stout', 'a corpulent', 'a fleshy', 'a beefy', 'a paunchy', 'a plump', 'a full', 'a rotund','a bulky']],
+        [['a fat'],['a stout', 'a corpulent', 'a fleshy', 'a beefy', 'a paunchy', 'a plump', 'a full', 'a rotund','a bulky']],
 		[['funny'],['humorous', 'amusing', 'comical', 'laughable']],
-		[['fast'],['quick', 'rapid', 'speedy', 'fleet', 'hasty', 'snappy']],
-		[['fear'],['fright', 'dread', 'dismay', 'anxiety','apprehension']],
-		[['gross'],['improper', 'coarse', 'indecent', 'crude', 'vulgar', 'outrageous', 'extreme', 'grievous', 'shameful', 'uncouth', 'obscene', 'low']],
-        	[['moody'],['temperamental', 'changeable', 'short-tempered', 'glum', 'morose', 'sullen', 'mopish', 'irritable', 'testy', 'peevish', 'fretful', 'spiteful', 'sulky', 'touchy']],
-        	[['interesting'],['fascinating','intriguing', 'provocative', 'though-provoking', 'inspiring', 'involving', 'moving', 'titillating', 'tantalizing', 'exciting', 'entertaining', 'piquant', 'lively', 'racy', 'spicy', 'gripping', 'enthralling', 'spellbinding', 'curious', 'captivating', 'enchanting', 'bewitching', 'appealing']],
-        	[['good'],['good','excellent', 'fine', 'superior', 'wonderful', 'marvelous', 'qualified', 'suited', 'suitable', 'apt', 'proper', 'superb', 'respectable', 'edifying']],
-        	[[' big '],[' enormous ', ' immense ', ' sizable ', ' grand ', ' great ']],
+        [['fast'],['quick', 'rapid', 'speedy', 'fleet', 'hasty', 'snappy']],
+        [['fear'],['fright', 'dread', 'dismay', 'anxiety','apprehension']],
+        [['gross'],['improper', 'coarse', 'indecent', 'crude', 'vulgar', 'outrageous', 'extreme', 'grievous', 'shameful', 'uncouth', 'obscene', 'low']],
+        [['moody'],['temperamental', 'changeable', 'short-tempered', 'glum', 'morose', 'sullen', 'mopish', 'irritable', 'testy', 'peevish', 'fretful', 'spiteful', 'sulky', 'touchy']],
+        [['interesting'],['fascinating','intriguing', 'provocative', 'though-provoking', 'inspiring', 'involving', 'moving', 'titillating', 'tantalizing', 'exciting', 'entertaining', 'piquant', 'lively', 'racy', 'spicy', 'gripping', 'enthralling', 'spellbinding', 'curious', 'captivating', 'enchanting', 'bewitching', 'appealing']],
+        [['good'],['good','excellent', 'fine', 'superior', 'wonderful', 'marvelous', 'qualified', 'suited', 'suitable', 'apt', 'proper', 'superb', 'respectable', 'edifying']],
+        [[' big '],[' enormous ', ' immense ', ' sizable ', ' grand ', ' great ']],
 		[['to do '],['to accomplish ', 'to achieve ', 'to attain ']],
 		[['a great '],['a noteworthy ', 'a worthy ', 'a distinguished ', 'a remarkable ', 'a grand ', 'a considerable ', 'a powerful ', 'a much ', 'a mighty ']],
-       		[['important'],['necessary', 'vital', 'critical', 'indispensable', 'valuable', 'essential', 'significant', 'primary', 'principal']],
-       		[['strange '],['odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious', 'irregular']],
+        [['important'],['necessary', 'vital', 'critical', 'indispensable', 'valuable', 'essential', 'significant', 'primary', 'principal']],
+        [['strange '],['odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious', 'irregular']],
 		[['show '],['display ', 'exhibit ', 'present ', 'reveal ', 'demonstrate ']],
 		[['wrong '],['incorrect ', 'inaccurate ', 'mistaken ', 'erroneous ', 'improper ', 'unsuitable ']],
-		[['little '],['tiny ', 'small ', 'diminutive ']],
-		[['am right'],['am correct', 'am accurate', 'am factual']],
+        [['little '],['tiny ', 'small ', 'diminutive ']],
+        [['am right'],['am correct', 'am accurate', 'am factual']],
 		[['is right'],['is correct', 'is accurate', 'is factual']],
-		[['crazy '],['strange ', 'odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious ']]
+		[['crazy '],['strange ', 'odd ', 'peculiar ', 'unusual ', 'unfamiliar ', 'uncommon ', 'curious ']],
 		[['mad'],['preposterous', 'irrational', 'distracted', 'aberrant', 'frenetic', 'imprudent', 'unreasonable']],
 		[['angry'],['furious', 'enraged', 'excited', 'wrathful', 'indignant', 'exasperated', 'aroused', 'inflamed']],
 		[['answer'],['reply', 'respond', 'retort', 'acknowledge']],
@@ -1192,5 +1221,5 @@ class library extends grammar
 		[['unhappy'],['miserable', 'uncomfortable', 'wretched', 'heart-broken', 'unfortunate', 'poor', 'downhearted', 'sorrowful', 'depressed', 'dejected', 'melancholy', 'glum', 'gloomy', 'dismal', 'discouraged', 'sad']],
 		[['wrong'],['incorrect', 'inaccurate', 'mistaken', 'erroneous', 'improper', 'unsuitable']]		
 	];	
-
+}
 ?>
