@@ -381,7 +381,9 @@ class library {
 		[['That\'s'],['That is']],	
 		[['that\'s'],['that is']],
 		[['Don\'t'],['do not']],
-		[['don\'t'],['do not']],		
+		[['don\'t'],['do not']],
+		[['as well'],['likewise']],
+		[['as are we'],['as we are']],
 		// Useful contracttions 
 		// too much 'ing' past tense.
 		// (Our new past tense checker now fixes it globally.)
