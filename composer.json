@@ -1,0 +1,8 @@
+{
+    "name": "flaneurette/natural-grammar",
+    "description": "A class to process text and auto–correct grammar",
+    "require": {
+        "php": ">=5.6",
+        "another-vendor/package": "1.*"
+    }
+}
