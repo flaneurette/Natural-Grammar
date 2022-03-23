@@ -28,7 +28,17 @@ Auto–correction includes:
        Past tense correction
        Paragraph identation
 
-       
+# Installing
+
+The class can be installed via two methods, composer and manual installation.
+
+### Composer: 
+
+	composer require flaneurette/natural-grammar:dev-main
+### Manual:
+
+Clone or download the dev-main or package if available.
+
 # Example code:
        $run     = new grammar();
        $text    = 'We were starting to ski downhill in my 1000$ camoflage suit, like I did a million times before. Then, I chnaged my mind. "Help!!!" I said. Jane heard me. She said: "What's wrong"? Oooooooouch!!!';
